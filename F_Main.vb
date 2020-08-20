@@ -24,6 +24,7 @@ Public Class F_Main
     Private Event InternationalRdbChanged()
     Private Event DomesticRdbChanged()
     Private Event TollPrefixChkChanged()
+    Private Event DisplayAboutMessage()
 
     Public Sub New()
         InitializeComponent()
@@ -128,9 +129,14 @@ Public Class F_Main
         AppState = GetCopyOfState(TempState)
         InitMainForm()
     End Sub
+
     Private Sub EH_LoginSuccess() Handles LoginForm.LoginSuccess
         lblCurrentUsername.Text = AppState.VolatileState.CurrentUser.Username
         lblConsignorsFullName.Text = AppState.VolatileState.CurrentUser.FullName
+    End Sub
+
+    Private Sub AboutTsb_Click(sender As Object, e As EventArgs) Handles tsbAbout.Click
+        RaiseEvent DisplayAboutMessage()
     End Sub
 
     'From internal events
@@ -241,49 +247,32 @@ Clear:
         AppState.AddTollPrefix = chkTollPrefix.Checked
     End Sub
 
+    Private Sub EH_BuildAboutMessage() Handles Me.DisplayAboutMessage
+        Dim sb = New StringBuilder()
+        sb.AppendLine("Security Declaration Form Generator.")
+        sb.AppendLine()
+        sb.AppendLine("Version: 1.0.0")
+        sb.AppendLine()
+        sb.AppendLine("Copyright © Miles Williams 2020.")
+        sb.AppendLine()
+        sb.AppendLine("For Weidmüller Australia Pty Ltd.")
+        sb.AppendLine()
+        sb.Append("A tool for automating the process of generating, printing, and saving digitally signed PDF format")
+        sb.Append(" ""Security Declaration Forms"" for use with the Department of Home Affairs - Known Consignor Scheme.")
+        MsgBox(sb.ToString, MsgBoxStyle.ApplicationModal, "About")
+    End Sub
+
     'Private Procedures
     Private Sub InitMainForm()
+        InitUserDetails()
+        InitDestination()
+        InitBasedOnPrintMedium()
+        InitOtherControls()
+        Icon = g_Icon
+    End Sub
 
+    Private Sub InitUserDetails()
         With AppState
-
-            If .Configuration.DefaultsToInternational Then
-                rdbInternational.Checked = True
-            Else
-                rdbDomestic.Checked = True
-            End If
-
-            Select Case .PrintMedium
-                Case E_PrintMedium.Paper
-                    chkPaper.Checked = True
-                    txtPaperCopies.Enabled = True
-                Case E_PrintMedium.Sticker
-                    chkSticker.Checked = True
-                    txtStickerCopies.Enabled = True
-                Case E_PrintMedium.Both
-                    chkBothPrinters.Checked = True
-                    txtPaperCopies.Enabled = True
-                    txtStickerCopies.Enabled = True
-                Case E_PrintMedium.None
-                    chkBothPrinters.Checked = False
-                    chkPaper.Checked = False
-                    chkSticker.Checked = False
-                    txtPaperCopies.Enabled = False
-                    txtStickerCopies.Enabled = False
-                Case Else
-                    chkBothPrinters.Checked = False
-                    chkPaper.Checked = False
-                    chkSticker.Checked = False
-                    txtPaperCopies.Enabled = False
-                    txtStickerCopies.Enabled = False
-            End Select
-
-            chkTollPrefix.Checked = .Configuration.TollPrefixDefault
-            lblStickerPrinter.Text = .Configuration.CurrentStickerPrinter
-            txtStickerCopies.Text = .Configuration.DefaultStickerCopies
-            lblPaperPrinter.Text = .Configuration.CurrentPaperPrinter
-            txtPaperCopies.Text = .Configuration.DefaultPaperCopies
-            txtContents.Text = .Configuration.DefaultContents
-
             If .VolatileState.CurrentUser.Username = "Guest" Then
                 lblCurrentUsername.Text = "You are a logged in as a guest."
                 lblConsignorsFullName.Text = ""
@@ -291,27 +280,64 @@ Clear:
                 lblCurrentUsername.Text = .VolatileState.CurrentUser.Username
                 lblConsignorsFullName.Text = .VolatileState.CurrentUser.FullName
             End If
-
-            Icon = g_Icon
-
         End With
+    End Sub
 
+    Private Sub InitDestination()
+        If AppState.Configuration.DefaultsToInternational Then
+            rdbInternational.Checked = True
+        Else
+            rdbDomestic.Checked = True
+        End If
+    End Sub
+
+    Private Sub InitBasedOnPrintMedium()
+        Select Case AppState.PrintMedium
+            Case E_PrintMedium.Paper
+                chkPaper.Checked = True
+                txtPaperCopies.Enabled = True
+            Case E_PrintMedium.Sticker
+                chkSticker.Checked = True
+                txtStickerCopies.Enabled = True
+            Case E_PrintMedium.Both
+                chkBothPrinters.Checked = True
+                txtPaperCopies.Enabled = True
+                txtStickerCopies.Enabled = True
+            Case E_PrintMedium.None
+                chkBothPrinters.Checked = False
+                chkPaper.Checked = False
+                chkSticker.Checked = False
+                txtPaperCopies.Enabled = False
+                txtStickerCopies.Enabled = False
+            Case Else
+                chkBothPrinters.Checked = False
+                chkPaper.Checked = False
+                chkSticker.Checked = False
+                txtPaperCopies.Enabled = False
+                txtStickerCopies.Enabled = False
+        End Select
+    End Sub
+
+    Private Sub InitOtherControls()
+        With AppState
+            chkTollPrefix.Checked = .Configuration.TollPrefixDefault
+            lblStickerPrinter.Text = .Configuration.CurrentStickerPrinter
+            txtStickerCopies.Text = .Configuration.DefaultStickerCopies
+            lblPaperPrinter.Text = .Configuration.CurrentPaperPrinter
+            txtPaperCopies.Text = .Configuration.DefaultPaperCopies
+            txtContents.Text = .Configuration.DefaultContents
+        End With
     End Sub
 
     Private Function CreateConNumString(ByVal parListItems As ListBox.ObjectCollection) As String
-
         Dim sb As New StringBuilder
-
         For Each item As String In parListItems
             sb.AppendLine(item)
         Next
-
         Return sb.ToString()
-
     End Function
 
     Public Sub RunPreExcelInit(ByRef parState As C_State)
-
         If parState.VolatileState.CurrentUser.Username <> "Guest" Then
             ValidateUserForm = New F_Login(parState, True)
             ValidateUserForm.ShowDialog()
@@ -335,32 +361,10 @@ Clear:
                                         parState.VolatileState.CurrentUser.SigPath)
 
             PassToExcel(ExcelData)
-
             lstConsignments.Items.Clear()
             txtConsignment.Clear()
             txtConsignment.Select()
-
         End If
-
-    End Sub
-
-    Private Sub AboutTsb_Click(sender As Object, e As EventArgs) Handles tsbAbout.Click
-
-        Dim sb = New StringBuilder()
-
-        sb.AppendLine("Security Declaration Form Generator.")
-        sb.AppendLine()
-        sb.AppendLine("Version: 1.0.0")
-        sb.AppendLine()
-        sb.AppendLine("Copyright © Miles Williams 2020.")
-        sb.AppendLine()
-        sb.AppendLine("For Weidmüller Australia Pty Ltd.")
-        sb.AppendLine()
-        sb.Append("A tool for automating the process of generating, printing, and saving digitally signed PDF format")
-        sb.Append(" ""Security Declaration Forms"" for use with the Department of Home Affairs - Known Consignor Scheme.")
-
-        MsgBox(sb.ToString, MsgBoxStyle.ApplicationModal, "About")
-
     End Sub
 
 End Class
