@@ -1,5 +1,4 @@
 ﻿Public Class C_ExcelData
-
     Public Property Contents As String
     Public Property FirstConNumber As String
     Public Property ConNumbers As String
@@ -13,18 +12,6 @@
     Public Property StickerPrinter As String
     Public Property FullName As String
     Public Property SigPath As String
-
-    Public Enum E_Destination
-        Domestic
-        International
-    End Enum
-
-    Public Enum E_PrintMedium
-        Paper
-        Sticker
-        Both
-        None
-    End Enum
 
     Public Sub New(parContents As String,
                    parFirstCon As String,
@@ -53,7 +40,5 @@
         StickerPrinter = parStickerPrinter
         FullName = parFullName
         SigPath = parSigPath
-
     End Sub
-
 End Class

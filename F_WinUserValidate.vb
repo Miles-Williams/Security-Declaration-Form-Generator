@@ -1,39 +1,23 @@
-﻿Imports System.DirectoryServices.AccountManagement
-Imports System.DirectoryServices.Protocols
-
-Public Class F_WinUserValidate
+﻿Public Class F_WinUserValidate
 
     Public Event WinUserValidated()
     Private Event ValidateWinUser()
 
     Public Sub New()
-
         InitializeComponent()
-
     End Sub
 
     Private Sub F_WinUserValidate_Load(sender As Object, e As EventArgs) Handles Me.Load
-
         Icon = g_Icon
         CenterControlHorizontally(Me, btnValidate)
         CenterForm(Me)
-
     End Sub
 
     Private Sub ValidateBtn_Click(sender As Object, e As EventArgs) Handles btnValidate.Click
-
         RaiseEvent ValidateWinUser()
-
     End Sub
 
-    'Private Sub PasswordTxt_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles txtPassword.PreviewKeyDown
-
-    '    If e.KeyCode = Keys.Enter Then RaiseEvent ValidateWinUser()
-
-    'End Sub
-
     Private Async Sub EH_ValidateWinUser() Handles Me.ValidateWinUser
-
         Dim pw As String = txtPassword.Text
         Dim d As String = Environment.UserDomainName
         Dim un As String = Environment.UserName
@@ -43,9 +27,11 @@ Public Class F_WinUserValidate
         Dim validTask As Task(Of Boolean) = ValidateAsync(un, pw)
 
         Dim f As New F_Message
+
         f.ShowDialog()
 
         Dim valid As Boolean = Await validTask
+
         f.Close()
 
         If Not valid Then
@@ -56,9 +42,7 @@ Public Class F_WinUserValidate
         End If
 
         RaiseEvent WinUserValidated()
-
         Close()
-
     End Sub
 
     Private Async Function ValidateAsync(parUn As String, parPw As String) As Task(Of Boolean)
@@ -67,6 +51,5 @@ Public Class F_WinUserValidate
         g_Validated = True
         Return b
     End Function
-
 
 End Class

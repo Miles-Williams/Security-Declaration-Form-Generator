@@ -17,7 +17,5 @@ Public Class C_User
         Salt = parSalt
         HashedPw = parHashedPw
         SigPath = parSigPath
-
     End Sub
-
 End Class

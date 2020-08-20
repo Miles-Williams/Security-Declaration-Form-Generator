@@ -35,3 +35,24 @@ C:\Users\wau0195\source\repos\Security Declaration Form Generator\obj\Debug\Secu
 C:\Users\wau0195\source\repos\Security Declaration Form Generator\obj\Debug\Security Declaration Form Generator.application
 C:\Users\wau0195\source\repos\Security Declaration Form Generator\obj\Debug\Security_Declaration_Form_Generator.F_WinUserValidate.resources
 C:\Users\wau0195\source\repos\Security Declaration Form Generator\obj\Debug\Security_Declaration_Form_Generator.F_Message.resources
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\bin\Debug\Security Declaration Form Generator.exe.config
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\bin\Debug\Security Declaration Form Generator.exe.manifest
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\bin\Debug\Security Declaration Form Generator.application
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\bin\Debug\Security Declaration Form Generator.exe
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\bin\Debug\Security Declaration Form Generator.pdb
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\bin\Debug\Security Declaration Form Generator.xml
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\obj\Debug\Security Declaration Form Generator.vbprojAssemblyReference.cache
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\obj\Debug\Security_Declaration_Form_Generator.F_Login.resources
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\obj\Debug\Security_Declaration_Form_Generator.F_Main.resources
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\obj\Debug\Security_Declaration_Form_Generator.F_Configuration.resources
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\obj\Debug\Security_Declaration_Form_Generator.F_Message.resources
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\obj\Debug\Security_Declaration_Form_Generator.F_WinUserValidate.resources
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\obj\Debug\Security_Declaration_Form_Generator.Resources.resources
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\obj\Debug\Security_Declaration_Form_Generator.F_UserDetails.resources
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\obj\Debug\Security Declaration Form Generator.vbproj.GenerateResource.cache
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\obj\Debug\Security Declaration Form Generator.vbproj.CoreCompileInputs.cache
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\obj\Debug\Security Declaration Form Generator.exe.manifest
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\obj\Debug\Security Declaration Form Generator.application
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\obj\Debug\Security Declaration Form Generator.exe
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\obj\Debug\Security Declaration Form Generator.xml
+C:\Users\wau0195\Source\Repos\Security-Declaration-Form-Generator\obj\Debug\Security Declaration Form Generator.pdb

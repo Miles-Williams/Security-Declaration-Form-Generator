@@ -26,80 +26,52 @@ Public Class F_Main
     Private Event TollPrefixChkChanged()
 
     Public Sub New()
-
         InitializeComponent()
-
         InitializeIcon()
-
         AppState = DeserializeState()
-
-        If IsNothing(AppState.VolatileState.CurrentUser) Then
-            AppState.VolatileState.CurrentUser = New C_User("", "Guest", "", "")
-        End If
-
+        If AppState.VolatileState.CurrentUser Is Nothing Then AppState.VolatileState.CurrentUser = New C_User("", "Guest", "", "")
     End Sub
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         InitMainForm()
-
         CenterForm(Me)
-
         CheckForExcel()
-
     End Sub
 
     Private Sub F_Main_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-
         PrepareStateForClose(AppState)
         SerializeState(AppState)
-
     End Sub
 
     Private Sub AddConsignmentBtn_Click(sender As Object, e As EventArgs) Handles btnAddConsignment.Click
-
         RaiseEvent AddConNumToList()
-
     End Sub
 
     Private Sub CreateConsignmentBtn_Click(sender As Object, e As EventArgs) Handles btnCreateConsignment.Click
-
         RaiseEvent CreateConsignment()
-
     End Sub
 
     Private Sub LoginTsb_Click(sender As Object, e As EventArgs) Handles tsbLogin.Click
-
         LoginForm = New F_Login(AppState)
         LoginForm.ShowDialog(Me)
-
     End Sub
 
     Private Sub ConfigurationTsb_Click(sender As Object, e As EventArgs) Handles tsbConfiguration.Click
-
         GetContextAsync()
         WinUserValidateForm = New F_WinUserValidate()
         WinUserValidateForm.ShowDialog(Me)
-
     End Sub
 
     Private Sub BothPrintersChk_CheckedChanged(sender As Object, e As EventArgs) Handles chkBothPrinters.CheckedChanged
-
         RaiseEvent BothPrintersChkChanged()
-
     End Sub
 
-
     Private Sub StickerChk_CheckedChanged(sender As Object, e As EventArgs) Handles chkSticker.CheckedChanged
-
         RaiseEvent StickerChkChanged()
-
     End Sub
 
     Private Sub PaperChk_CheckedChanged(sender As Object, e As EventArgs) Handles chkPaper.CheckedChanged
-
         RaiseEvent PaperChkChanged()
-
     End Sub
 
     Private Sub RemoveConsignmentBtn_Click(sender As Object, e As EventArgs) Handles btnRemoveConsignment.Click
@@ -107,21 +79,15 @@ Public Class F_Main
     End Sub
 
     Private Sub InternationalRdb_CheckedChanged(sender As Object, e As EventArgs) Handles rdbInternational.CheckedChanged
-
         RaiseEvent InternationalRdbChanged()
-
     End Sub
 
     Private Sub DomesticRdb_CheckedChanged(sender As Object, e As EventArgs) Handles rdbDomestic.CheckedChanged
-
         RaiseEvent DomesticRdbChanged()
-
     End Sub
 
     Private Sub TollPrefixChk_CheckedChanged(sender As Object, e As EventArgs) Handles chkTollPrefix.CheckedChanged
-
         RaiseEvent TollPrefixChkChanged()
-
     End Sub
 
     Private Sub ContentsTxt_TextChanged(sender As Object, e As EventArgs) Handles txtContents.TextChanged
@@ -137,49 +103,39 @@ Public Class F_Main
     End Sub
 
     Private Sub ConsignmentTxt_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles txtConsignment.PreviewKeyDown
-
         If e.Control = True And e.KeyCode = Keys.Enter Then
             RaiseEvent CreateConsignment()
         ElseIf e.KeyCode = Keys.Enter Then
             RaiseEvent AddConNumToList()
         End If
-
     End Sub
 
     'Custom Event Handlers
 
+    'From child form events
     Private Sub EH_UserValidated() Handles ValidateUserForm.LoginSuccess
-
         userValidated = True
-
     End Sub
 
     Private Sub EH_WinUserValidated() Handles WinUserValidateForm.WinUserValidated
-
         TempState = GetCopyOfState(AppState)
         ConfigurationForm = New F_Configuration(TempState)
         ConfigurationForm.ShowDialog(Me)
-
     End Sub
 
     Private Sub EH_ConfigStateChanged() Handles ConfigurationForm.ConfigStateChanged
-
         MsgBox("Configuration saved.")
         AppState = GetCopyOfState(TempState)
         InitMainForm()
-
     End Sub
     Private Sub EH_LoginSuccess() Handles LoginForm.LoginSuccess
-
         lblCurrentUsername.Text = AppState.VolatileState.CurrentUser.Username
         lblConsignorsFullName.Text = AppState.VolatileState.CurrentUser.FullName
-
     End Sub
 
+    'From internal events
     Private Sub EH_AddConNumToList() Handles Me.AddConNumToList
-
         Dim consignment As String = txtConsignment.Text
-
         If consignment <> "" Then
 
             If ContainsInvalidFilenameChars(consignment) Then
@@ -190,15 +146,11 @@ Public Class F_Main
             End If
 
             If chkTollPrefix.Checked Then consignment = "87750" & consignment
-
             lstConsignments.Items.Add(consignment)
-
         End If
-
 Clear:
         txtConsignment.Clear()
         txtConsignment.Select()
-
     End Sub
 
     Private Sub EH_RemoveConNumFromList() Handles Me.RemoveConNumFromList
@@ -206,7 +158,6 @@ Clear:
     End Sub
 
     Private Sub EH_CreateConsignment() Handles Me.CreateConsignment
-
         If lstConsignments.Items.Count <> 0 Then
             AppState.VolatileState.FirstConNumber = lstConsignments.Items.Item(0)
             AppState.VolatileState.ConNumbers = CreateConNumString(lstConsignments.Items)
@@ -214,11 +165,9 @@ Clear:
             AppState.StickerCopies = txtStickerCopies.Text
             RunPreExcelInit(AppState)
         End If
-
     End Sub
 
     Private Sub EH_BothPrintersChkChanged() Handles Me.BothPrintersChkChanged
-
         If chkBothPrinters.Checked = True Then
             chkPaper.Checked = False
             chkSticker.Checked = False
@@ -226,79 +175,66 @@ Clear:
             chkSticker.Enabled = False
             txtPaperCopies.Enabled = True
             txtStickerCopies.Enabled = True
-            AppState.PrintMedium = C_State.E_PrintMedium.Both
+            AppState.PrintMedium = E_PrintMedium.Both
         Else
             chkSticker.Enabled = True
             chkPaper.Enabled = True
             txtStickerCopies.Enabled = False
             txtPaperCopies.Enabled = False
-            AppState.PrintMedium = C_State.E_PrintMedium.None
+            AppState.PrintMedium = E_PrintMedium.None
         End If
-
     End Sub
 
     Private Sub EH_StickerChkChanged() Handles Me.StickerChkChanged
-
         If chkSticker.Checked = False And chkBothPrinters.Checked = False Then
             txtStickerCopies.Enabled = False
-            AppState.PrintMedium = C_State.E_PrintMedium.None
+            AppState.PrintMedium = E_PrintMedium.None
             Exit Sub
         End If
 
         If chkSticker.Checked = True Then
-
             If AppState.Configuration.CurrentStickerPrinter = "" Then
                 MsgBox("Please use the configuration utility to select a sticker printer.", Title:="No sticker printer.")
                 chkSticker.Checked = False
                 Exit Sub
             End If
-
             chkPaper.Checked = False
             txtStickerCopies.Enabled = True
-            AppState.PrintMedium = C_State.E_PrintMedium.Sticker
-
+            AppState.PrintMedium = E_PrintMedium.Sticker
         End If
-
     End Sub
 
     Private Sub EH_PaperChkChanged() Handles Me.PaperChkChanged
-
         If chkPaper.Checked = False And chkBothPrinters.Checked = False Then
             txtPaperCopies.Enabled = False
-            AppState.PrintMedium = C_State.E_PrintMedium.None
+            AppState.PrintMedium = E_PrintMedium.None
             Exit Sub
         End If
 
         If chkPaper.Checked = True Then
-
             If AppState.Configuration.CurrentPaperPrinter = "" Then
                 MsgBox("Please use the configuration utility to select a paper printer.", Title:="No paper printer.")
                 chkPaper.Checked = False
                 Exit Sub
             End If
-
             chkSticker.Checked = False
             txtPaperCopies.Enabled = True
-            AppState.PrintMedium = C_State.E_PrintMedium.Paper
-
+            AppState.PrintMedium = E_PrintMedium.Paper
         End If
-
     End Sub
 
     Private Sub EH_InternationalRdbChanged() Handles Me.InternationalRdbChanged
-
         If rdbInternational.Checked = True Then
             chkTollPrefix.Checked = False
             chkTollPrefix.Enabled = False
-            AppState.CurrentDestination = C_State.E_Destination.International
+            AppState.CurrentDestination = E_Destination.International
         Else
             chkTollPrefix.Enabled = True
         End If
-
     End Sub
 
     Private Sub EH_DomesticRdbChanged() Handles Me.DomesticRdbChanged
-        If rdbDomestic.Checked = True Then AppState.CurrentDestination = C_State.E_Destination.Domestic
+        If rdbDomestic.Checked = True Then AppState.CurrentDestination = E_Destination.Domestic
     End Sub
 
     Private Sub EH_TollPrefixChkChanged() Handles Me.TollPrefixChkChanged
@@ -306,51 +242,6 @@ Clear:
     End Sub
 
     'Private Procedures
-
-    Private Sub TestBtn_Click(sender As Object, e As EventArgs)
-
-        Dim chosenPrinter As String
-        Dim chosenPrinter2 As String
-
-        Select Case AppState.PrintMedium
-            Case C_State.E_PrintMedium.Paper
-                chosenPrinter = AppState.Configuration.CurrentPaperPrinter
-                chosenPrinter2 = ""
-            Case C_State.E_PrintMedium.Sticker
-                chosenPrinter = AppState.Configuration.CurrentStickerPrinter
-                chosenPrinter2 = ""
-            Case C_State.E_PrintMedium.Both
-                chosenPrinter = AppState.Configuration.CurrentPaperPrinter
-                chosenPrinter2 = AppState.Configuration.CurrentStickerPrinter
-            Case C_State.E_PrintMedium.None
-                chosenPrinter = ""
-                chosenPrinter2 = ""
-            Case Else
-                chosenPrinter = ""
-                chosenPrinter2 = ""
-        End Select
-
-
-        Dim sb As New StringBuilder
-        sb.AppendLine("Current Users Full Name: " & AppState.VolatileState.CurrentUser.FullName)
-        sb.AppendLine("Current Username: " & AppState.VolatileState.CurrentUser.Username)
-        sb.AppendLine("Current Destination: " & AppState.CurrentDestination)
-        sb.AppendLine("Add Toll Prefix: " & AppState.AddTollPrefix)
-        sb.AppendLine("Current sticker printer: " & AppState.Configuration.CurrentStickerPrinter)
-        sb.AppendLine("Current paper printer: " & AppState.Configuration.CurrentPaperPrinter)
-        sb.AppendLine("Chosen printer: " & chosenPrinter)
-        sb.AppendLine("Chosen printer2: " & chosenPrinter2)
-        sb.AppendLine("No. sticker copies: " & AppState.StickerCopies)
-        sb.AppendLine("No. paper copies: " & AppState.PaperCopies)
-        sb.AppendLine("SDR: " & AppState.Configuration.SaveDirectoryRoot)
-        sb.AppendLine("Contents: " & AppState.Contents)
-        sb.AppendLine(My.Computer.FileSystem.SpecialDirectories.MyDocuments.ToString())
-
-        MsgBox(sb.ToString())
-
-
-    End Sub
-
     Private Sub InitMainForm()
 
         With AppState
@@ -362,17 +253,17 @@ Clear:
             End If
 
             Select Case .PrintMedium
-                Case C_State.E_PrintMedium.Paper
+                Case E_PrintMedium.Paper
                     chkPaper.Checked = True
                     txtPaperCopies.Enabled = True
-                Case C_State.E_PrintMedium.Sticker
+                Case E_PrintMedium.Sticker
                     chkSticker.Checked = True
                     txtStickerCopies.Enabled = True
-                Case C_State.E_PrintMedium.Both
+                Case E_PrintMedium.Both
                     chkBothPrinters.Checked = True
                     txtPaperCopies.Enabled = True
                     txtStickerCopies.Enabled = True
-                Case C_State.E_PrintMedium.None
+                Case E_PrintMedium.None
                     chkBothPrinters.Checked = False
                     chkPaper.Checked = False
                     chkSticker.Checked = False

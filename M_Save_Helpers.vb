@@ -1,35 +1,16 @@
 ﻿Imports System.IO
 Imports Excel = Microsoft.Office.Interop.Excel
 
-Public Enum E_Destination
-    Domestic
-    International
-End Enum
-
-Public Enum E_PrintMedium
-    Paper
-    Sticker
-    Both
-    None
-End Enum
-
 Module M_Save_Helpers
-
     Public Sub SaveToPdf(parExcelData As C_ExcelData, parCells As Excel.Range)
-
         Dim fileName As String = BuildSaveFileName(parExcelData)
-
         SaveDocument(fileName, parCells)
-
     End Sub
 
     Private Function BuildSaveFileName(parExcelData As C_ExcelData) As String
-
         Return GetSaveLocationPath(parExcelData) & "\" & GetFileNamePrefix(parExcelData) & "_" & parExcelData.FirstConNumber
-
     End Function
     Private Function GetSaveLocationPath(parExcelData As C_ExcelData) As String
-
         Dim destination As String = ""
 
         Select Case parExcelData.Destination
@@ -55,7 +36,6 @@ Module M_Save_Helpers
         If Not Directory.Exists(completePath) Then Directory.CreateDirectory(completePath)
 
         Return completePath
-
     End Function
 
     Private Function GetFileNamePrefix(parExcelData As C_ExcelData) As String
@@ -63,7 +43,6 @@ Module M_Save_Helpers
     End Function
 
     Private Function GetDocumentTypeTla(parExcelData As C_ExcelData) As String
-
         Dim ret As String = ""
 
         Select Case parExcelData.Destination
@@ -74,10 +53,8 @@ Module M_Save_Helpers
         End Select
 
         Return ret
-
     End Function
     Private Function BuildFileNameDateComponent() As String
-
         Dim iTempDay As Integer
         Dim iTempMonth As Integer
         Dim iTempYear As Integer
@@ -103,13 +80,10 @@ Module M_Save_Helpers
         End If
 
         sYear = Mid(iTempYear, 3, 4)
-
         BuildFileNameDateComponent = sDay & sMonth & sYear
-
     End Function
 
     Private Sub SaveDocument(parName As String, parCells As Excel.Range)
-
         Dim res As MsgBoxResult = MsgBoxResult.Yes
 
         If File.Exists(parName & ".pdf") Then
@@ -123,7 +97,6 @@ Module M_Save_Helpers
         Else
             MsgBox("File not saved.", MsgBoxStyle.Critical)
         End If
-
     End Sub
 
 End Module

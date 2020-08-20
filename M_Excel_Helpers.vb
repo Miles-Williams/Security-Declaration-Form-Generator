@@ -5,47 +5,35 @@ Imports System.IO
 Module M_Excel_Helpers
 
     Public Sub PassToExcel(parExcelData As C_ExcelData)
-
         Dim Proceed As Boolean = False
-        'Dim xlApp As Excel.Application = Nothing
-        'Dim xlWorkBooks As Excel.Workbooks = Nothing
-        'Dim xlWorkBook As Excel.Workbook = Nothing
-        Dim xlWorkSheet As Excel.Worksheet = Nothing
-        'Dim xlWorkSheets As Excel.Sheets = Nothing
-        'Dim xlCells As Excel.Range = Nothing
 
-        Dim xlApp = New Excel.Application
-        xlApp.DisplayAlerts = False
-
-        Dim tempFilePath As String = Path.GetTempFileName()
-        File.WriteAllBytes(tempFilePath, My.Resources.SdfTemplate)
-
+        Dim xlApp = New Excel.Application With {
+            .DisplayAlerts = False
+        }
+        Dim xlCells = xlApp.Range("A1:B24")
+        Dim tempFile As String = Path.GetTempFileName()
+        File.WriteAllBytes(tempFile, My.Resources.SdfTemplate)
         Dim xlWorkBooks = xlApp.Workbooks
-        Dim xlWorkBook = xlWorkBooks.Open(Path.GetFullPath(tempFilePath))
+        Dim xlWorkBook = xlWorkBooks.Open(Path.GetFullPath(tempFile))
         Dim xlWorkSheets = xlWorkBook.Sheets
-
+        Dim xlWorkSheet As Excel.Worksheet = Nothing
 
         For x As Integer = 1 To xlWorkSheets.Count
             xlWorkSheet = CType(xlWorkSheets(x), Excel.Worksheet)
-
             If xlWorkSheet.Name = My.Resources.ExcelSheetName Then
                 Proceed = True
                 Exit For
             End If
-
             Runtime.InteropServices.Marshal.FinalReleaseComObject(xlWorkSheet)
             xlWorkSheet = Nothing
         Next
 
-        FillInForm(xlWorkSheet, parExcelData)
-
         If Proceed Then
+            FillInForm(xlWorkSheet, parExcelData)
             PrintExcelDocument(xlWorkSheet, parExcelData)
         Else
             MessageBox.Show(My.Resources.ExcelSheetName & " not found.")
         End If
-
-        Dim xlCells = xlApp.Range("A1:B24")
 
         SaveToPdf(parExcelData, xlCells)
 
@@ -53,14 +41,14 @@ Module M_Excel_Helpers
         xlApp.UserControl = True
         xlApp.Quit()
 
-        If Not IsNothing(xlCells) Then ReleaseComObject(xlCells)
-        If Not IsNothing(xlWorkSheets) Then ReleaseComObject(xlWorkSheets)
-        If Not IsNothing(xlWorkSheet) Then ReleaseComObject(xlWorkSheet)
-        If Not IsNothing(xlWorkBook) Then ReleaseComObject(xlWorkBook)
-        If Not IsNothing(xlWorkBooks) Then ReleaseComObject(xlWorkBooks)
-        If Not IsNothing(xlApp) Then ReleaseComObject(xlApp)
-
+        If Not xlCells Is Nothing Then ReleaseComObject(xlCells)
+        If Not xlWorkSheets Is Nothing Then ReleaseComObject(xlWorkSheets)
+        If Not xlWorkSheet Is Nothing Then ReleaseComObject(xlWorkSheet)
+        If Not xlWorkBook Is Nothing Then ReleaseComObject(xlWorkBook)
+        If Not xlWorkBooks Is Nothing Then ReleaseComObject(xlWorkBooks)
+        If Not xlApp Is Nothing Then ReleaseComObject(xlApp)
     End Sub
+
     Public Sub ReleaseComObject(ByVal obj As Object)
         Try
             Runtime.InteropServices.Marshal.ReleaseComObject(obj)
@@ -71,20 +59,16 @@ Module M_Excel_Helpers
     End Sub
 
     Private Sub FillInForm(ByRef parWorkSheet As Excel.Worksheet, ByRef parExcelData As C_ExcelData)
-
         parWorkSheet.Range("Consignor").Value = parExcelData.FullName
         parWorkSheet.Range("Contents_Of_Consignment").Value = parExcelData.Contents
         parWorkSheet.Range("Consignment_Number").Value = parExcelData.ConNumbers
         parWorkSheet.Range("Issue_Date").Value = parExcelData.IssuedOn
-
         If parExcelData.SigPath <> "" Then
             parWorkSheet.Shapes.AddPicture(parExcelData.SigPath, Core.MsoTriState.msoFalse, Core.MsoTriState.msoCTrue, 130, 900, 300, 100)
         End If
-
     End Sub
 
     Private Sub PrintExcelDocument(parWkSht As Excel.Worksheet, parExcelData As C_ExcelData)
-
         Dim paperCopies As Integer = parExcelData.PaperCopies
         Dim stickerCopies As Integer = parExcelData.StickerCopies
 
@@ -97,7 +81,6 @@ Module M_Excel_Helpers
             Case E_PrintMedium.Sticker
                 parWkSht.PrintOutEx(ActivePrinter:=parExcelData.StickerPrinter, Copies:=stickerCopies)
         End Select
-
     End Sub
 
 End Module

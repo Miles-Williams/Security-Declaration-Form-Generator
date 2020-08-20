@@ -7,41 +7,31 @@
     Private Event ProceedBtnClicked()
 
     Public Sub New(ByRef parState As C_State, Optional parUser As C_User = Nothing)
-
         InitializeComponent()
         TempState = parState
         TempUser = parUser
-        If Not IsNothing(TempUser) Then InitFormForEdit()
-
+        If Not TempUser Is Nothing Then InitFormForEdit()
     End Sub
     Private Sub SignaturePathBtn_Click(sender As Object, e As EventArgs) Handles btnSignaturePath.Click
-
         Dim sigPath As String = GetSigPathFromUser()
         lblSIFPValue.Text = sigPath
         picSignature.ImageLocation = sigPath
         If sigPath <> "" Then picSignature.Load()
-
     End Sub
 
     Private Sub NewUser_Load(sender As Object, e As EventArgs) Handles Me.Load
-
         Icon = g_Icon
         CenterForm(Me)
         CenterControlHorizontally(Me, btnProceed)
         CenterControlHorizontally(Me, picSignature)
-
     End Sub
 
     Private Sub ProceedBtn_Click(sender As Object, e As EventArgs) Handles btnProceed.Click
-
         RaiseEvent ProceedBtnClicked()
-
     End Sub
 
     Private Sub EH_ProceedBtnClicked() Handles Me.ProceedBtnClicked
-
         If UserInfoValid() Then
-
             If IsNothing(TempUser) Then
                 TempUser = CreateNewUser()
                 TempState.Users.Add(TempUser)
@@ -54,15 +44,11 @@
                 TempUser.SigPath = lblSIFPValue.Text
                 RaiseEvent UserEdited()
             End If
-
             Close()
-
         End If
-
     End Sub
 
     Private Sub InitFormForEdit()
-
         Text = "Edit User"
         txtFullName.Text = TempUser.FullName
         txtUsername.Text = TempUser.Username
@@ -70,11 +56,9 @@
         lblSIFPValue.Text = TempUser.SigPath
         picSignature.ImageLocation = lblSIFPValue.Text
         btnProceed.Text = "Save User Details"
-
     End Sub
 
     Private Function UserInfoValid() As Boolean
-
         If txtFullName.Text = "" Then
             MsgBox("Enter users full name.")
             txtFullName.Select()
@@ -108,11 +92,9 @@
         End If
 
         Return True
-
     End Function
 
     Public Function CreateNewUser() As C_User
-
         Dim fn As String = txtFullName.Text
         Dim un As String = txtUsername.Text
         Dim pw As String = txtPassword.Text
@@ -123,13 +105,9 @@
         Dim u As New C_User(fn, un, salt, hp, sp)
 
         Return u
-
     End Function
 
-
-
     Private Function GetSigPathFromUser() As String
-
         Dim fileName As String = ""
         Dim ofd As New OpenFileDialog()
 
@@ -145,6 +123,6 @@
         End If
 
         Return fileName
-
     End Function
+
 End Class

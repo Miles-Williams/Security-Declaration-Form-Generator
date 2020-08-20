@@ -91,21 +91,21 @@ Partial Class F_UserDetails
         Me.txtFullName.Location = New System.Drawing.Point(12, 25)
         Me.txtFullName.Name = "txtFullName"
         Me.txtFullName.Size = New System.Drawing.Size(168, 20)
-        Me.txtFullName.TabIndex = 5
+        Me.txtFullName.TabIndex = 0
         '
         'txtUsername
         '
         Me.txtUsername.Location = New System.Drawing.Point(12, 64)
         Me.txtUsername.Name = "txtUsername"
         Me.txtUsername.Size = New System.Drawing.Size(168, 20)
-        Me.txtUsername.TabIndex = 6
+        Me.txtUsername.TabIndex = 1
         '
         'txtPassword
         '
         Me.txtPassword.Location = New System.Drawing.Point(200, 25)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(168, 20)
-        Me.txtPassword.TabIndex = 7
+        Me.txtPassword.TabIndex = 2
         Me.txtPassword.UseSystemPasswordChar = True
         '
         'txtRetypePw
@@ -113,7 +113,7 @@ Partial Class F_UserDetails
         Me.txtRetypePw.Location = New System.Drawing.Point(200, 64)
         Me.txtRetypePw.Name = "txtRetypePw"
         Me.txtRetypePw.Size = New System.Drawing.Size(168, 20)
-        Me.txtRetypePw.TabIndex = 8
+        Me.txtRetypePw.TabIndex = 3
         Me.txtRetypePw.UseSystemPasswordChar = True
         '
         'btnSignaturePath
@@ -121,7 +121,7 @@ Partial Class F_UserDetails
         Me.btnSignaturePath.Location = New System.Drawing.Point(188, 21)
         Me.btnSignaturePath.Name = "btnSignaturePath"
         Me.btnSignaturePath.Size = New System.Drawing.Size(162, 23)
-        Me.btnSignaturePath.TabIndex = 9
+        Me.btnSignaturePath.TabIndex = 5
         Me.btnSignaturePath.Text = "Select Signature Image File"
         Me.btnSignaturePath.UseVisualStyleBackColor = True
         '
@@ -137,7 +137,7 @@ Partial Class F_UserDetails
         Me.btnProceed.Location = New System.Drawing.Point(106, 324)
         Me.btnProceed.Name = "btnProceed"
         Me.btnProceed.Size = New System.Drawing.Size(168, 23)
-        Me.btnProceed.TabIndex = 11
+        Me.btnProceed.TabIndex = 6
         Me.btnProceed.Text = "Add New User"
         Me.btnProceed.UseVisualStyleBackColor = True
         '
@@ -160,7 +160,7 @@ Partial Class F_UserDetails
         Me.grpSignature.Location = New System.Drawing.Point(12, 90)
         Me.grpSignature.Name = "grpSignature"
         Me.grpSignature.Size = New System.Drawing.Size(356, 228)
-        Me.grpSignature.TabIndex = 13
+        Me.grpSignature.TabIndex = 4
         Me.grpSignature.TabStop = False
         Me.grpSignature.Text = "Signature"
         '
