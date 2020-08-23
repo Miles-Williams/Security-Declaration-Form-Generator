@@ -76,8 +76,14 @@ Public Class F_Main
     End Sub
 
     Private Sub ConfigurationTsb_Click(sender As Object, e As EventArgs) Handles tsbConfiguration.Click
-
-        GetContextAsync()
+        Dim isDomain As String = Net.NetworkInformation.IPGlobalProperties.GetIPGlobalProperties().DomainName
+        Dim useDomain As Boolean
+        If isDomain = "" Then
+            useDomain = False
+        Else
+            useDomain = True
+        End If
+        GetContextAsync(useDomain)
         WinUserValidateForm = New F_WinUserValidate()
         WinUserValidateForm.ShowDialog(Me)
 
@@ -226,13 +232,13 @@ Clear:
             chkSticker.Enabled = False
             txtPaperCopies.Enabled = True
             txtStickerCopies.Enabled = True
-            AppState.PrintMedium = C_State.E_PrintMedium.Both
+            AppState.PrintMedium = E_PrintMedium.Both
         Else
             chkSticker.Enabled = True
             chkPaper.Enabled = True
             txtStickerCopies.Enabled = False
             txtPaperCopies.Enabled = False
-            AppState.PrintMedium = C_State.E_PrintMedium.None
+            AppState.PrintMedium = E_PrintMedium.None
         End If
 
     End Sub
@@ -241,7 +247,7 @@ Clear:
 
         If chkSticker.Checked = False And chkBothPrinters.Checked = False Then
             txtStickerCopies.Enabled = False
-            AppState.PrintMedium = C_State.E_PrintMedium.None
+            AppState.PrintMedium = E_PrintMedium.None
             Exit Sub
         End If
 
@@ -255,7 +261,7 @@ Clear:
 
             chkPaper.Checked = False
             txtStickerCopies.Enabled = True
-            AppState.PrintMedium = C_State.E_PrintMedium.Sticker
+            AppState.PrintMedium = E_PrintMedium.Sticker
 
         End If
 
@@ -265,7 +271,7 @@ Clear:
 
         If chkPaper.Checked = False And chkBothPrinters.Checked = False Then
             txtPaperCopies.Enabled = False
-            AppState.PrintMedium = C_State.E_PrintMedium.None
+            AppState.PrintMedium = E_PrintMedium.None
             Exit Sub
         End If
 
@@ -279,7 +285,7 @@ Clear:
 
             chkSticker.Checked = False
             txtPaperCopies.Enabled = True
-            AppState.PrintMedium = C_State.E_PrintMedium.Paper
+            AppState.PrintMedium = E_PrintMedium.Paper
 
         End If
 
@@ -290,7 +296,7 @@ Clear:
         If rdbInternational.Checked = True Then
             chkTollPrefix.Checked = False
             chkTollPrefix.Enabled = False
-            AppState.CurrentDestination = C_State.E_Destination.International
+            AppState.CurrentDestination = E_Destination.International
         Else
             chkTollPrefix.Enabled = True
         End If
@@ -298,7 +304,7 @@ Clear:
     End Sub
 
     Private Sub EH_DomesticRdbChanged() Handles Me.DomesticRdbChanged
-        If rdbDomestic.Checked = True Then AppState.CurrentDestination = C_State.E_Destination.Domestic
+        If rdbDomestic.Checked = True Then AppState.CurrentDestination = E_Destination.Domestic
     End Sub
 
     Private Sub EH_TollPrefixChkChanged() Handles Me.TollPrefixChkChanged
@@ -313,16 +319,16 @@ Clear:
         Dim chosenPrinter2 As String
 
         Select Case AppState.PrintMedium
-            Case C_State.E_PrintMedium.Paper
+            Case E_PrintMedium.Paper
                 chosenPrinter = AppState.Configuration.CurrentPaperPrinter
                 chosenPrinter2 = ""
-            Case C_State.E_PrintMedium.Sticker
+            Case E_PrintMedium.Sticker
                 chosenPrinter = AppState.Configuration.CurrentStickerPrinter
                 chosenPrinter2 = ""
-            Case C_State.E_PrintMedium.Both
+            Case E_PrintMedium.Both
                 chosenPrinter = AppState.Configuration.CurrentPaperPrinter
                 chosenPrinter2 = AppState.Configuration.CurrentStickerPrinter
-            Case C_State.E_PrintMedium.None
+            Case E_PrintMedium.None
                 chosenPrinter = ""
                 chosenPrinter2 = ""
             Case Else
@@ -362,17 +368,17 @@ Clear:
             End If
 
             Select Case .PrintMedium
-                Case C_State.E_PrintMedium.Paper
+                Case E_PrintMedium.Paper
                     chkPaper.Checked = True
                     txtPaperCopies.Enabled = True
-                Case C_State.E_PrintMedium.Sticker
+                Case E_PrintMedium.Sticker
                     chkSticker.Checked = True
                     txtStickerCopies.Enabled = True
-                Case C_State.E_PrintMedium.Both
+                Case E_PrintMedium.Both
                     chkBothPrinters.Checked = True
                     txtPaperCopies.Enabled = True
                     txtStickerCopies.Enabled = True
-                Case C_State.E_PrintMedium.None
+                Case E_PrintMedium.None
                     chkBothPrinters.Checked = False
                     chkPaper.Checked = False
                     chkSticker.Checked = False

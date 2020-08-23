@@ -14,17 +14,17 @@
     Public Property FullName As String
     Public Property SigPath As String
 
-    Public Enum E_Destination
-        Domestic
-        International
-    End Enum
+    'Public Enum E_Destination
+    '    Domestic
+    '    International
+    'End Enum
 
-    Public Enum E_PrintMedium
-        Paper
-        Sticker
-        Both
-        None
-    End Enum
+    'Public Enum E_PrintMedium
+    '    Paper
+    '    Sticker
+    '    Both
+    '    None
+    'End Enum
 
     Public Sub New(parContents As String,
                    parFirstCon As String,

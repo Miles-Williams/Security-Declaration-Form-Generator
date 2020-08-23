@@ -6,7 +6,17 @@ Imports System.Text
 Imports Microsoft.Win32
 
 Module M_Globals
+    Public Enum E_Destination
+        Domestic
+        International
+    End Enum
 
+    Public Enum E_PrintMedium
+        Paper
+        Sticker
+        Both
+        None
+    End Enum
     Public g_context As PrincipalContext
     Public g_Icon As Icon
     Public g_Validated
@@ -175,10 +185,12 @@ Module M_Globals
 
     End Sub
 
-    Public Async Sub GetContextAsync()
-
-        g_context = Await Task.Run(Function() New PrincipalContext(ContextType.Domain))
-
+    Public Async Sub GetContextAsync(parUseDomain As Boolean)
+        If parUseDomain Then
+            g_context = Await Task.Run(Function() New PrincipalContext(ContextType.Domain))
+        Else
+            g_context = Await Task.Run(Function() New PrincipalContext(ContextType.Machine))
+        End If
     End Sub
 
     Public Sub Wait(ByVal parMilliseconds As Double, Optional ByRef BreakCondition As Boolean = False)

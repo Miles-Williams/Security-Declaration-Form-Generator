@@ -57,17 +57,17 @@ Public Class C_State
 
     End Sub
 
-    Public Enum E_Destination
-        Domestic
-        International
-    End Enum
+    'Public Enum E_Destination
+    '    Domestic
+    '    International
+    'End Enum
 
-    Public Enum E_PrintMedium
-        Paper
-        Sticker
-        Both
-        None
-    End Enum
+    'Public Enum E_PrintMedium
+    '    Paper
+    '    Sticker
+    '    Both
+    '    None
+    'End Enum
 
     <Serializable()>
     Public Class C_VolatileState
