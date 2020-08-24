@@ -121,7 +121,7 @@ Partial Class F_UserDetails
         Me.btnSignaturePath.Location = New System.Drawing.Point(188, 21)
         Me.btnSignaturePath.Name = "btnSignaturePath"
         Me.btnSignaturePath.Size = New System.Drawing.Size(162, 23)
-        Me.btnSignaturePath.TabIndex = 5
+        Me.btnSignaturePath.TabIndex = 0
         Me.btnSignaturePath.Text = "Select Signature Image File"
         Me.btnSignaturePath.UseVisualStyleBackColor = True
         '
@@ -137,7 +137,7 @@ Partial Class F_UserDetails
         Me.btnProceed.Location = New System.Drawing.Point(106, 324)
         Me.btnProceed.Name = "btnProceed"
         Me.btnProceed.Size = New System.Drawing.Size(168, 23)
-        Me.btnProceed.TabIndex = 6
+        Me.btnProceed.TabIndex = 5
         Me.btnProceed.Text = "Add New User"
         Me.btnProceed.UseVisualStyleBackColor = True
         '

@@ -58,7 +58,6 @@ Module M_Save_Helpers
         Dim iTempDay As Integer
         Dim iTempMonth As Integer
         Dim iTempYear As Integer
-
         Dim sDay As String
         Dim sMonth As String
         Dim sYear As String

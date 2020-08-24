@@ -32,7 +32,7 @@
 
     Private Sub EH_ProceedBtnClicked() Handles Me.ProceedBtnClicked
         If UserInfoValid() Then
-            If IsNothing(TempUser) Then
+            If TempUser Is Nothing Then
                 TempUser = CreateNewUser()
                 TempState.Users.Add(TempUser)
                 TempUser = Nothing
@@ -103,26 +103,21 @@
         Dim sp As String = lblSIFPValue.Text
 
         Dim u As New C_User(fn, un, salt, hp, sp)
-
         Return u
     End Function
 
     Private Function GetSigPathFromUser() As String
         Dim fileName As String = ""
         Dim ofd As New OpenFileDialog()
-
         With ofd
             .Title = "Please select a signature image file."
             .Filter = "jpg (*.jpg)|*.jpg"
             .FilterIndex = 1
             .RestoreDirectory = True
         End With
-
         If ofd.ShowDialog() = DialogResult.OK Then
             fileName = ofd.FileName
         End If
-
         Return fileName
     End Function
-
 End Class

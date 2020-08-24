@@ -1,7 +1,30 @@
 ﻿Public Class F_WinUserValidate
-
     Public Event WinUserValidated()
     Private Event ValidateWinUser()
+
+    Private Declare Auto Function LogonUser Lib "advapi32.dll" (ByVal lpszUsername As String, ByVal lpszDomain As String, ByVal lpszPassword As String, ByVal dwLogonType As LogonType, ByVal dwLogonProvider As Integer, ByRef phToken As IntPtr) As Integer
+    Private Declare Auto Function CloseHandle Lib "kernel32.dll" (ByVal hObject As IntPtr) As Boolean
+
+    Public Enum LogonType As Integer
+        LOGON32_LOGON_INTERACTIVE = 2
+        LOGON32_LOGON_NETWORK = 3
+        LOGON32_LOGON_BATCH = 4
+        LOGON32_LOGON_SERVICE = 5
+        LOGON32_LOGON_UNLOCK = 7
+        LOGON32_LOGON_NETWORK_CLEARTEXT = 8
+        LOGON32_LOGON_NEW_CREDENTIALS = 9
+    End Enum
+
+    Public Function IsAuthenticated(ByVal Username As String, ByVal Password As String, Optional ByVal Domain As String = "") As Boolean
+        Dim Token As New IntPtr
+        LogonUser(Username, Domain, Password, LogonType.LOGON32_LOGON_INTERACTIVE, 0, Token)
+        CloseHandle(Token)
+        If Token.ToInt32 <> 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 
     Public Sub New()
         InitializeComponent()
@@ -27,11 +50,9 @@
         Dim validTask As Task(Of Boolean) = ValidateAsync(un, pw)
 
         Dim f As New F_Message
-
         f.ShowDialog()
 
         Dim valid As Boolean = Await validTask
-
         f.Close()
 
         If Not valid Then
@@ -47,8 +68,12 @@
 
     Private Async Function ValidateAsync(parUn As String, parPw As String) As Task(Of Boolean)
         Dim b As Boolean
-        b = Await Task.Run(Function() g_context.ValidateCredentials(parUn, parPw))
-        g_Validated = True
+        If g_IsDomain Then
+            b = Await Task.Run(Function() g_context.ValidateCredentials(parUn, parPw))
+            g_Validated = True
+        Else
+            b = Await Task.Run(Function() IsAuthenticated(parUn, parPw))
+        End If
         Return b
     End Function
 

@@ -18,7 +18,6 @@
         Icon = g_Icon
         CenterControlHorizontally(Me, btnLogin)
         CenterForm(Me)
-
         If validateUser Then
             Text = "Validate"
             txtUsername.Text = AppState.VolatileState.CurrentUser.Username
@@ -69,7 +68,6 @@
         Next
 
         MsgBox("Username not found.")
-
         Return False
     End Function
 

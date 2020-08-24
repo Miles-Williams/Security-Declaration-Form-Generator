@@ -9,4 +9,5 @@ Public Class C_Configuration
     Public Property DefaultsToInternational As Boolean
     Public Property TollPrefixDefault As Boolean
     Public Property DefaultContents As String
+    Public Property KnownConsignorRef As String
 End Class

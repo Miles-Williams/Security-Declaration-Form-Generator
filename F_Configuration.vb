@@ -124,11 +124,9 @@ Public Class F_Configuration
     'Private Procedures
 
     Private Sub UpdateConfigForm()
-
         Dim sPrinter As String
 
         With TempState
-
             cboCurrentPaperPrinter.Items.Clear()
             cboCurrentStickerPrinter.Items.Clear()
 
@@ -146,6 +144,7 @@ Public Class F_Configuration
             txtDefaultPaperCopies.Text = .Configuration.DefaultPaperCopies
             txtDefaultStickerCopies.Text = .Configuration.DefaultStickerCopies
             txtDefaultContents.Text = .Configuration.DefaultContents
+            txtKnownConsignor.Text = .Configuration.KnownConsignorRef
 
             lstUsers.Items.Clear()
 
@@ -154,7 +153,6 @@ Public Class F_Configuration
             Next
 
             picSignature.ImageLocation = ""
-
         End With
     End Sub
 
@@ -169,6 +167,7 @@ Public Class F_Configuration
             .Configuration.DefaultsToDomestic = rdbDomestic.Checked
             .Configuration.DefaultsToInternational = rdbInternational.Checked
             .Configuration.DefaultContents = txtDefaultContents.Text
+            .Configuration.KnownConsignorRef = txtKnownConsignor.Text
         End With
     End Sub
 

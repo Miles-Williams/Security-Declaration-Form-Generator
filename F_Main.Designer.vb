@@ -28,6 +28,7 @@ Partial Class F_Main
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.tsbLogin = New System.Windows.Forms.ToolStripButton()
         Me.tsbConfiguration = New System.Windows.Forms.ToolStripButton()
+        Me.tsbAbout = New System.Windows.Forms.ToolStripButton()
         Me.txtConsignment = New System.Windows.Forms.TextBox()
         Me.lblEnterConNumber = New System.Windows.Forms.Label()
         Me.lstConsignments = New System.Windows.Forms.ListBox()
@@ -55,7 +56,6 @@ Partial Class F_Main
         Me.grpConsignment = New System.Windows.Forms.GroupBox()
         Me.lblFullName = New System.Windows.Forms.Label()
         Me.lblConsignorsFullName = New System.Windows.Forms.Label()
-        Me.tsbAbout = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.picOrangeStripe, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpOptions.SuspendLayout()
@@ -86,7 +86,7 @@ Partial Class F_Main
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbLogin, Me.tsbConfiguration, Me.tsbAbout})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(784, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(738, 25)
         Me.ToolStrip1.TabIndex = 3
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -109,6 +109,15 @@ Partial Class F_Main
         Me.tsbConfiguration.Size = New System.Drawing.Size(85, 22)
         Me.tsbConfiguration.Text = "Configuration"
         Me.tsbConfiguration.ToolTipText = "Click To Open Configuration"
+        '
+        'tsbAbout
+        '
+        Me.tsbAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.tsbAbout.Image = CType(resources.GetObject("tsbAbout.Image"), System.Drawing.Image)
+        Me.tsbAbout.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbAbout.Name = "tsbAbout"
+        Me.tsbAbout.Size = New System.Drawing.Size(44, 22)
+        Me.tsbAbout.Text = "About"
         '
         'txtConsignment
         '
@@ -177,7 +186,7 @@ Partial Class F_Main
         'chkTollPrefix
         '
         Me.chkTollPrefix.AutoSize = True
-        Me.chkTollPrefix.Location = New System.Drawing.Point(222, 52)
+        Me.chkTollPrefix.Location = New System.Drawing.Point(10, 175)
         Me.chkTollPrefix.Name = "chkTollPrefix"
         Me.chkTollPrefix.Size = New System.Drawing.Size(132, 17)
         Me.chkTollPrefix.TabIndex = 6
@@ -294,7 +303,7 @@ Partial Class F_Main
         Me.picOrangeStripe.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(140, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.picOrangeStripe.ErrorImage = Nothing
         Me.picOrangeStripe.InitialImage = Nothing
-        Me.picOrangeStripe.Location = New System.Drawing.Point(379, 0)
+        Me.picOrangeStripe.Location = New System.Drawing.Point(344, 0)
         Me.picOrangeStripe.Name = "picOrangeStripe"
         Me.picOrangeStripe.Size = New System.Drawing.Size(2, 280)
         Me.picOrangeStripe.TabIndex = 24
@@ -311,12 +320,10 @@ Partial Class F_Main
         '
         'grpOptions
         '
-        Me.grpOptions.Controls.Add(Me.PictureBox1)
         Me.grpOptions.Controls.Add(Me.lblCuLbl)
         Me.grpOptions.Controls.Add(Me.lblCurrentUsername)
         Me.grpOptions.Controls.Add(Me.rdbDomestic)
         Me.grpOptions.Controls.Add(Me.rdbInternational)
-        Me.grpOptions.Controls.Add(Me.chkTollPrefix)
         Me.grpOptions.Controls.Add(Me.txtPaperCopies)
         Me.grpOptions.Controls.Add(Me.chkSticker)
         Me.grpOptions.Controls.Add(Me.lblPaperCopies)
@@ -328,7 +335,7 @@ Partial Class F_Main
         Me.grpOptions.Controls.Add(Me.lblStickerPrinter)
         Me.grpOptions.Location = New System.Drawing.Point(12, 28)
         Me.grpOptions.Name = "grpOptions"
-        Me.grpOptions.Size = New System.Drawing.Size(360, 240)
+        Me.grpOptions.Size = New System.Drawing.Size(326, 240)
         Me.grpOptions.TabIndex = 1
         Me.grpOptions.TabStop = False
         Me.grpOptions.Text = "Options"
@@ -338,7 +345,7 @@ Partial Class F_Main
         Me.PictureBox1.ErrorImage = Nothing
         Me.PictureBox1.Image = Global.Security_Declaration_Form_Generator.My.Resources.Resources.WeidmullerLogo_Full
         Me.PictureBox1.InitialImage = Nothing
-        Me.PictureBox1.Location = New System.Drawing.Point(173, 196)
+        Me.PictureBox1.Location = New System.Drawing.Point(563, 6)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(163, 23)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -351,6 +358,7 @@ Partial Class F_Main
         Me.grpConsignment.Controls.Add(Me.btnCreateConsignment)
         Me.grpConsignment.Controls.Add(Me.lblFullName)
         Me.grpConsignment.Controls.Add(Me.lblConsignorsFullName)
+        Me.grpConsignment.Controls.Add(Me.chkTollPrefix)
         Me.grpConsignment.Controls.Add(Me.btnDefaultContents)
         Me.grpConsignment.Controls.Add(Me.lstConsignments)
         Me.grpConsignment.Controls.Add(Me.txtContents)
@@ -358,9 +366,9 @@ Partial Class F_Main
         Me.grpConsignment.Controls.Add(Me.btnRemoveConsignment)
         Me.grpConsignment.Controls.Add(Me.lblEnterConNumber)
         Me.grpConsignment.Controls.Add(Me.txtConsignment)
-        Me.grpConsignment.Location = New System.Drawing.Point(388, 28)
+        Me.grpConsignment.Location = New System.Drawing.Point(352, 28)
         Me.grpConsignment.Name = "grpConsignment"
-        Me.grpConsignment.Size = New System.Drawing.Size(384, 240)
+        Me.grpConsignment.Size = New System.Drawing.Size(374, 240)
         Me.grpConsignment.TabIndex = 0
         Me.grpConsignment.TabStop = False
         Me.grpConsignment.Text = "Consignment"
@@ -383,20 +391,12 @@ Partial Class F_Main
         Me.lblConsignorsFullName.TabIndex = 22
         Me.lblConsignorsFullName.Text = "<no user currently logged in>"
         '
-        'tsbAbout
-        '
-        Me.tsbAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.tsbAbout.Image = CType(resources.GetObject("tsbAbout.Image"), System.Drawing.Image)
-        Me.tsbAbout.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbAbout.Name = "tsbAbout"
-        Me.tsbAbout.Size = New System.Drawing.Size(44, 22)
-        Me.tsbAbout.Text = "About"
-        '
         'F_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 277)
+        Me.ClientSize = New System.Drawing.Size(738, 277)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.grpConsignment)
         Me.Controls.Add(Me.grpOptions)
         Me.Controls.Add(Me.picOrangeStripe)

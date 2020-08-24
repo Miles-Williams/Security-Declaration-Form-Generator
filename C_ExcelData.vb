@@ -1,5 +1,6 @@
 ﻿Public Class C_ExcelData
     Public Property Contents As String
+    Public Property KnownConsignorRef As String
     Public Property FirstConNumber As String
     Public Property ConNumbers As String
     Public Property IssuedOn As String
@@ -14,6 +15,7 @@
     Public Property SigPath As String
 
     Public Sub New(parContents As String,
+                   parKnownConsignorRef As String,
                    parFirstCon As String,
                    parConNumbers As String,
                    parIssuedOn As String,
@@ -28,6 +30,7 @@
                    Optional parSigPath As String = "")
 
         Contents = parContents
+        KnownConsignorRef = parKnownConsignorRef
         FirstConNumber = parFirstCon
         ConNumbers = parConNumbers
         IssuedOn = parIssuedOn
