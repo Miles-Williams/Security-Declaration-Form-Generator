@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Security Declaration Form Generator.exe" size="379352">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Security Declaration Form Generator.exe" size="386520">
       <assemblyIdentity name="Security Declaration Form Generator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nXI65zuXpK9IY3LlfT0guPu/5hmcAC6Mg9ToSN6oCIU=</dsig:DigestValue>
+        <dsig:DigestValue>weBRy7iFwaLeQ69h17Qc7sQlnLEktluZzn7URcI+m0w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

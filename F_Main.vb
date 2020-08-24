@@ -136,7 +136,7 @@ Public Class F_Main
     End Sub
     Private Sub EH_LoginSuccess() Handles LoginForm.LoginSuccess
         lblCurrentUsername.Text = AppState.VolatileState.CurrentUser.Username
-        lblConsignorsFullName.Text = AppState.VolatileState.CurrentUser.FullName
+        lblIssuedByValue.Text = AppState.VolatileState.CurrentUser.FullName
     End Sub
 
     Private Sub EH_AddConNumToList() Handles Me.AddConNumToList
@@ -290,10 +290,10 @@ Clear:
 
             If .VolatileState.CurrentUser.Username = "Guest" Then
                 lblCurrentUsername.Text = "You are a logged in as a guest."
-                lblConsignorsFullName.Text = ""
+                lblIssuedByValue.Text = ""
             Else
                 lblCurrentUsername.Text = .VolatileState.CurrentUser.Username
-                lblConsignorsFullName.Text = .VolatileState.CurrentUser.FullName
+                lblIssuedByValue.Text = .VolatileState.CurrentUser.FullName
             End If
 
             Icon = g_Icon
