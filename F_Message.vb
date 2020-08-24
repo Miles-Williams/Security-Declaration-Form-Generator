@@ -6,11 +6,8 @@ Public Class F_Message
     End Sub
 
     Private Sub F_Message_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-
         Dim i As Integer = 1
-        Dim sb As StringBuilder
-
-        sb = New StringBuilder
+        Dim sb As New StringBuilder
 
         While Not g_Validated
             If i = 4 Then
@@ -23,10 +20,9 @@ Public Class F_Message
             Wait(900)
             i += 1
         End While
+
         g_Validated = False
-
         Close()
-
     End Sub
 
 End Class

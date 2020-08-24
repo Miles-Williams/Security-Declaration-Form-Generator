@@ -63,7 +63,6 @@ Module M_Save_Helpers
     End Function
 
     Private Function GetDocumentTypeTla(parExcelData As C_ExcelData) As String
-
         Dim ret As String = ""
 
         Select Case parExcelData.Destination
@@ -74,14 +73,11 @@ Module M_Save_Helpers
         End Select
 
         Return ret
-
     End Function
     Private Function BuildFileNameDateComponent() As String
-
         Dim iTempDay As Integer
         Dim iTempMonth As Integer
         Dim iTempYear As Integer
-
         Dim sDay As String
         Dim sMonth As String
         Dim sYear As String
@@ -103,13 +99,10 @@ Module M_Save_Helpers
         End If
 
         sYear = Mid(iTempYear, 3, 4)
-
         BuildFileNameDateComponent = sDay & sMonth & sYear
-
     End Function
 
     Private Sub SaveDocument(parName As String, parCells As Excel.Range)
-
         Dim res As MsgBoxResult = MsgBoxResult.Yes
 
         If File.Exists(parName & ".pdf") Then
@@ -123,7 +116,6 @@ Module M_Save_Helpers
         Else
             MsgBox("File not saved.", MsgBoxStyle.Critical)
         End If
-
     End Sub
 
 End Module
