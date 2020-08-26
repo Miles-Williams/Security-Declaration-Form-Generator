@@ -25,57 +25,64 @@ Partial Class F_WinUserValidate
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_WinUserValidate))
         Me.lblPassword = New System.Windows.Forms.Label()
         Me.txtPassword = New System.Windows.Forms.TextBox()
-        Me.btnValidate = New System.Windows.Forms.Button()
         Me.lblNote = New System.Windows.Forms.Label()
+        Me.btnValidate = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblPassword
         '
-        Me.lblPassword.Location = New System.Drawing.Point(12, 9)
+        Me.lblPassword.Location = New System.Drawing.Point(16, 15)
+        Me.lblPassword.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblPassword.Name = "lblPassword"
-        Me.lblPassword.Size = New System.Drawing.Size(138, 36)
+        Me.lblPassword.Size = New System.Drawing.Size(184, 58)
         Me.lblPassword.TabIndex = 4
         Me.lblPassword.Text = "Please provide your Windows password:"
         Me.lblPassword.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'txtPassword
         '
-        Me.txtPassword.Location = New System.Drawing.Point(12, 48)
+        Me.txtPassword.Location = New System.Drawing.Point(16, 78)
+        Me.txtPassword.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.Size = New System.Drawing.Size(138, 20)
+        Me.txtPassword.Size = New System.Drawing.Size(183, 30)
         Me.txtPassword.TabIndex = 3
         Me.txtPassword.UseSystemPasswordChar = True
         '
-        'btnValidate
-        '
-        Me.btnValidate.Location = New System.Drawing.Point(43, 86)
-        Me.btnValidate.Name = "btnValidate"
-        Me.btnValidate.Size = New System.Drawing.Size(75, 23)
-        Me.btnValidate.TabIndex = 5
-        Me.btnValidate.Text = "Validate"
-        Me.btnValidate.UseVisualStyleBackColor = True
-        '
         'lblNote
         '
-        Me.lblNote.Location = New System.Drawing.Point(12, 125)
+        Me.lblNote.Location = New System.Drawing.Point(15, 185)
+        Me.lblNote.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNote.Name = "lblNote"
-        Me.lblNote.Size = New System.Drawing.Size(138, 41)
+        Me.lblNote.Size = New System.Drawing.Size(184, 66)
         Me.lblNote.TabIndex = 6
         Me.lblNote.Text = "This may take a few seconds if you are on a slow network."
         Me.lblNote.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
+        'btnValidate
+        '
+        Me.btnValidate.BackColor = System.Drawing.SystemColors.Window
+        Me.btnValidate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnValidate.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.btnValidate.Location = New System.Drawing.Point(16, 134)
+        Me.btnValidate.Name = "btnValidate"
+        Me.btnValidate.Size = New System.Drawing.Size(183, 30)
+        Me.btnValidate.TabIndex = 14
+        Me.btnValidate.Text = "Validate"
+        Me.btnValidate.UseVisualStyleBackColor = False
+        '
         'F_WinUserValidate
         '
-        Me.AcceptButton = Me.btnValidate
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(162, 176)
-        Me.Controls.Add(Me.lblNote)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit
+        Me.BackColor = System.Drawing.SystemColors.Window
+        Me.ClientSize = New System.Drawing.Size(216, 264)
         Me.Controls.Add(Me.btnValidate)
+        Me.Controls.Add(Me.lblNote)
         Me.Controls.Add(Me.lblPassword)
         Me.Controls.Add(Me.txtPassword)
+        Me.Font = New System.Drawing.Font("Weidmueller Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "F_WinUserValidate"
@@ -87,6 +94,6 @@ Partial Class F_WinUserValidate
 
     Friend WithEvents lblPassword As Label
     Friend WithEvents txtPassword As TextBox
-    Friend WithEvents btnValidate As Button
     Friend WithEvents lblNote As Label
+    Friend WithEvents btnValidate As Button
 End Class

@@ -19,6 +19,7 @@ Module M_Globals
     Public g_Icon As Icon
     Public g_Validated As Boolean
     Public g_IsDomain As Boolean
+    Public g_WeidOrange As Color = Color.FromArgb(235, 140, 0)
 
     Public Function ContainsSpecialChars(s As String) As Boolean
         Return s.IndexOfAny("[~`!@#$%^&*()-+=|{}':;.,<>/?]".ToCharArray) <> -1
@@ -153,11 +154,11 @@ Module M_Globals
         End If
     End Sub
 
-    Public Sub Wait(ByVal parMilliseconds As Double, Optional ByRef BreakCondition As Boolean = False)
+    Public Sub Wait(ByVal parMilliseconds As Double, Optional ByRef parBreakCondition As Boolean = False)
         Dim waitUntil As Date
         waitUntil = Now.AddMilliseconds(parMilliseconds)
         Do Until Now > waitUntil
-            If BreakCondition Then Exit Do
+            If parBreakCondition Then Exit Do
             Application.DoEvents()
         Loop
     End Sub

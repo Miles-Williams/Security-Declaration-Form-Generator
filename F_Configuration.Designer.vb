@@ -74,84 +74,84 @@ Partial Class F_Configuration
         Me.grpPrinters.Controls.Add(Me.lblCurrentStickerPrinter)
         Me.grpPrinters.Location = New System.Drawing.Point(12, 12)
         Me.grpPrinters.Name = "grpPrinters"
-        Me.grpPrinters.Size = New System.Drawing.Size(362, 157)
+        Me.grpPrinters.Size = New System.Drawing.Size(362, 176)
         Me.grpPrinters.TabIndex = 0
         Me.grpPrinters.TabStop = False
         Me.grpPrinters.Text = "Printers"
         '
         'txtDefaultPaperCopies
         '
-        Me.txtDefaultPaperCopies.Location = New System.Drawing.Point(125, 124)
+        Me.txtDefaultPaperCopies.Location = New System.Drawing.Point(125, 132)
         Me.txtDefaultPaperCopies.Name = "txtDefaultPaperCopies"
-        Me.txtDefaultPaperCopies.Size = New System.Drawing.Size(26, 20)
+        Me.txtDefaultPaperCopies.Size = New System.Drawing.Size(26, 30)
         Me.txtDefaultPaperCopies.TabIndex = 9
         Me.txtDefaultPaperCopies.Text = "1"
         '
         'txtDefaultStickerCopies
         '
-        Me.txtDefaultStickerCopies.Location = New System.Drawing.Point(125, 56)
+        Me.txtDefaultStickerCopies.Location = New System.Drawing.Point(125, 64)
         Me.txtDefaultStickerCopies.Name = "txtDefaultStickerCopies"
-        Me.txtDefaultStickerCopies.Size = New System.Drawing.Size(26, 20)
+        Me.txtDefaultStickerCopies.Size = New System.Drawing.Size(26, 30)
         Me.txtDefaultStickerCopies.TabIndex = 8
         Me.txtDefaultStickerCopies.Text = "1"
         '
         'lblDefaultPaperCopies
         '
         Me.lblDefaultPaperCopies.AutoSize = True
-        Me.lblDefaultPaperCopies.Location = New System.Drawing.Point(6, 127)
+        Me.lblDefaultPaperCopies.Location = New System.Drawing.Point(6, 135)
         Me.lblDefaultPaperCopies.Name = "lblDefaultPaperCopies"
-        Me.lblDefaultPaperCopies.Size = New System.Drawing.Size(110, 13)
+        Me.lblDefaultPaperCopies.Size = New System.Drawing.Size(99, 21)
         Me.lblDefaultPaperCopies.TabIndex = 7
-        Me.lblDefaultPaperCopies.Text = "Default Paper Copies:"
+        Me.lblDefaultPaperCopies.Text = "Default Copies:"
         '
         'lblDefaultStickerCopies
         '
         Me.lblDefaultStickerCopies.AutoSize = True
-        Me.lblDefaultStickerCopies.Location = New System.Drawing.Point(6, 59)
+        Me.lblDefaultStickerCopies.Location = New System.Drawing.Point(6, 67)
         Me.lblDefaultStickerCopies.Name = "lblDefaultStickerCopies"
-        Me.lblDefaultStickerCopies.Size = New System.Drawing.Size(115, 13)
+        Me.lblDefaultStickerCopies.Size = New System.Drawing.Size(99, 21)
         Me.lblDefaultStickerCopies.TabIndex = 6
-        Me.lblDefaultStickerCopies.Text = "Default Sticker Copies:"
+        Me.lblDefaultStickerCopies.Text = "Default Copies:"
         '
         'cboCurrentPaperPrinter
         '
         Me.cboCurrentPaperPrinter.FormattingEnabled = True
-        Me.cboCurrentPaperPrinter.Location = New System.Drawing.Point(125, 90)
+        Me.cboCurrentPaperPrinter.Location = New System.Drawing.Point(125, 98)
         Me.cboCurrentPaperPrinter.Name = "cboCurrentPaperPrinter"
-        Me.cboCurrentPaperPrinter.Size = New System.Drawing.Size(231, 21)
+        Me.cboCurrentPaperPrinter.Size = New System.Drawing.Size(231, 29)
         Me.cboCurrentPaperPrinter.TabIndex = 5
         '
         'cboCurrentStickerPrinter
         '
         Me.cboCurrentStickerPrinter.FormattingEnabled = True
-        Me.cboCurrentStickerPrinter.Location = New System.Drawing.Point(125, 21)
+        Me.cboCurrentStickerPrinter.Location = New System.Drawing.Point(125, 29)
         Me.cboCurrentStickerPrinter.Name = "cboCurrentStickerPrinter"
-        Me.cboCurrentStickerPrinter.Size = New System.Drawing.Size(231, 21)
+        Me.cboCurrentStickerPrinter.Size = New System.Drawing.Size(231, 29)
         Me.cboCurrentStickerPrinter.TabIndex = 4
         '
         'lblCurrentPaperPrinter
         '
         Me.lblCurrentPaperPrinter.AutoSize = True
-        Me.lblCurrentPaperPrinter.Location = New System.Drawing.Point(6, 93)
+        Me.lblCurrentPaperPrinter.Location = New System.Drawing.Point(6, 101)
         Me.lblCurrentPaperPrinter.Name = "lblCurrentPaperPrinter"
-        Me.lblCurrentPaperPrinter.Size = New System.Drawing.Size(108, 13)
+        Me.lblCurrentPaperPrinter.Size = New System.Drawing.Size(92, 21)
         Me.lblCurrentPaperPrinter.TabIndex = 3
-        Me.lblCurrentPaperPrinter.Text = "Current Paper Printer:"
+        Me.lblCurrentPaperPrinter.Text = "Paper Printer:"
         '
         'lblCurrentStickerPrinter
         '
         Me.lblCurrentStickerPrinter.AutoSize = True
-        Me.lblCurrentStickerPrinter.Location = New System.Drawing.Point(6, 24)
+        Me.lblCurrentStickerPrinter.Location = New System.Drawing.Point(6, 32)
         Me.lblCurrentStickerPrinter.Name = "lblCurrentStickerPrinter"
-        Me.lblCurrentStickerPrinter.Size = New System.Drawing.Size(113, 13)
+        Me.lblCurrentStickerPrinter.Size = New System.Drawing.Size(101, 21)
         Me.lblCurrentStickerPrinter.TabIndex = 1
-        Me.lblCurrentStickerPrinter.Text = "Current Sticker Printer:"
+        Me.lblCurrentStickerPrinter.Text = "Sticker Printer:"
         '
         'btnOk
         '
-        Me.btnOk.Location = New System.Drawing.Point(404, 277)
+        Me.btnOk.Location = New System.Drawing.Point(404, 357)
         Me.btnOk.Name = "btnOk"
-        Me.btnOk.Size = New System.Drawing.Size(75, 23)
+        Me.btnOk.Size = New System.Drawing.Size(75, 30)
         Me.btnOk.TabIndex = 1
         Me.btnOk.Text = "OK"
         Me.btnOk.UseVisualStyleBackColor = True
@@ -159,18 +159,18 @@ Partial Class F_Configuration
         'btnCancel
         '
         Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnCancel.Location = New System.Drawing.Point(629, 277)
+        Me.btnCancel.Location = New System.Drawing.Point(629, 357)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancel.Size = New System.Drawing.Size(75, 30)
         Me.btnCancel.TabIndex = 2
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'btnApply
         '
-        Me.btnApply.Location = New System.Drawing.Point(517, 277)
+        Me.btnApply.Location = New System.Drawing.Point(517, 357)
         Me.btnApply.Name = "btnApply"
-        Me.btnApply.Size = New System.Drawing.Size(75, 23)
+        Me.btnApply.Size = New System.Drawing.Size(75, 30)
         Me.btnApply.TabIndex = 3
         Me.btnApply.Text = "Apply"
         Me.btnApply.UseVisualStyleBackColor = True
@@ -178,7 +178,7 @@ Partial Class F_Configuration
         'picSignature
         '
         Me.picSignature.ErrorImage = Nothing
-        Me.picSignature.Location = New System.Drawing.Point(18, 18)
+        Me.picSignature.Location = New System.Drawing.Point(18, 29)
         Me.picSignature.Name = "picSignature"
         Me.picSignature.Size = New System.Drawing.Size(300, 100)
         Me.picSignature.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -197,42 +197,42 @@ Partial Class F_Configuration
         Me.grpDefaultSettings.Controls.Add(Me.rdbDomestic)
         Me.grpDefaultSettings.Controls.Add(Me.lblCurrentSaveDirectoryRoot)
         Me.grpDefaultSettings.Controls.Add(Me.chkTollPrefixDefault)
-        Me.grpDefaultSettings.Location = New System.Drawing.Point(12, 175)
+        Me.grpDefaultSettings.Location = New System.Drawing.Point(12, 194)
         Me.grpDefaultSettings.Name = "grpDefaultSettings"
-        Me.grpDefaultSettings.Size = New System.Drawing.Size(362, 176)
+        Me.grpDefaultSettings.Size = New System.Drawing.Size(362, 235)
         Me.grpDefaultSettings.TabIndex = 6
         Me.grpDefaultSettings.TabStop = False
         Me.grpDefaultSettings.Text = "Default Settings"
         '
         'txtKnownConsignor
         '
-        Me.txtKnownConsignor.Location = New System.Drawing.Point(125, 141)
+        Me.txtKnownConsignor.Location = New System.Drawing.Point(162, 192)
         Me.txtKnownConsignor.Name = "txtKnownConsignor"
-        Me.txtKnownConsignor.Size = New System.Drawing.Size(231, 20)
+        Me.txtKnownConsignor.Size = New System.Drawing.Size(196, 30)
         Me.txtKnownConsignor.TabIndex = 13
         '
         'lblKnownConsignor
         '
         Me.lblKnownConsignor.AutoSize = True
-        Me.lblKnownConsignor.Location = New System.Drawing.Point(6, 144)
+        Me.lblKnownConsignor.Location = New System.Drawing.Point(10, 195)
         Me.lblKnownConsignor.Name = "lblKnownConsignor"
-        Me.lblKnownConsignor.Size = New System.Drawing.Size(113, 13)
+        Me.lblKnownConsignor.Size = New System.Drawing.Size(146, 21)
         Me.lblKnownConsignor.TabIndex = 12
         Me.lblKnownConsignor.Text = "Known Consignor Ref:"
         '
         'txtDefaultContents
         '
-        Me.txtDefaultContents.Location = New System.Drawing.Point(125, 104)
+        Me.txtDefaultContents.Location = New System.Drawing.Point(162, 156)
         Me.txtDefaultContents.Name = "txtDefaultContents"
-        Me.txtDefaultContents.Size = New System.Drawing.Size(231, 20)
+        Me.txtDefaultContents.Size = New System.Drawing.Size(196, 30)
         Me.txtDefaultContents.TabIndex = 11
         '
         'rdbInternational
         '
         Me.rdbInternational.AutoSize = True
-        Me.rdbInternational.Location = New System.Drawing.Point(271, 77)
+        Me.rdbInternational.Location = New System.Drawing.Point(253, 115)
         Me.rdbInternational.Name = "rdbInternational"
-        Me.rdbInternational.Size = New System.Drawing.Size(83, 17)
+        Me.rdbInternational.Size = New System.Drawing.Size(105, 25)
         Me.rdbInternational.TabIndex = 5
         Me.rdbInternational.TabStop = True
         Me.rdbInternational.Text = "International"
@@ -240,9 +240,9 @@ Partial Class F_Configuration
         '
         'btnSaveDirectoryRoot
         '
-        Me.btnSaveDirectoryRoot.Location = New System.Drawing.Point(6, 44)
+        Me.btnSaveDirectoryRoot.Location = New System.Drawing.Point(10, 80)
         Me.btnSaveDirectoryRoot.Name = "btnSaveDirectoryRoot"
-        Me.btnSaveDirectoryRoot.Size = New System.Drawing.Size(103, 23)
+        Me.btnSaveDirectoryRoot.Size = New System.Drawing.Size(103, 30)
         Me.btnSaveDirectoryRoot.TabIndex = 2
         Me.btnSaveDirectoryRoot.Text = "Change SDR"
         Me.btnSaveDirectoryRoot.UseVisualStyleBackColor = True
@@ -250,27 +250,27 @@ Partial Class F_Configuration
         'lblSaveDirectoryRoot
         '
         Me.lblSaveDirectoryRoot.AutoSize = True
-        Me.lblSaveDirectoryRoot.Location = New System.Drawing.Point(6, 25)
+        Me.lblSaveDirectoryRoot.Location = New System.Drawing.Point(6, 26)
         Me.lblSaveDirectoryRoot.Name = "lblSaveDirectoryRoot"
-        Me.lblSaveDirectoryRoot.Size = New System.Drawing.Size(106, 13)
+        Me.lblSaveDirectoryRoot.Size = New System.Drawing.Size(134, 21)
         Me.lblSaveDirectoryRoot.TabIndex = 0
         Me.lblSaveDirectoryRoot.Text = "Save Directory Root:"
         '
         'lblDefaultContents
         '
         Me.lblDefaultContents.AutoSize = True
-        Me.lblDefaultContents.Location = New System.Drawing.Point(6, 107)
+        Me.lblDefaultContents.Location = New System.Drawing.Point(10, 159)
         Me.lblDefaultContents.Name = "lblDefaultContents"
-        Me.lblDefaultContents.Size = New System.Drawing.Size(89, 13)
+        Me.lblDefaultContents.Size = New System.Drawing.Size(115, 21)
         Me.lblDefaultContents.TabIndex = 10
         Me.lblDefaultContents.Text = "Default Contents:"
         '
         'rdbDomestic
         '
         Me.rdbDomestic.AutoSize = True
-        Me.rdbDomestic.Location = New System.Drawing.Point(196, 77)
+        Me.rdbDomestic.Location = New System.Drawing.Point(162, 115)
         Me.rdbDomestic.Name = "rdbDomestic"
-        Me.rdbDomestic.Size = New System.Drawing.Size(69, 17)
+        Me.rdbDomestic.Size = New System.Drawing.Size(85, 25)
         Me.rdbDomestic.TabIndex = 4
         Me.rdbDomestic.TabStop = True
         Me.rdbDomestic.Text = "Domestic"
@@ -278,20 +278,20 @@ Partial Class F_Configuration
         '
         'lblCurrentSaveDirectoryRoot
         '
-        Me.lblCurrentSaveDirectoryRoot.Location = New System.Drawing.Point(118, 25)
+        Me.lblCurrentSaveDirectoryRoot.Location = New System.Drawing.Point(146, 25)
         Me.lblCurrentSaveDirectoryRoot.Name = "lblCurrentSaveDirectoryRoot"
-        Me.lblCurrentSaveDirectoryRoot.Size = New System.Drawing.Size(236, 50)
+        Me.lblCurrentSaveDirectoryRoot.Size = New System.Drawing.Size(208, 44)
         Me.lblCurrentSaveDirectoryRoot.TabIndex = 1
         Me.lblCurrentSaveDirectoryRoot.Text = "<select a directory to build the save file structure in>"
         '
         'chkTollPrefixDefault
         '
         Me.chkTollPrefixDefault.AutoSize = True
-        Me.chkTollPrefixDefault.Location = New System.Drawing.Point(9, 78)
+        Me.chkTollPrefixDefault.Location = New System.Drawing.Point(10, 116)
         Me.chkTollPrefixDefault.Name = "chkTollPrefixDefault"
-        Me.chkTollPrefixDefault.Size = New System.Drawing.Size(181, 17)
+        Me.chkTollPrefixDefault.Size = New System.Drawing.Size(109, 25)
         Me.chkTollPrefixDefault.TabIndex = 3
-        Me.chkTollPrefixDefault.Text = "Toll Prefix Option Defaults To On"
+        Me.chkTollPrefixDefault.Text = "Toll Prefix On"
         Me.chkTollPrefixDefault.UseVisualStyleBackColor = True
         '
         'grpUsers
@@ -303,25 +303,25 @@ Partial Class F_Configuration
         Me.grpUsers.Controls.Add(Me.grpSignature)
         Me.grpUsers.Location = New System.Drawing.Point(380, 12)
         Me.grpUsers.Name = "grpUsers"
-        Me.grpUsers.Size = New System.Drawing.Size(349, 257)
+        Me.grpUsers.Size = New System.Drawing.Size(349, 339)
         Me.grpUsers.TabIndex = 7
         Me.grpUsers.TabStop = False
         Me.grpUsers.Text = "Users"
         '
         'btnEditUser
         '
-        Me.btnEditUser.Location = New System.Drawing.Point(249, 88)
+        Me.btnEditUser.Location = New System.Drawing.Point(249, 126)
         Me.btnEditUser.Name = "btnEditUser"
-        Me.btnEditUser.Size = New System.Drawing.Size(75, 23)
+        Me.btnEditUser.Size = New System.Drawing.Size(75, 30)
         Me.btnEditUser.TabIndex = 9
         Me.btnEditUser.Text = "Edit User"
         Me.btnEditUser.UseVisualStyleBackColor = True
         '
         'btnDeleteUser
         '
-        Me.btnDeleteUser.Location = New System.Drawing.Point(249, 59)
+        Me.btnDeleteUser.Location = New System.Drawing.Point(249, 78)
         Me.btnDeleteUser.Name = "btnDeleteUser"
-        Me.btnDeleteUser.Size = New System.Drawing.Size(75, 23)
+        Me.btnDeleteUser.Size = New System.Drawing.Size(75, 30)
         Me.btnDeleteUser.TabIndex = 8
         Me.btnDeleteUser.Text = "Delete User"
         Me.btnDeleteUser.UseVisualStyleBackColor = True
@@ -330,7 +330,7 @@ Partial Class F_Configuration
         '
         Me.btnAddUser.Location = New System.Drawing.Point(249, 30)
         Me.btnAddUser.Name = "btnAddUser"
-        Me.btnAddUser.Size = New System.Drawing.Size(75, 23)
+        Me.btnAddUser.Size = New System.Drawing.Size(75, 30)
         Me.btnAddUser.TabIndex = 7
         Me.btnAddUser.Text = "Add User"
         Me.btnAddUser.UseVisualStyleBackColor = True
@@ -338,17 +338,18 @@ Partial Class F_Configuration
         'lstUsers
         '
         Me.lstUsers.FormattingEnabled = True
+        Me.lstUsers.ItemHeight = 21
         Me.lstUsers.Location = New System.Drawing.Point(9, 30)
         Me.lstUsers.Name = "lstUsers"
-        Me.lstUsers.Size = New System.Drawing.Size(203, 82)
+        Me.lstUsers.Size = New System.Drawing.Size(203, 130)
         Me.lstUsers.TabIndex = 6
         '
         'grpSignature
         '
         Me.grpSignature.Controls.Add(Me.picSignature)
-        Me.grpSignature.Location = New System.Drawing.Point(6, 127)
+        Me.grpSignature.Location = New System.Drawing.Point(6, 182)
         Me.grpSignature.Name = "grpSignature"
-        Me.grpSignature.Size = New System.Drawing.Size(337, 124)
+        Me.grpSignature.Size = New System.Drawing.Size(337, 145)
         Me.grpSignature.TabIndex = 5
         Me.grpSignature.TabStop = False
         Me.grpSignature.Text = "Signature"
@@ -358,19 +359,18 @@ Partial Class F_Configuration
         Me.PictureBox1.ErrorImage = Nothing
         Me.PictureBox1.Image = Global.Security_Declaration_Form_Generator.My.Resources.Resources.WeidmullerLogo_Full
         Me.PictureBox1.InitialImage = Nothing
-        Me.PictureBox1.Location = New System.Drawing.Point(560, 326)
+        Me.PictureBox1.Location = New System.Drawing.Point(549, 400)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(163, 23)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.Size = New System.Drawing.Size(180, 25)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 28
         Me.PictureBox1.TabStop = False
         '
         'F_Configuration
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit
         Me.CancelButton = Me.btnCancel
-        Me.ClientSize = New System.Drawing.Size(738, 361)
+        Me.ClientSize = New System.Drawing.Size(740, 437)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.grpUsers)
         Me.Controls.Add(Me.grpDefaultSettings)
@@ -378,6 +378,7 @@ Partial Class F_Configuration
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnOk)
         Me.Controls.Add(Me.grpPrinters)
+        Me.Font = New System.Drawing.Font("Weidmueller Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False

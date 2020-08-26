@@ -28,10 +28,10 @@ Partial Class F_Message
         'lblValidating
         '
         Me.lblValidating.AutoSize = True
-        Me.lblValidating.Font = New System.Drawing.Font("Microsoft Sans Serif", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblValidating.Font = New System.Drawing.Font("Weidmueller Condensed", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblValidating.Location = New System.Drawing.Point(72, 9)
         Me.lblValidating.Name = "lblValidating"
-        Me.lblValidating.Size = New System.Drawing.Size(37, 55)
+        Me.lblValidating.Size = New System.Drawing.Size(44, 73)
         Me.lblValidating.TabIndex = 0
         Me.lblValidating.Text = "."
         Me.lblValidating.TextAlign = System.Drawing.ContentAlignment.TopCenter

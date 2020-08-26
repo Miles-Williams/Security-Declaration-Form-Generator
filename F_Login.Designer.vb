@@ -35,53 +35,54 @@ Partial Class F_Login
         Me.lblUsername.AutoSize = True
         Me.lblUsername.Location = New System.Drawing.Point(12, 9)
         Me.lblUsername.Name = "lblUsername"
-        Me.lblUsername.Size = New System.Drawing.Size(58, 13)
+        Me.lblUsername.Size = New System.Drawing.Size(75, 21)
         Me.lblUsername.TabIndex = 0
         Me.lblUsername.Text = "Username:"
         '
         'lblPassword
         '
         Me.lblPassword.AutoSize = True
-        Me.lblPassword.Location = New System.Drawing.Point(12, 48)
+        Me.lblPassword.Location = New System.Drawing.Point(12, 77)
         Me.lblPassword.Name = "lblPassword"
-        Me.lblPassword.Size = New System.Drawing.Size(56, 13)
+        Me.lblPassword.Size = New System.Drawing.Size(73, 21)
         Me.lblPassword.TabIndex = 1
         Me.lblPassword.Text = "Password:"
         '
         'txtPassword
         '
-        Me.txtPassword.Location = New System.Drawing.Point(12, 64)
+        Me.txtPassword.Location = New System.Drawing.Point(12, 101)
         Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.Size = New System.Drawing.Size(138, 20)
+        Me.txtPassword.Size = New System.Drawing.Size(138, 30)
         Me.txtPassword.TabIndex = 1
         Me.txtPassword.UseSystemPasswordChar = True
         '
         'txtUsername
         '
-        Me.txtUsername.Location = New System.Drawing.Point(12, 25)
+        Me.txtUsername.Location = New System.Drawing.Point(12, 33)
         Me.txtUsername.Name = "txtUsername"
-        Me.txtUsername.Size = New System.Drawing.Size(138, 20)
+        Me.txtUsername.Size = New System.Drawing.Size(138, 30)
         Me.txtUsername.TabIndex = 0
         '
         'btnLogin
         '
-        Me.btnLogin.Location = New System.Drawing.Point(43, 102)
+        Me.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLogin.Location = New System.Drawing.Point(41, 149)
         Me.btnLogin.Name = "btnLogin"
-        Me.btnLogin.Size = New System.Drawing.Size(75, 23)
+        Me.btnLogin.Size = New System.Drawing.Size(75, 30)
         Me.btnLogin.TabIndex = 2
         Me.btnLogin.Text = "Login"
         Me.btnLogin.UseVisualStyleBackColor = True
         '
         'F_Login
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(162, 137)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit
+        Me.ClientSize = New System.Drawing.Size(162, 196)
         Me.Controls.Add(Me.btnLogin)
         Me.Controls.Add(Me.txtUsername)
         Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.lblPassword)
         Me.Controls.Add(Me.lblUsername)
+        Me.Font = New System.Drawing.Font("Weidmueller Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False

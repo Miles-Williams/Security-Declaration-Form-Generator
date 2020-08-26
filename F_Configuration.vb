@@ -16,7 +16,7 @@ Public Class F_Configuration
 
     Public Sub New(ByRef parState As C_State)
         InitializeComponent()
-        TempState = parState
+        Me.TempState = parState
     End Sub
 
     Private Sub Configuration_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -37,7 +37,7 @@ Public Class F_Configuration
     End Sub
 
     Private Sub AddUserBtn_Click(sender As Object, e As EventArgs) Handles btnAddUser.Click
-        NewUserForm = New F_UserDetails(TempState)
+        NewUserForm = New F_UserDetails(Me.TempState)
         NewUserForm.ShowDialog(Me)
     End Sub
 
@@ -79,7 +79,7 @@ Public Class F_Configuration
     'From internal events
     Private Sub EH_UsersLstSelectionChanged() Handles Me.UsersLstSelectionChanged
         If Not lstUsers.SelectedItem Is Nothing Then
-            For Each u As C_User In TempState.Users
+            For Each u As C_User In Me.TempState.Users
                 If u.FullName = lstUsers.SelectedItem.ToString() Then
                     picSignature.ImageLocation = u.SigPath
                     If u.SigPath <> "" Then picSignature.Load()
@@ -90,9 +90,9 @@ Public Class F_Configuration
     End Sub
 
     Private Sub EH_EditUserBtnClicked() Handles Me.EditUserBtnClicked
-        For Each u As C_User In TempState.Users
+        For Each u As C_User In Me.TempState.Users
             If u.FullName = lstUsers.SelectedItem.ToString() Then
-                EditUserForm = New F_UserDetails(TempState, u)
+                EditUserForm = New F_UserDetails(Me.TempState, u)
                 EditUserForm.ShowDialog(Me)
                 Exit For
             End If
@@ -100,10 +100,10 @@ Public Class F_Configuration
     End Sub
 
     Private Sub EH_DeleteUserBtnClicked() Handles Me.DeleteUserBtnClicked
-        For Each u As C_User In TempState.Users
+        For Each u As C_User In Me.TempState.Users
             If u.FullName = lstUsers.SelectedItem.ToString() Then
                 lstUsers.Items.Remove(lstUsers.SelectedItem)
-                TempState.Users.Remove(u)
+                Me.TempState.Users.Remove(u)
                 picSignature.ImageLocation = ""
                 Exit Sub
             End If
@@ -126,7 +126,7 @@ Public Class F_Configuration
     Private Sub UpdateConfigForm()
         Dim sPrinter As String
 
-        With TempState
+        With Me.TempState
             cboCurrentPaperPrinter.Items.Clear()
             cboCurrentStickerPrinter.Items.Clear()
 
@@ -157,7 +157,7 @@ Public Class F_Configuration
     End Sub
 
     Private Sub UpdateConfigState()
-        With TempState
+        With Me.TempState
             .Configuration.CurrentStickerPrinter = cboCurrentStickerPrinter.Text
             .Configuration.DefaultStickerCopies = CInt(txtDefaultStickerCopies.Text)
             .Configuration.CurrentPaperPrinter = cboCurrentPaperPrinter.Text

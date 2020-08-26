@@ -46,16 +46,16 @@ Partial Class F_UserDetails
         Me.lblFullName.AutoSize = True
         Me.lblFullName.Location = New System.Drawing.Point(12, 9)
         Me.lblFullName.Name = "lblFullName"
-        Me.lblFullName.Size = New System.Drawing.Size(54, 13)
+        Me.lblFullName.Size = New System.Drawing.Size(70, 21)
         Me.lblFullName.TabIndex = 0
         Me.lblFullName.Text = "Full Name"
         '
         'lblUsername
         '
         Me.lblUsername.AutoSize = True
-        Me.lblUsername.Location = New System.Drawing.Point(12, 48)
+        Me.lblUsername.Location = New System.Drawing.Point(12, 79)
         Me.lblUsername.Name = "lblUsername"
-        Me.lblUsername.Size = New System.Drawing.Size(55, 13)
+        Me.lblUsername.Size = New System.Drawing.Size(72, 21)
         Me.lblUsername.TabIndex = 1
         Me.lblUsername.Text = "Username"
         '
@@ -64,16 +64,16 @@ Partial Class F_UserDetails
         Me.lblPassword.AutoSize = True
         Me.lblPassword.Location = New System.Drawing.Point(200, 9)
         Me.lblPassword.Name = "lblPassword"
-        Me.lblPassword.Size = New System.Drawing.Size(53, 13)
+        Me.lblPassword.Size = New System.Drawing.Size(70, 21)
         Me.lblPassword.TabIndex = 2
         Me.lblPassword.Text = "Password"
         '
         'lblRetypePassword
         '
         Me.lblRetypePassword.AutoSize = True
-        Me.lblRetypePassword.Location = New System.Drawing.Point(200, 48)
+        Me.lblRetypePassword.Location = New System.Drawing.Point(200, 79)
         Me.lblRetypePassword.Name = "lblRetypePassword"
-        Me.lblRetypePassword.Size = New System.Drawing.Size(93, 13)
+        Me.lblRetypePassword.Size = New System.Drawing.Size(119, 21)
         Me.lblRetypePassword.TabIndex = 3
         Me.lblRetypePassword.Text = "Re-type Password"
         '
@@ -82,45 +82,46 @@ Partial Class F_UserDetails
         Me.lblSIFPLabel.AutoSize = True
         Me.lblSIFPLabel.Location = New System.Drawing.Point(6, 26)
         Me.lblSIFPLabel.Name = "lblSIFPLabel"
-        Me.lblSIFPLabel.Size = New System.Drawing.Size(131, 13)
+        Me.lblSIFPLabel.Size = New System.Drawing.Size(169, 21)
         Me.lblSIFPLabel.TabIndex = 4
         Me.lblSIFPLabel.Text = "Signature Image File Path:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'txtFullName
         '
-        Me.txtFullName.Location = New System.Drawing.Point(12, 25)
+        Me.txtFullName.Location = New System.Drawing.Point(12, 33)
         Me.txtFullName.Name = "txtFullName"
-        Me.txtFullName.Size = New System.Drawing.Size(168, 20)
+        Me.txtFullName.Size = New System.Drawing.Size(168, 30)
         Me.txtFullName.TabIndex = 0
         '
         'txtUsername
         '
-        Me.txtUsername.Location = New System.Drawing.Point(12, 64)
+        Me.txtUsername.Location = New System.Drawing.Point(12, 103)
         Me.txtUsername.Name = "txtUsername"
-        Me.txtUsername.Size = New System.Drawing.Size(168, 20)
+        Me.txtUsername.Size = New System.Drawing.Size(168, 30)
         Me.txtUsername.TabIndex = 1
         '
         'txtPassword
         '
-        Me.txtPassword.Location = New System.Drawing.Point(200, 25)
+        Me.txtPassword.Location = New System.Drawing.Point(200, 33)
         Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.Size = New System.Drawing.Size(168, 20)
+        Me.txtPassword.Size = New System.Drawing.Size(168, 30)
         Me.txtPassword.TabIndex = 2
         Me.txtPassword.UseSystemPasswordChar = True
         '
         'txtRetypePw
         '
-        Me.txtRetypePw.Location = New System.Drawing.Point(200, 64)
+        Me.txtRetypePw.Location = New System.Drawing.Point(200, 103)
         Me.txtRetypePw.Name = "txtRetypePw"
-        Me.txtRetypePw.Size = New System.Drawing.Size(168, 20)
+        Me.txtRetypePw.Size = New System.Drawing.Size(168, 30)
         Me.txtRetypePw.TabIndex = 3
         Me.txtRetypePw.UseSystemPasswordChar = True
         '
         'btnSignaturePath
         '
+        Me.btnSignaturePath.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSignaturePath.Location = New System.Drawing.Point(188, 21)
         Me.btnSignaturePath.Name = "btnSignaturePath"
-        Me.btnSignaturePath.Size = New System.Drawing.Size(162, 23)
+        Me.btnSignaturePath.Size = New System.Drawing.Size(162, 30)
         Me.btnSignaturePath.TabIndex = 0
         Me.btnSignaturePath.Text = "Select Signature Image File"
         Me.btnSignaturePath.UseVisualStyleBackColor = True
@@ -134,9 +135,10 @@ Partial Class F_UserDetails
         '
         'btnProceed
         '
-        Me.btnProceed.Location = New System.Drawing.Point(106, 324)
+        Me.btnProceed.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnProceed.Location = New System.Drawing.Point(102, 393)
         Me.btnProceed.Name = "btnProceed"
-        Me.btnProceed.Size = New System.Drawing.Size(168, 23)
+        Me.btnProceed.Size = New System.Drawing.Size(168, 30)
         Me.btnProceed.TabIndex = 5
         Me.btnProceed.Text = "Add New User"
         Me.btnProceed.UseVisualStyleBackColor = True
@@ -157,7 +159,7 @@ Partial Class F_UserDetails
         Me.grpSignature.Controls.Add(Me.picSignature)
         Me.grpSignature.Controls.Add(Me.btnSignaturePath)
         Me.grpSignature.Controls.Add(Me.lblSIFPValue)
-        Me.grpSignature.Location = New System.Drawing.Point(12, 90)
+        Me.grpSignature.Location = New System.Drawing.Point(12, 149)
         Me.grpSignature.Name = "grpSignature"
         Me.grpSignature.Size = New System.Drawing.Size(356, 228)
         Me.grpSignature.TabIndex = 4
@@ -166,9 +168,9 @@ Partial Class F_UserDetails
         '
         'F_UserDetails
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(380, 358)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit
+        Me.BackColor = System.Drawing.SystemColors.Window
+        Me.ClientSize = New System.Drawing.Size(380, 438)
         Me.Controls.Add(Me.grpSignature)
         Me.Controls.Add(Me.txtRetypePw)
         Me.Controls.Add(Me.txtPassword)
@@ -179,6 +181,7 @@ Partial Class F_UserDetails
         Me.Controls.Add(Me.lblPassword)
         Me.Controls.Add(Me.lblUsername)
         Me.Controls.Add(Me.lblFullName)
+        Me.Font = New System.Drawing.Font("Weidmueller Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False

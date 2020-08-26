@@ -8,9 +8,9 @@
 
     Public Sub New(ByRef parState As C_State, Optional parUser As C_User = Nothing)
         InitializeComponent()
-        TempState = parState
-        TempUser = parUser
-        If Not TempUser Is Nothing Then InitFormForEdit()
+        Me.TempState = parState
+        Me.TempUser = parUser
+        If Not Me.TempUser Is Nothing Then InitFormForEdit()
     End Sub
     Private Sub SignaturePathBtn_Click(sender As Object, e As EventArgs) Handles btnSignaturePath.Click
         Dim sigPath As String = GetSigPathFromUser()
@@ -30,18 +30,65 @@
         RaiseEvent ProceedBtnClicked()
     End Sub
 
+    Private Sub SignaturePathBtn_MouseEnter(sender As Object, e As EventArgs) Handles btnSignaturePath.MouseEnter
+        btnSignaturePath.ForeColor = g_WeidOrange
+        btnSignaturePath.BackColor = Color.White
+    End Sub
+
+    Private Sub SignaturePathBtn_MouseLeave(sender As Object, e As EventArgs) Handles btnSignaturePath.MouseLeave
+        btnSignaturePath.ForeColor = Color.Black
+        btnSignaturePath.BackColor = Color.White
+    End Sub
+    Private Sub SignaturePathBtn_MouseDown(sender As Object, e As MouseEventArgs) Handles btnSignaturePath.MouseDown
+        If e.Button = MouseButtons.Left Then
+            btnSignaturePath.ForeColor = Color.White
+            btnSignaturePath.BackColor = g_WeidOrange
+        End If
+    End Sub
+    Private Sub SignaturePathBtn_MouseUp(sender As Object, e As MouseEventArgs) Handles btnSignaturePath.MouseUp
+        btnSignaturePath.ForeColor = g_WeidOrange
+        btnSignaturePath.BackColor = Color.White
+    End Sub
+
+    Private Sub ProceedBtn_MouseEnter(sender As Object, e As EventArgs) Handles btnProceed.MouseEnter
+        btnProceed.ForeColor = g_WeidOrange
+        btnProceed.BackColor = Color.White
+    End Sub
+
+    Private Sub ProceedBtn_MouseLeave(sender As Object, e As EventArgs) Handles btnProceed.MouseLeave
+        btnProceed.ForeColor = Color.Black
+        btnProceed.BackColor = Color.White
+    End Sub
+    Private Sub ProceedBtn_MouseDown(sender As Object, e As MouseEventArgs) Handles btnProceed.MouseDown
+        If e.Button = MouseButtons.Left Then
+            btnProceed.ForeColor = Color.White
+            btnProceed.BackColor = g_WeidOrange
+        End If
+    End Sub
+    Private Sub ProceedBtn_MouseUp(sender As Object, e As MouseEventArgs) Handles btnProceed.MouseUp
+        btnProceed.ForeColor = g_WeidOrange
+        btnProceed.BackColor = Color.White
+    End Sub
+
     Private Sub EH_ProceedBtnClicked() Handles Me.ProceedBtnClicked
         If UserInfoValid() Then
-            If TempUser Is Nothing Then
-                TempUser = CreateNewUser()
-                TempState.Users.Add(TempUser)
-                TempUser = Nothing
-                RaiseEvent UserAdded()
+            If Me.TempUser Is Nothing Then
+                If UsernameAvailable(txtUsername.Text) Then
+                    Me.TempUser = CreateNewUser()
+                    Me.TempState.Users.Add(Me.TempUser)
+                    Me.TempUser = Nothing
+                    RaiseEvent UserAdded()
+                Else
+                    MsgBox("Username " & txtUsername.Text & " not available. Please choose another.")
+                    txtUsername.Clear()
+                    txtUsername.Select()
+                    Exit Sub
+                End If
             Else
-                TempUser.FullName = txtFullName.Text
-                TempUser.Salt = GetSaltString()
-                TempUser.HashedPw = GetHashedPw(txtPassword.Text, TempUser.Salt)
-                TempUser.SigPath = lblSIFPValue.Text
+                Me.TempUser.FullName = txtFullName.Text
+                Me.TempUser.Salt = GetSaltString()
+                Me.TempUser.HashedPw = GetHashedPw(txtPassword.Text, Me.TempUser.Salt)
+                Me.TempUser.SigPath = lblSIFPValue.Text
                 RaiseEvent UserEdited()
             End If
             Close()
@@ -50,10 +97,10 @@
 
     Private Sub InitFormForEdit()
         Text = "Edit User"
-        txtFullName.Text = TempUser.FullName
-        txtUsername.Text = TempUser.Username
+        txtFullName.Text = Me.TempUser.FullName
+        txtUsername.Text = Me.TempUser.Username
         txtUsername.Enabled = False
-        lblSIFPValue.Text = TempUser.SigPath
+        lblSIFPValue.Text = Me.TempUser.SigPath
         picSignature.ImageLocation = lblSIFPValue.Text
         btnProceed.Text = "Save User Details"
     End Sub
@@ -94,7 +141,7 @@
         Return True
     End Function
 
-    Public Function CreateNewUser() As C_User
+    Private Function CreateNewUser() As C_User
         Dim fn As String = txtFullName.Text
         Dim un As String = txtUsername.Text
         Dim pw As String = txtPassword.Text
@@ -106,6 +153,13 @@
         Return u
     End Function
 
+    Private Function UsernameAvailable(parUsername As String) As Boolean
+        Dim u As C_User
+        For Each u In Me.TempState.Users
+            If parUsername = u.Username Then Return False
+        Next
+        Return True
+    End Function
     Private Function GetSigPathFromUser() As String
         Dim fileName As String = ""
         Dim ofd As New OpenFileDialog()
@@ -120,4 +174,6 @@
         End If
         Return fileName
     End Function
+
+
 End Class

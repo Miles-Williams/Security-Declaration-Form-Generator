@@ -50,6 +50,7 @@ Module M_Excel_Helpers
         If Not xlApp Is Nothing Then ReleaseComObject(xlApp)
 
     End Sub
+    <CodeAnalysis.SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification:="<Pending>")>
     Public Sub ReleaseComObject(ByVal obj As Object)
         Try
             Runtime.InteropServices.Marshal.ReleaseComObject(obj)

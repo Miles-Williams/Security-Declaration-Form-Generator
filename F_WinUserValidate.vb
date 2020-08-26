@@ -77,4 +77,26 @@
         Return b
     End Function
 
+    Private Sub ValidateBtn_MouseEnter(sender As Object, e As EventArgs) Handles btnValidate.MouseEnter
+        btnValidate.ForeColor = g_WeidOrange
+        btnValidate.BackColor = Color.White
+    End Sub
+
+    Private Sub ValidateBtn_MouseLeave(sender As Object, e As EventArgs) Handles btnValidate.MouseLeave
+        btnValidate.ForeColor = Color.Black
+        btnValidate.BackColor = Color.White
+    End Sub
+
+    Private Sub ValidateBtn_MouseDown(sender As Object, e As MouseEventArgs) Handles btnValidate.MouseDown
+        If e.Button = MouseButtons.Left Then
+            btnValidate.ForeColor = Color.White
+            btnValidate.BackColor = g_WeidOrange
+        End If
+    End Sub
+
+    Private Sub ValidateBtn_MouseUp(sender As Object, e As MouseEventArgs) Handles btnValidate.MouseUp
+        btnValidate.ForeColor = Color.Black
+        btnValidate.BackColor = Color.White
+    End Sub
+
 End Class
