@@ -127,6 +127,9 @@
   <data name="StateFileName" xml:space="preserve">
     <value>.\Data\AppState.bin</value>
   </data>
+  <data name="WeidFontFile" xml:space="preserve">
+    <value>.\Data\WM_Cond_wgl4_0.ttf</value>
+  </data>
   <data name="WeidLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Data\WeidLogo.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -135,5 +138,8 @@
   </data>
   <data name="WeidmullerLogo_Full" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Data\WeidmullerLogo_Full.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WM_Cond_wgl4_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Data\WM_Cond_wgl4_0.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

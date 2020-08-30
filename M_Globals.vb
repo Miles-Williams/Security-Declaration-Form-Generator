@@ -1,26 +1,66 @@
 ﻿Imports System.DirectoryServices.AccountManagement
+Imports System.Drawing.Text
 Imports System.IO
 Imports System.Runtime.Serialization.Formatters.Binary
 Imports System.Security.Cryptography
 Imports System.Text
 Imports Microsoft.Win32
 
+Public Enum LogonType As Integer
+    LOGON32_LOGON_INTERACTIVE = 2
+    LOGON32_LOGON_NETWORK = 3
+    LOGON32_LOGON_BATCH = 4
+    LOGON32_LOGON_SERVICE = 5
+    LOGON32_LOGON_UNLOCK = 7
+    LOGON32_LOGON_NETWORK_CLEARTEXT = 8
+    LOGON32_LOGON_NEW_CREDENTIALS = 9
+End Enum
+Public Enum E_Destination
+    Domestic
+    International
+End Enum
+Public Enum E_PrintMedium
+    Paper
+    Sticker
+    Both
+    None
+End Enum
 Module M_Globals
-    Public Enum E_Destination
-        Domestic
-        International
-    End Enum
-    Public Enum E_PrintMedium
-        Paper
-        Sticker
-        Both
-        None
-    End Enum
-
     Public g_context As PrincipalContext
     Public g_Icon As Icon
     Public g_Validated As Boolean
     Public g_IsDomain As Boolean
+    Public g_WeidOrange As Color = Color.FromArgb(235, 140, 0)
+    Public g_weidCondensed As Font
+
+    Public Sub Main()
+        Application.EnableVisualStyles()
+        'Application.SetCompatibleTextRenderingDefault(True)
+        Dim f As String = My.Resources.WeidFontFile
+        Dim pfc As New PrivateFontCollection
+        pfc.AddFontFile(f)
+        g_weidCondensed = New Font(pfc.Families(0), 14)
+
+        Application.Run(F_Main)
+    End Sub
+
+    Public Sub SetFormsCustomFont(parForm As Form)
+        For Each c As Control In parForm.Controls
+            SetControlsCustomFontsRecursively(c, g_weidCondensed)
+        Next
+    End Sub
+
+    Private Sub SetControlsCustomFontsRecursively(parControl As Control, parFont As Font)
+        If parControl.HasChildren Then
+            For Each c As Control In parControl.Controls
+                SetControlsCustomFontsRecursively(c, parFont)
+            Next
+        End If
+
+        If TypeOf parControl IsNot PictureBox Then
+            parControl.Font = parFont
+        End If
+    End Sub
 
     Public Function ContainsSpecialChars(s As String) As Boolean
         Return s.IndexOfAny("[~`!@#$%^&*()-+=|{}':;.,<>/?]".ToCharArray) <> -1
@@ -30,18 +70,18 @@ Module M_Globals
         Return s.IndexOfAny("<>/\:*?|""".ToCharArray()) <> -1
     End Function
 
-    Public Sub CenterForm(ByRef parForm As Form)
-        parForm.Left = (Screen.PrimaryScreen.Bounds.Width / 2) - (parForm.Width / 2)
-        parForm.Top = (Screen.PrimaryScreen.Bounds.Height / 2) - (parForm.Height / 2)
+    Public Sub CenterForm(parForm As Form)
+        parForm.Left = CInt((Screen.PrimaryScreen.Bounds.Width / 2) - (parForm.Width / 2))
+        parForm.Top = CInt((Screen.PrimaryScreen.Bounds.Height / 2) - (parForm.Height / 2))
     End Sub
 
-    Public Sub CenterControlHorizontally(ByRef parForm As Form, ByRef parControl As Control)
-        parControl.Left = (parForm.ClientSize.Width / 2) - (parControl.Width / 2)
+    Public Sub CenterControlHorizontally(parForm As Form, parControl As Control)
+        parControl.Left = CInt((parForm.ClientSize.Width / 2) - (parControl.Width / 2))
     End Sub
 
-    Public Sub CenterControl(ByRef parForm As Form, ByRef parControl As Control)
-        parControl.Left = (parForm.ClientSize.Width / 2) - (parControl.Width / 2)
-        parControl.Top = (parForm.ClientSize.Height / 2) - (parControl.Height / 2)
+    Public Sub CenterControl(parForm As Form, parControl As Control)
+        parControl.Left = CInt((parForm.ClientSize.Width / 2) - (parControl.Width / 2))
+        parControl.Top = CInt((parForm.ClientSize.Height / 2) - (parControl.Height / 2))
     End Sub
     Private Function UseLightIcon() As Boolean
         'Calculate the "darkness" of the users Accent Color by checking the Desktop Window Manager
@@ -66,7 +106,7 @@ Module M_Globals
         Dim isDarkAccent As Boolean
         isDarkAccent = ((5 * CInt(g)) + (2 * CInt(r)) + CInt(b)) <= 1024
 
-        If oColorPrevalance <> 0 Then
+        If CInt(oColorPrevalance) <> 0 Then
             If isDarkAccent Then Return True
         End If
 
@@ -117,9 +157,9 @@ Module M_Globals
         parState.VolatileState.ConNumbers = ""
     End Sub
 
-    Public Function GetSHA512String(ByVal parInString) As String
+    Public Function GetSHA512String(ByVal parIn As String) As String
         Dim sha512 As SHA512 = SHA512.Create()
-        Dim bytes As Byte() = Encoding.UTF8.GetBytes(parInString)
+        Dim bytes As Byte() = Encoding.UTF8.GetBytes(parIn)
         Dim hash As Byte() = sha512.ComputeHash(bytes)
         Dim sb As New StringBuilder()
 
@@ -155,11 +195,11 @@ Module M_Globals
         End If
     End Sub
 
-    Public Sub Wait(ByVal parMilliseconds As Double, Optional ByRef BreakCondition As Boolean = False)
+    Public Sub Wait(ByVal parMilliseconds As Double, Optional ByRef parBreakCondition As Boolean = False)
         Dim waitUntil As Date
         waitUntil = Now.AddMilliseconds(parMilliseconds)
         Do Until Now > waitUntil
-            If BreakCondition Then Exit Do
+            If parBreakCondition Then Exit Do
             Application.DoEvents()
         Loop
     End Sub

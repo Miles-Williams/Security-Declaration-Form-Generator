@@ -28,6 +28,7 @@ Partial Class F_Main
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.tsbLogin = New System.Windows.Forms.ToolStripButton()
         Me.tsbConfiguration = New System.Windows.Forms.ToolStripButton()
+        Me.tsbAbout = New System.Windows.Forms.ToolStripButton()
         Me.txtConsignment = New System.Windows.Forms.TextBox()
         Me.lblEnterConNumber = New System.Windows.Forms.Label()
         Me.lstConsignments = New System.Windows.Forms.ListBox()
@@ -48,19 +49,21 @@ Partial Class F_Main
         Me.lblPaperCopies = New System.Windows.Forms.Label()
         Me.lblContents = New System.Windows.Forms.Label()
         Me.txtContents = New System.Windows.Forms.TextBox()
-        Me.picOrangeStripe = New System.Windows.Forms.PictureBox()
         Me.btnDefaultContents = New System.Windows.Forms.Button()
         Me.grpOptions = New System.Windows.Forms.GroupBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.grpConsignment = New System.Windows.Forms.GroupBox()
-        Me.lblFullName = New System.Windows.Forms.Label()
+        Me.lblIssuedBy = New System.Windows.Forms.Label()
         Me.lblConsignorsFullName = New System.Windows.Forms.Label()
-        Me.tsbAbout = New System.Windows.Forms.ToolStripButton()
+        Me.txtIssuedBy = New System.Windows.Forms.TextBox()
+        Me.nudStickerCopies = New System.Windows.Forms.NumericUpDown()
+        Me.nudPaperCopies = New System.Windows.Forms.NumericUpDown()
         Me.ToolStrip1.SuspendLayout()
-        CType(Me.picOrangeStripe, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpOptions.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpConsignment.SuspendLayout()
+        CType(Me.nudStickerCopies, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudPaperCopies, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnCreateConsignment
@@ -109,6 +112,15 @@ Partial Class F_Main
         Me.tsbConfiguration.Size = New System.Drawing.Size(85, 22)
         Me.tsbConfiguration.Text = "Configuration"
         Me.tsbConfiguration.ToolTipText = "Click To Open Configuration"
+        '
+        'tsbAbout
+        '
+        Me.tsbAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.tsbAbout.Image = CType(resources.GetObject("tsbAbout.Image"), System.Drawing.Image)
+        Me.tsbAbout.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbAbout.Name = "tsbAbout"
+        Me.tsbAbout.Size = New System.Drawing.Size(44, 22)
+        Me.tsbAbout.Text = "About"
         '
         'txtConsignment
         '
@@ -289,17 +301,6 @@ Partial Class F_Main
         Me.txtContents.Size = New System.Drawing.Size(349, 20)
         Me.txtContents.TabIndex = 12
         '
-        'picOrangeStripe
-        '
-        Me.picOrangeStripe.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(140, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.picOrangeStripe.ErrorImage = Nothing
-        Me.picOrangeStripe.InitialImage = Nothing
-        Me.picOrangeStripe.Location = New System.Drawing.Point(379, 0)
-        Me.picOrangeStripe.Name = "picOrangeStripe"
-        Me.picOrangeStripe.Size = New System.Drawing.Size(2, 280)
-        Me.picOrangeStripe.TabIndex = 24
-        Me.picOrangeStripe.TabStop = False
-        '
         'btnDefaultContents
         '
         Me.btnDefaultContents.Location = New System.Drawing.Point(129, 49)
@@ -311,6 +312,8 @@ Partial Class F_Main
         '
         'grpOptions
         '
+        Me.grpOptions.Controls.Add(Me.nudStickerCopies)
+        Me.grpOptions.Controls.Add(Me.nudPaperCopies)
         Me.grpOptions.Controls.Add(Me.PictureBox1)
         Me.grpOptions.Controls.Add(Me.lblCuLbl)
         Me.grpOptions.Controls.Add(Me.lblCurrentUsername)
@@ -347,10 +350,10 @@ Partial Class F_Main
         '
         'grpConsignment
         '
+        Me.grpConsignment.Controls.Add(Me.txtIssuedBy)
         Me.grpConsignment.Controls.Add(Me.lblContents)
         Me.grpConsignment.Controls.Add(Me.btnCreateConsignment)
-        Me.grpConsignment.Controls.Add(Me.lblFullName)
-        Me.grpConsignment.Controls.Add(Me.lblConsignorsFullName)
+        Me.grpConsignment.Controls.Add(Me.lblIssuedBy)
         Me.grpConsignment.Controls.Add(Me.btnDefaultContents)
         Me.grpConsignment.Controls.Add(Me.lstConsignments)
         Me.grpConsignment.Controls.Add(Me.txtContents)
@@ -365,32 +368,44 @@ Partial Class F_Main
         Me.grpConsignment.TabStop = False
         Me.grpConsignment.Text = "Consignment"
         '
-        'lblFullName
+        'lblIssuedBy
         '
-        Me.lblFullName.AutoSize = True
-        Me.lblFullName.Location = New System.Drawing.Point(10, 27)
-        Me.lblFullName.Name = "lblFullName"
-        Me.lblFullName.Size = New System.Drawing.Size(112, 13)
-        Me.lblFullName.TabIndex = 21
-        Me.lblFullName.Text = "Consignors Full Name:"
+        Me.lblIssuedBy.AutoSize = True
+        Me.lblIssuedBy.Location = New System.Drawing.Point(10, 27)
+        Me.lblIssuedBy.Name = "lblIssuedBy"
+        Me.lblIssuedBy.Size = New System.Drawing.Size(56, 13)
+        Me.lblIssuedBy.TabIndex = 21
+        Me.lblIssuedBy.Text = "Issued By:"
         '
         'lblConsignorsFullName
         '
         Me.lblConsignorsFullName.AutoSize = True
-        Me.lblConsignorsFullName.Location = New System.Drawing.Point(136, 27)
+        Me.lblConsignorsFullName.Location = New System.Drawing.Point(272, 9)
         Me.lblConsignorsFullName.Name = "lblConsignorsFullName"
         Me.lblConsignorsFullName.Size = New System.Drawing.Size(143, 13)
         Me.lblConsignorsFullName.TabIndex = 22
         Me.lblConsignorsFullName.Text = "<no user currently logged in>"
         '
-        'tsbAbout
+        'txtIssuedBy
         '
-        Me.tsbAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.tsbAbout.Image = CType(resources.GetObject("tsbAbout.Image"), System.Drawing.Image)
-        Me.tsbAbout.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsbAbout.Name = "tsbAbout"
-        Me.tsbAbout.Size = New System.Drawing.Size(44, 22)
-        Me.tsbAbout.Text = "About"
+        Me.txtIssuedBy.Location = New System.Drawing.Point(128, 24)
+        Me.txtIssuedBy.Name = "txtIssuedBy"
+        Me.txtIssuedBy.Size = New System.Drawing.Size(250, 20)
+        Me.txtIssuedBy.TabIndex = 24
+        '
+        'nudStickerCopies
+        '
+        Me.nudStickerCopies.Location = New System.Drawing.Point(148, 114)
+        Me.nudStickerCopies.Name = "nudStickerCopies"
+        Me.nudStickerCopies.Size = New System.Drawing.Size(120, 20)
+        Me.nudStickerCopies.TabIndex = 25
+        '
+        'nudPaperCopies
+        '
+        Me.nudPaperCopies.Location = New System.Drawing.Point(148, 177)
+        Me.nudPaperCopies.Name = "nudPaperCopies"
+        Me.nudPaperCopies.Size = New System.Drawing.Size(120, 20)
+        Me.nudPaperCopies.TabIndex = 26
         '
         'F_Main
         '
@@ -399,8 +414,8 @@ Partial Class F_Main
         Me.ClientSize = New System.Drawing.Size(784, 277)
         Me.Controls.Add(Me.grpConsignment)
         Me.Controls.Add(Me.grpOptions)
-        Me.Controls.Add(Me.picOrangeStripe)
         Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.lblConsignorsFullName)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -408,12 +423,13 @@ Partial Class F_Main
         Me.Text = "SDF Generator"
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
-        CType(Me.picOrangeStripe, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpOptions.ResumeLayout(False)
         Me.grpOptions.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpConsignment.ResumeLayout(False)
         Me.grpConsignment.PerformLayout()
+        CType(Me.nudStickerCopies, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudPaperCopies, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -443,12 +459,14 @@ Partial Class F_Main
     Friend WithEvents lblPaperCopies As Label
     Friend WithEvents lblContents As Label
     Friend WithEvents txtContents As TextBox
-    Friend WithEvents picOrangeStripe As PictureBox
     Friend WithEvents btnDefaultContents As Button
     Friend WithEvents grpOptions As GroupBox
     Friend WithEvents grpConsignment As GroupBox
-    Friend WithEvents lblFullName As Label
+    Friend WithEvents lblIssuedBy As Label
     Friend WithEvents lblConsignorsFullName As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents tsbAbout As ToolStripButton
+    Friend WithEvents txtIssuedBy As TextBox
+    Friend WithEvents nudStickerCopies As NumericUpDown
+    Friend WithEvents nudPaperCopies As NumericUpDown
 End Class

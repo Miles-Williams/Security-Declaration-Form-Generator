@@ -1,18 +1,6 @@
 ﻿Imports System.IO
 Imports Excel = Microsoft.Office.Interop.Excel
 
-Public Enum E_Destination
-    Domestic
-    International
-End Enum
-
-Public Enum E_PrintMedium
-    Paper
-    Sticker
-    Both
-    None
-End Enum
-
 Module M_Save_Helpers
 
     Public Sub SaveToPdf(parExcelData As C_ExcelData, parCells As Excel.Range)

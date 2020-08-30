@@ -89,6 +89,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to .\Data\WM_Cond_wgl4_0.ttf.
+        '''</summary>
+        Friend ReadOnly Property WeidFontFile() As String
+            Get
+                Return ResourceManager.GetString("WeidFontFile", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         '''</summary>
         Friend ReadOnly Property WeidLogo() As System.Drawing.Icon
@@ -115,6 +124,16 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("WeidmullerLogo_Full", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property WM_Cond_wgl4_0() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("WM_Cond_wgl4_0", resourceCulture)
+                Return CType(obj,Byte())
             End Get
         End Property
     End Module
