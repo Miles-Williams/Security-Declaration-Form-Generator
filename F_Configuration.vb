@@ -283,16 +283,16 @@ Public Class F_Configuration
         Dim sPrinter As String
 
         With Me.TempState
-            cboCurrentPaperPrinter.Items.Clear()
-            cboCurrentStickerPrinter.Items.Clear()
+            cboPaperPrinter.Items.Clear()
+            cboStickerPrinter.Items.Clear()
 
             For Each sPrinter In PrinterSettings.InstalledPrinters
-                cboCurrentStickerPrinter.Items.Add(sPrinter)
-                cboCurrentPaperPrinter.Items.Add(sPrinter)
+                cboStickerPrinter.Items.Add(sPrinter)
+                cboPaperPrinter.Items.Add(sPrinter)
             Next sPrinter
 
-            cboCurrentStickerPrinter.Text = .Configuration.CurrentStickerPrinter
-            cboCurrentPaperPrinter.Text = .Configuration.CurrentPaperPrinter
+            cboStickerPrinter.Text = .Configuration.CurrentStickerPrinter
+            cboPaperPrinter.Text = .Configuration.CurrentPaperPrinter
             lblCurrentSaveDirectoryRoot.Text = .Configuration.SaveDirectoryRoot
             chkTollPrefixDefault.Checked = .Configuration.TollPrefixDefault
             rdbDomestic.Checked = .Configuration.DefaultsToDomestic
@@ -314,9 +314,9 @@ Public Class F_Configuration
 
     Private Sub UpdateConfigState()
         With Me.TempState
-            .Configuration.CurrentStickerPrinter = cboCurrentStickerPrinter.Text
+            .Configuration.CurrentStickerPrinter = cboStickerPrinter.Text
             .Configuration.DefaultStickerCopies = CInt(nudStickerCopies.Value)
-            .Configuration.CurrentPaperPrinter = cboCurrentPaperPrinter.Text
+            .Configuration.CurrentPaperPrinter = cboPaperPrinter.Text
             .Configuration.DefaultPaperCopies = CInt(nudPaperCopies.Value)
             .Configuration.SaveDirectoryRoot = lblCurrentSaveDirectoryRoot.Text
             .Configuration.TollPrefixDefault = chkTollPrefixDefault.Checked
@@ -338,4 +338,7 @@ Public Class F_Configuration
         Return path
     End Function
 
+    Private Sub F_Configuration_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+
+    End Sub
 End Class

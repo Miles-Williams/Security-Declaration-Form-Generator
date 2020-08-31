@@ -5,16 +5,6 @@
     Private Declare Auto Function LogonUser Lib "advapi32.dll" (ByVal lpszUsername As String, ByVal lpszDomain As String, ByVal lpszPassword As String, ByVal dwLogonType As LogonType, ByVal dwLogonProvider As Integer, ByRef phToken As IntPtr) As Integer
     Private Declare Auto Function CloseHandle Lib "kernel32.dll" (ByVal hObject As IntPtr) As Boolean
 
-    Public Enum LogonType As Integer
-        LOGON32_LOGON_INTERACTIVE = 2
-        LOGON32_LOGON_NETWORK = 3
-        LOGON32_LOGON_BATCH = 4
-        LOGON32_LOGON_SERVICE = 5
-        LOGON32_LOGON_UNLOCK = 7
-        LOGON32_LOGON_NETWORK_CLEARTEXT = 8
-        LOGON32_LOGON_NEW_CREDENTIALS = 9
-    End Enum
-
     Public Function IsAuthenticated(ByVal Username As String, ByVal Password As String, Optional ByVal Domain As String = "") As Boolean
         Dim Token As New IntPtr
         LogonUser(Username, Domain, Password, LogonType.LOGON32_LOGON_INTERACTIVE, 0, Token)
@@ -32,6 +22,7 @@
 
     Private Sub F_WinUserValidate_Load(sender As Object, e As EventArgs) Handles Me.Load
         Icon = g_Icon
+        SetFormsCustomFont(Me)
         CenterControlHorizontally(Me, btnValidate)
         CenterForm(Me)
     End Sub
@@ -76,5 +67,27 @@
         End If
         Return b
     End Function
+
+    Private Sub ValidateBtn_MouseEnter(sender As Object, e As EventArgs) Handles btnValidate.MouseEnter
+        btnValidate.ForeColor = g_WeidOrange
+        btnValidate.BackColor = Color.White
+    End Sub
+
+    Private Sub ValidateBtn_MouseLeave(sender As Object, e As EventArgs) Handles btnValidate.MouseLeave
+        btnValidate.ForeColor = Color.Black
+        btnValidate.BackColor = Color.White
+    End Sub
+
+    Private Sub ValidateBtn_MouseDown(sender As Object, e As MouseEventArgs) Handles btnValidate.MouseDown
+        If e.Button = MouseButtons.Left Then
+            btnValidate.ForeColor = Color.White
+            btnValidate.BackColor = g_WeidOrange
+        End If
+    End Sub
+
+    Private Sub ValidateBtn_MouseUp(sender As Object, e As MouseEventArgs) Handles btnValidate.MouseUp
+        btnValidate.ForeColor = Color.Black
+        btnValidate.BackColor = Color.White
+    End Sub
 
 End Class

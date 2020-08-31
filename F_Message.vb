@@ -1,6 +1,11 @@
 ﻿Imports System.Text
 
 Public Class F_Message
+    'Displayed while async task running so the user doesn't think the application has frozen
+    Public Sub New()
+        InitializeComponent()
+    End Sub
+
     Private Sub F_Message_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CenterForm(Me)
     End Sub

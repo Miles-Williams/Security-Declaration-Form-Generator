@@ -25,6 +25,7 @@ Public Enum E_PrintMedium
     Both
     None
 End Enum
+
 Module M_Globals
     Public g_context As PrincipalContext
     Public g_Icon As Icon
@@ -40,7 +41,6 @@ Module M_Globals
         Dim pfc As New PrivateFontCollection
         pfc.AddFontFile(f)
         g_weidCondensed = New Font(pfc.Families(0), 14)
-
         Application.Run(F_Main)
     End Sub
 

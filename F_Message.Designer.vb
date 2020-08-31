@@ -29,7 +29,7 @@ Partial Class F_Message
         '
         Me.lblValidating.AutoSize = True
         Me.lblValidating.Font = New System.Drawing.Font("Microsoft Sans Serif", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblValidating.Location = New System.Drawing.Point(72, 9)
+        Me.lblValidating.Location = New System.Drawing.Point(80, 9)
         Me.lblValidating.Name = "lblValidating"
         Me.lblValidating.Size = New System.Drawing.Size(37, 55)
         Me.lblValidating.TabIndex = 0
@@ -40,6 +40,7 @@ Partial Class F_Message
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.Window
         Me.ClientSize = New System.Drawing.Size(194, 100)
         Me.Controls.Add(Me.lblValidating)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle

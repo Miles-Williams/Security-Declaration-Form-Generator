@@ -70,6 +70,21 @@ Public Class F_Main
         WinUserValidateForm.ShowDialog(Me)
     End Sub
 
+    Private Sub AboutTsb_Click(sender As Object, e As EventArgs) Handles tsbAbout.Click
+        Dim sb = New StringBuilder()
+        sb.AppendLine("Security Declaration Form Generator.")
+        sb.AppendLine()
+        sb.AppendLine("Version: 1.0.0")
+        sb.AppendLine()
+        sb.AppendLine("Copyright © Miles Williams 2020.")
+        sb.AppendLine()
+        sb.AppendLine("For Weidmüller Australia Pty Ltd.")
+        sb.AppendLine()
+        sb.Append("A tool for automating the process of generating, printing, and saving digitally signed PDF format")
+        sb.Append(" ""Security Declaration Forms"" for use with the Department of Home Affairs - Known Consignor Scheme.")
+        MsgBox(sb.ToString, MsgBoxStyle.ApplicationModal, "About")
+    End Sub
+
     Private Sub BothPrintersChk_CheckedChanged(sender As Object, e As EventArgs) Handles chkBothPrinters.CheckedChanged
         RaiseEvent BothPrintersChkChanged()
     End Sub
@@ -254,6 +269,7 @@ Clear:
 
     Private Sub EH_CreateConsignment() Handles Me.CreateConsignment
         If lstConsignments.Items.Count <> 0 Then
+            If Me.AppState.VolatileState.CurrentUser.Username = "Guest" Then Me.AppState.VolatileState.CurrentUser.FullName = txtIssuedBy.Text
             Me.AppState.VolatileState.FirstConNumber = CStr(lstConsignments.Items.Item(0))
             Me.AppState.VolatileState.ConNumbers = CreateConNumString(lstConsignments.Items)
             Me.AppState.PaperCopies = CInt(nudPaperCopies.Value)
@@ -427,27 +443,12 @@ Clear:
 
             PassToExcel(Me.ExcelData)
 
+            txtIssuedBy.Clear()
+            parState.VolatileState.CurrentUser.FullName = ""
             lstConsignments.Items.Clear()
             txtConsignment.Clear()
             txtConsignment.Select()
         End If
     End Sub
-
-    Private Sub AboutTsb_Click(sender As Object, e As EventArgs) Handles tsbAbout.Click
-        Dim sb = New StringBuilder()
-        sb.AppendLine("Security Declaration Form Generator.")
-        sb.AppendLine()
-        sb.AppendLine("Version: 1.0.0")
-        sb.AppendLine()
-        sb.AppendLine("Copyright © Miles Williams 2020.")
-        sb.AppendLine()
-        sb.AppendLine("For Weidmüller Australia Pty Ltd.")
-        sb.AppendLine()
-        sb.Append("A tool for automating the process of generating, printing, and saving digitally signed PDF format")
-        sb.Append(" ""Security Declaration Forms"" for use with the Department of Home Affairs - Known Consignor Scheme.")
-        MsgBox(sb.ToString, MsgBoxStyle.ApplicationModal, "About")
-    End Sub
-
-
 
 End Class

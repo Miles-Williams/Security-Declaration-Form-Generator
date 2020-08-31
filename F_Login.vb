@@ -1,4 +1,6 @@
-﻿Public Class F_Login
+﻿Imports System.Reflection
+
+Public Class F_Login
 
     Private ReadOnly AppState As C_State
     Private ReadOnly validateUser As Boolean
@@ -7,28 +9,55 @@
 
     Public Sub New(ByRef parState As C_State, Optional parValidateUser As Boolean = False)
         InitializeComponent()
-        AppState = parState
-        validateUser = parValidateUser
-    End Sub
-    Private Sub Login_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        RaiseEvent TryLogin()
+        Me.AppState = parState
+        Me.validateUser = parValidateUser
     End Sub
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles Me.Load
         Icon = g_Icon
+        SetFormsCustomFont(Me)
         CenterControlHorizontally(Me, btnLogin)
         CenterForm(Me)
-        If validateUser Then
+        If Me.validateUser Then
             Text = "Validate"
-            txtUsername.Text = AppState.VolatileState.CurrentUser.Username
+            txtUsername.Text = Me.AppState.VolatileState.CurrentUser.Username
             txtUsername.Enabled = False
             btnLogin.Text = "Validate"
         End If
     End Sub
 
+    Private Sub Login_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
+        RaiseEvent TryLogin()
+    End Sub
+
+    Private Sub PasswordTxt_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles txtPassword.PreviewKeyDown
+        If e.KeyCode = Keys.Enter Then RaiseEvent TryLogin()
+    End Sub
+
+    Private Sub LoginBtn_MouseEnter(sender As Object, e As EventArgs) Handles btnLogin.MouseEnter
+        btnLogin.ForeColor = g_WeidOrange
+        btnLogin.BackColor = Color.White
+    End Sub
+
+    Private Sub LoginBtn_MouseLeave(sender As Object, e As EventArgs) Handles btnLogin.MouseLeave
+        btnLogin.ForeColor = Color.Black
+        btnLogin.BackColor = Color.White
+    End Sub
+
+    Private Sub LoginBtn_MouseDown(sender As Object, e As MouseEventArgs) Handles btnLogin.MouseDown
+        If e.Button = MouseButtons.Left Then
+            btnLogin.ForeColor = Color.White
+            btnLogin.BackColor = g_WeidOrange
+        End If
+    End Sub
+
+    Private Sub LoginBtn_MouseUp(sender As Object, e As MouseEventArgs) Handles btnLogin.MouseUp
+        btnLogin.ForeColor = Color.Black
+        btnLogin.BackColor = Color.White
+    End Sub
     Private Sub EH_TryLogin() Handles Me.TryLogin
         If LoginInfoValid() Then
-            If UserLoggedIn(txtUsername.Text, txtPassword.Text, AppState) Then
+            If UserLoggedIn(txtUsername.Text, txtPassword.Text, Me.AppState) Then
                 RaiseEvent LoginSuccess()
                 Close()
             End If
@@ -57,7 +86,6 @@
             If parUsername = u.Username Then
                 hashedPw = GetSHA512String(parPassword & u.Salt)
                 If hashedPw = u.HashedPw Then
-                    MsgBox("Login Successful.")
                     parState.VolatileState.CurrentUser = u
                     Return True
                 Else
@@ -70,9 +98,5 @@
         MsgBox("Username not found.")
         Return False
     End Function
-
-    Private Sub PasswordTxt_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles txtPassword.PreviewKeyDown
-        If e.KeyCode = Keys.Enter Then RaiseEvent TryLogin()
-    End Sub
 
 End Class

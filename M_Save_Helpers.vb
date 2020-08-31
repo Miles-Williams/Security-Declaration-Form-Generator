@@ -72,7 +72,7 @@ Module M_Save_Helpers
 
         iTempDay = Microsoft.VisualBasic.Day(Now)
         iTempMonth = Month(Now)
-        iTempYear = CStr(Year(Now))
+        iTempYear = Year(Now)
 
         If iTempDay >= 10 Then
             sDay = CStr(iTempDay)
@@ -86,7 +86,7 @@ Module M_Save_Helpers
             sMonth = CStr(iTempMonth)
         End If
 
-        sYear = Mid(iTempYear, 3, 4)
+        sYear = Mid(CStr(iTempYear), 3, 4)
         BuildFileNameDateComponent = sDay & sMonth & sYear
     End Function
 
