@@ -13,6 +13,8 @@ Public Class F_Main
     Private WithEvents WinUserValidateForm As F_WinUserValidate
 
     Private userValidated As Boolean
+    Private ReadOnly pfc As New PrivateFontCollection
+    Private weidFont As Font
 
     Private Event AddConNumToList()
     Private Event RemoveConNumFromList()
@@ -34,10 +36,13 @@ Public Class F_Main
     End Sub
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        SetFormsCustomFont(Me)
+        Dim f As String = My.Resources.WeidFontFile
+        Me.pfc.AddFontFile(f)
+        Me.weidFont = New Font(Me.pfc.Families(0), 14)
+        Icon = g_Icon
+        SetFormsCustomFont(Me, Me.weidFont)
         InitMainForm()
         CenterForm(Me)
-        CheckForExcel()
     End Sub
 
     Private Sub F_Main_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
@@ -417,7 +422,7 @@ Clear:
         Return sb.ToString()
     End Function
 
-    Public Sub RunPreExcelInit(ByRef parState As C_State)
+    Public Sub RunPreExcelInit(parState As C_State)
         If parState.VolatileState.CurrentUser.Username <> "Guest" Then
             ValidateUserForm = New F_Login(parState, True)
             ValidateUserForm.ShowDialog()
@@ -443,12 +448,17 @@ Clear:
 
             PassToExcel(Me.ExcelData)
 
-            txtIssuedBy.Clear()
-            parState.VolatileState.CurrentUser.FullName = ""
+            If parState.VolatileState.CurrentUser.Username = "Guest" Then
+                txtIssuedBy.Clear()
+                parState.VolatileState.CurrentUser.FullName = ""
+            End If
+
             lstConsignments.Items.Clear()
             txtConsignment.Clear()
             txtConsignment.Select()
+
         End If
+
     End Sub
 
 End Class

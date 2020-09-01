@@ -1,4 +1,9 @@
-﻿Public Class F_WinUserValidate
+﻿Imports System.Drawing.Text
+
+Public Class F_WinUserValidate
+    Private ReadOnly pfc As New PrivateFontCollection
+    Private weidFont As Font
+
     Public Event WinUserValidated()
     Private Event ValidateWinUser()
 
@@ -21,8 +26,11 @@
     End Sub
 
     Private Sub F_WinUserValidate_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Dim f As String = My.Resources.WeidFontFile
+        Me.pfc.AddFontFile(f)
+        Me.weidFont = New Font(Me.pfc.Families(0), 14)
         Icon = g_Icon
-        SetFormsCustomFont(Me)
+        SetFormsCustomFont(Me, Me.weidFont)
         CenterControlHorizontally(Me, btnValidate)
         CenterForm(Me)
     End Sub

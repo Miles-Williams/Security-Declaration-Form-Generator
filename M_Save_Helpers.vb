@@ -4,20 +4,14 @@ Imports Excel = Microsoft.Office.Interop.Excel
 Module M_Save_Helpers
 
     Public Sub SaveToPdf(parExcelData As C_ExcelData, parCells As Excel.Range)
-
         Dim fileName As String = BuildSaveFileName(parExcelData)
-
         SaveDocument(fileName, parCells)
-
     End Sub
 
     Private Function BuildSaveFileName(parExcelData As C_ExcelData) As String
-
         Return GetSaveLocationPath(parExcelData) & "\" & GetFileNamePrefix(parExcelData) & "_" & parExcelData.FirstConNumber
-
     End Function
     Private Function GetSaveLocationPath(parExcelData As C_ExcelData) As String
-
         Dim destination As String = ""
 
         Select Case parExcelData.Destination
@@ -43,7 +37,6 @@ Module M_Save_Helpers
         If Not Directory.Exists(completePath) Then Directory.CreateDirectory(completePath)
 
         Return completePath
-
     End Function
 
     Private Function GetFileNamePrefix(parExcelData As C_ExcelData) As String
@@ -51,17 +44,18 @@ Module M_Save_Helpers
     End Function
 
     Private Function GetDocumentTypeTla(parExcelData As C_ExcelData) As String
-        Dim ret As String = ""
+        Dim Tla As String = ""
 
         Select Case parExcelData.Destination
             Case E_Destination.Domestic
-                ret = "SDD"
+                Tla = "SDD"
             Case E_Destination.International
-                ret = "SDI"
+                Tla = "SDI"
         End Select
 
-        Return ret
+        Return Tla
     End Function
+
     Private Function BuildFileNameDateComponent() As String
         Dim iTempDay As Integer
         Dim iTempMonth As Integer

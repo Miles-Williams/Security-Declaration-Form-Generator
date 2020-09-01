@@ -90,6 +90,7 @@ Partial Class F_Main
         Me.tspMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbLogin, Me.tsbConfiguration, Me.tsbAbout})
         Me.tspMenu.Location = New System.Drawing.Point(0, 0)
         Me.tspMenu.Name = "tspMenu"
+        Me.tspMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.tspMenu.Size = New System.Drawing.Size(790, 25)
         Me.tspMenu.TabIndex = 3
         '
@@ -154,24 +155,23 @@ Partial Class F_Main
         Me.lblCurrentlyLoggedInUser.AutoSize = True
         Me.lblCurrentlyLoggedInUser.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(140, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.lblCurrentlyLoggedInUser.ForeColor = System.Drawing.SystemColors.Window
-        Me.lblCurrentlyLoggedInUser.Location = New System.Drawing.Point(240, 0)
+        Me.lblCurrentlyLoggedInUser.Location = New System.Drawing.Point(240, 3)
         Me.lblCurrentlyLoggedInUser.Name = "lblCurrentlyLoggedInUser"
         Me.lblCurrentlyLoggedInUser.Size = New System.Drawing.Size(120, 13)
         Me.lblCurrentlyLoggedInUser.TabIndex = 7
         Me.lblCurrentlyLoggedInUser.Text = "Currently logged in user:"
-        Me.lblCurrentlyLoggedInUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lblCurrentlyLoggedInUser.TextAlign = System.Drawing.ContentAlignment.BottomLeft
         '
         'lblCurrentUsername
         '
         Me.lblCurrentUsername.AutoSize = True
         Me.lblCurrentUsername.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(140, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.lblCurrentUsername.ForeColor = System.Drawing.SystemColors.Window
-        Me.lblCurrentUsername.Location = New System.Drawing.Point(400, 0)
+        Me.lblCurrentUsername.Location = New System.Drawing.Point(400, 3)
         Me.lblCurrentUsername.Name = "lblCurrentUsername"
         Me.lblCurrentUsername.Size = New System.Drawing.Size(143, 13)
         Me.lblCurrentUsername.TabIndex = 8
         Me.lblCurrentUsername.Text = "<no user currently logged in>"
-        Me.lblCurrentUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'rdbDomestic
         '

@@ -1,9 +1,12 @@
-﻿Imports System.Reflection
+﻿Imports System.Drawing.Text
 
 Public Class F_Login
+    Private ReadOnly validateUser As Boolean
 
     Private ReadOnly AppState As C_State
-    Private ReadOnly validateUser As Boolean
+    Private ReadOnly pfc As New PrivateFontCollection
+    Private weidFont As Font
+
     Public Event LoginSuccess()
     Private Event TryLogin()
 
@@ -14,8 +17,11 @@ Public Class F_Login
     End Sub
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Dim f As String = My.Resources.WeidFontFile
+        Me.pfc.AddFontFile(f)
+        Me.weidFont = New Font(Me.pfc.Families(0), 14)
         Icon = g_Icon
-        SetFormsCustomFont(Me)
+        SetFormsCustomFont(Me, Me.weidFont)
         CenterControlHorizontally(Me, btnLogin)
         CenterForm(Me)
         If Me.validateUser Then
@@ -28,10 +34,6 @@ Public Class F_Login
 
     Private Sub Login_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         RaiseEvent TryLogin()
-    End Sub
-
-    Private Sub PasswordTxt_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles txtPassword.PreviewKeyDown
-        If e.KeyCode = Keys.Enter Then RaiseEvent TryLogin()
     End Sub
 
     Private Sub LoginBtn_MouseEnter(sender As Object, e As EventArgs) Handles btnLogin.MouseEnter

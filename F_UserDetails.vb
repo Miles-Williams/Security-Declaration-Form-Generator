@@ -1,7 +1,11 @@
-﻿Public Class F_UserDetails
+﻿Imports System.Drawing.Text
 
+Public Class F_UserDetails
+    Private ReadOnly pfc As New PrivateFontCollection
+    Private weidFont As Font
     Private ReadOnly TempState As C_State
     Private TempUser As C_User
+
     Public Event UserAdded()
     Public Event UserEdited()
     Private Event ProceedBtnClicked()
@@ -12,23 +16,26 @@
         Me.TempUser = parUser
         If Not Me.TempUser Is Nothing Then InitFormForEdit()
     End Sub
-    Private Sub SignaturePathBtn_Click(sender As Object, e As EventArgs) Handles btnSignaturePath.Click
-        Dim sigPath As String = GetSigPathFromUser()
-        lblSIFPValue.Text = sigPath
-        picSignature.ImageLocation = sigPath
-        If sigPath <> "" Then picSignature.Load()
-    End Sub
 
     Private Sub UserDetails_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Dim f As String = My.Resources.WeidFontFile
+        Me.pfc.AddFontFile(f)
+        Me.weidFont = New Font(Me.pfc.Families(0), 14)
         Icon = g_Icon
-        CenterForm(Me)
-        SetFormsCustomFont(Me)
+        SetFormsCustomFont(Me, Me.weidFont)
         CenterControlHorizontally(Me, btnProceed)
         CenterControlHorizontally(Me, picSignature)
     End Sub
 
     Private Sub ProceedBtn_Click(sender As Object, e As EventArgs) Handles btnProceed.Click
         RaiseEvent ProceedBtnClicked()
+    End Sub
+
+    Private Sub SignaturePathBtn_Click(sender As Object, e As EventArgs) Handles btnSignaturePath.Click
+        Dim sigPath As String = GetSigPathFromUser()
+        lblSIFPValue.Text = sigPath
+        picSignature.ImageLocation = sigPath
+        If sigPath <> "" Then picSignature.Load()
     End Sub
 
     Private Sub SignaturePathBtn_MouseEnter(sender As Object, e As EventArgs) Handles btnSignaturePath.MouseEnter

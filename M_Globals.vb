@@ -1,5 +1,4 @@
 ﻿Imports System.DirectoryServices.AccountManagement
-Imports System.Drawing.Text
 Imports System.IO
 Imports System.Runtime.Serialization.Formatters.Binary
 Imports System.Security.Cryptography
@@ -32,34 +31,39 @@ Module M_Globals
     Public g_Validated As Boolean
     Public g_IsDomain As Boolean
     Public g_WeidOrange As Color = Color.FromArgb(235, 140, 0)
-    Public g_weidCondensed As Font
+    'Public g_weidCondensed As Font
 
-    Public Sub Main()
-        Application.EnableVisualStyles()
-        'Application.SetCompatibleTextRenderingDefault(True)
-        Dim f As String = My.Resources.WeidFontFile
-        Dim pfc As New PrivateFontCollection
-        pfc.AddFontFile(f)
-        g_weidCondensed = New Font(pfc.Families(0), 14)
-        Application.Run(F_Main)
-    End Sub
+    'Public Sub Main()
+    '    MsgBox("Entered Main")
+    '    Application.EnableVisualStyles()
+    '    'Application.SetCompatibleTextRenderingDefault(True)
+    '    Dim f As String = My.Resources.WeidFontFile
+    '    Dim pfc As New PrivateFontCollection
+    '    pfc.AddFontFile(f)
+    '    g_weidCondensed = New Font(pfc.Families(0), 14)
+    '    Application.Run(F_Main)
+    'End Sub
 
-    Public Sub SetFormsCustomFont(parForm As Form)
+    Public Sub SetFormsCustomFont(parForm As Form, parFont As Font)
         For Each c As Control In parForm.Controls
-            SetControlsCustomFontsRecursively(c, g_weidCondensed)
+            SetControlsCustomFontsRecursively(c, parFont)
         Next
     End Sub
 
     Private Sub SetControlsCustomFontsRecursively(parControl As Control, parFont As Font)
-        If parControl.HasChildren Then
-            For Each c As Control In parControl.Controls
-                SetControlsCustomFontsRecursively(c, parFont)
-            Next
-        End If
+        Try
+            If parControl.HasChildren Then
+                For Each c As Control In parControl.Controls
+                    SetControlsCustomFontsRecursively(c, parFont)
+                Next
+            End If
 
-        If TypeOf parControl IsNot PictureBox Then
-            parControl.Font = parFont
-        End If
+            If TypeOf parControl IsNot PictureBox Then
+                parControl.Font = parFont
+            End If
+        Catch e As Exception
+            MsgBox(e.ToString)
+        End Try
     End Sub
 
     Public Function ContainsSpecialChars(s As String) As Boolean
@@ -83,35 +87,6 @@ Module M_Globals
         parControl.Left = CInt((parForm.ClientSize.Width / 2) - (parControl.Width / 2))
         parControl.Top = CInt((parForm.ClientSize.Height / 2) - (parControl.Height / 2))
     End Sub
-    Private Function UseLightIcon() As Boolean
-        'Calculate the "darkness" of the users Accent Color by checking the Desktop Window Manager
-        'registry key. ColorPrevalence returns true if Accent Color is applied to title bars and window borders.
-        'AccentColor returns an ABGR value which gets cast to a String of its Hex representation so that
-        'the individual R, G, and B values can be plucked out and used in a formula to determine "darkness".
-        Dim key As RegistryKey
-        key = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\DWM")
-
-        Dim oAccentColor As Object = key.GetValue("AccentColor")
-        Dim oColorPrevalance As Object = key.GetValue("ColorPrevalence")
-
-        Dim s As String = Hex(oAccentColor).ToString()
-        Dim rs As String = Mid(s, 7, 2)
-        Dim gs As String = Mid(s, 5, 2)
-        Dim bs As String = Mid(s, 3, 2)
-
-        Dim r As Integer = Convert.ToInt32(rs, 16)
-        Dim g As Integer = Convert.ToInt32(gs, 16)
-        Dim b As Integer = Convert.ToInt32(bs, 16)
-
-        Dim isDarkAccent As Boolean
-        isDarkAccent = ((5 * CInt(g)) + (2 * CInt(r)) + CInt(b)) <= 1024
-
-        If CInt(oColorPrevalance) <> 0 Then
-            If isDarkAccent Then Return True
-        End If
-
-        Return False
-    End Function
 
     Public Sub InitializeIcon()
         If UseLightIcon() Then
@@ -120,6 +95,58 @@ Module M_Globals
             g_Icon = My.Resources.WeidLogo
         End If
     End Sub
+
+    Private Function UseLightIcon() As Boolean
+        'Calculate the "darkness" of the users Accent Color by checking the Desktop Window Manager
+        'registry key. ColorPrevalence returns true if Accent Color is applied to title bars and window borders.
+        'AccentColor returns an ABGR value which gets cast to a String of its Hex representation so that
+        'the individual R, G, and B values can be plucked out and used in a formula to determine "darkness".
+        Dim key As RegistryKey
+
+        If IsPreWin8() Then GoTo ReturnFalse
+
+        Try
+            key = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\DWM")
+
+            Dim oAccentColor As Object = key.GetValue("AccentColor")
+            If oAccentColor Is Nothing Then GoTo ReturnFalse
+
+            Dim oColorPrevalance As Object = key.GetValue("ColorPrevalence")
+            If oColorPrevalance Is Nothing Then GoTo ReturnFalse
+
+            Dim s As String = Hex(oAccentColor).ToString()
+            Dim rs As String = Mid(s, 7, 2)
+            Dim gs As String = Mid(s, 5, 2)
+            Dim bs As String = Mid(s, 3, 2)
+
+            Dim r As Integer = Convert.ToInt32(rs, 16)
+            Dim g As Integer = Convert.ToInt32(gs, 16)
+            Dim b As Integer = Convert.ToInt32(bs, 16)
+
+            Dim isDarkAccent As Boolean = ((5 * CInt(g)) + (2 * CInt(r)) + CInt(b)) <= 1024
+
+            If CInt(oColorPrevalance) <> 0 Then
+                If isDarkAccent Then Return True
+            End If
+        Catch e As Exception
+            MsgBox(e.ToString)
+        End Try
+
+ReturnFalse:
+        Return False
+    End Function
+
+    Private Function IsPreWin8() As Boolean
+        Dim os As OperatingSystem = Environment.OSVersion
+        Dim vs As Version = os.Version
+        Dim major As Integer = vs.Major
+        Dim minor As Integer = vs.Minor
+        If major = 10 Then Return False
+        If major = 6 Then
+            If minor > 1 Then Return False
+        End If
+        Return True
+    End Function
 
     Public Function DeserializeState() As C_State
         'Get saved State from .bin file or else a new State
@@ -135,12 +162,10 @@ Module M_Globals
 
     Public Sub SerializeState(parState As C_State)
         'Save State object to .bin file
-
         Dim fs As Stream = File.Create(My.Resources.StateFileName)
         Dim serializer As New BinaryFormatter
         serializer.Serialize(fs, parState)
         fs.Close()
-
     End Sub
 
     Public Function GetCopyOfState(parState As C_State) As C_State
@@ -183,8 +208,10 @@ Module M_Globals
     End Function
 
     Public Sub CheckForExcel()
+        MsgBox("Entered CheckForExcel")
         Dim officeType As Type = Type.GetTypeFromProgID("Excel.Application")
         If officeType Is Nothing Then MsgBox("This application requires Microsoft Excel 2013 or later to function.")
+        MsgBox("Leaving CheckForExcel")
     End Sub
 
     Public Async Sub GetContextAsync(parUseDomain As Boolean)

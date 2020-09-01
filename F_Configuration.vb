@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports System.Drawing.Printing
+Imports System.Drawing.Text
 
 Public Class F_Configuration
 
@@ -15,6 +16,9 @@ Public Class F_Configuration
     Private Event TollPrefixDefaultChkChanged()
     Private Event InternationalRbdChanged()
 
+    Private ReadOnly pfc As New PrivateFontCollection
+    Private weidFont As Font
+
     Public Sub New(ByRef parState As C_State)
         InitializeComponent()
         Me.TempState = parState
@@ -22,7 +26,10 @@ Public Class F_Configuration
 
     Private Sub Configuration_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Icon = g_Icon
-        SetFormsCustomFont(Me)
+        Dim f As String = My.Resources.WeidFontFile
+        Me.pfc.AddFontFile(f)
+        Me.weidFont = New Font(Me.pfc.Families(0), 14)
+        SetFormsCustomFont(Me, Me.weidFont)
         UpdateConfigForm()
         CenterForm(Me)
     End Sub

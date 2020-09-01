@@ -118,7 +118,7 @@ Partial Class F_Configuration
         Me.cboPaperPrinter.FormattingEnabled = True
         Me.cboPaperPrinter.Location = New System.Drawing.Point(136, 98)
         Me.cboPaperPrinter.Name = "cboPaperPrinter"
-        Me.cboPaperPrinter.Size = New System.Drawing.Size(231, 21)
+        Me.cboPaperPrinter.Size = New System.Drawing.Size(269, 21)
         Me.cboPaperPrinter.TabIndex = 5
         '
         'cboStickerPrinter
@@ -126,7 +126,7 @@ Partial Class F_Configuration
         Me.cboStickerPrinter.FormattingEnabled = True
         Me.cboStickerPrinter.Location = New System.Drawing.Point(136, 29)
         Me.cboStickerPrinter.Name = "cboStickerPrinter"
-        Me.cboStickerPrinter.Size = New System.Drawing.Size(231, 21)
+        Me.cboStickerPrinter.Size = New System.Drawing.Size(269, 21)
         Me.cboStickerPrinter.TabIndex = 4
         '
         'lblPaperPrinter

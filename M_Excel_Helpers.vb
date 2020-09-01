@@ -28,8 +28,6 @@ Module M_Excel_Helpers
             xlWorkSheet = Nothing
         Next
 
-
-
         If Proceed Then
             FillInForm(xlWorkSheet, parExcelData)
             PrintExcelDocument(xlWorkSheet, parExcelData)

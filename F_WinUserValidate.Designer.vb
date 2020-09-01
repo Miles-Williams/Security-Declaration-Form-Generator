@@ -67,6 +67,7 @@ Partial Class F_WinUserValidate
         '
         'F_WinUserValidate
         '
+        Me.AcceptButton = Me.btnValidate
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Window

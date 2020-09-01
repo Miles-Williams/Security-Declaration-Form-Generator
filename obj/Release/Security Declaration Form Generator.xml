@@ -37,6 +37,11 @@ Security Declaration Form Generator
   Looks up a localized string similar to .\Data\AppState.bin.
 </summary>
 </member>
+<member name="P:Security_Declaration_Form_Generator.My.Resources.Resources.WeidFontFile">
+<summary>
+  Looks up a localized string similar to .\Data\WM_Cond_wgl4_0.ttf.
+</summary>
+</member>
 <member name="P:Security_Declaration_Form_Generator.My.Resources.Resources.WeidLogo">
 <summary>
   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
@@ -50,6 +55,11 @@ Security Declaration Form Generator
 <member name="P:Security_Declaration_Form_Generator.My.Resources.Resources.WeidmullerLogo_Full">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Security_Declaration_Form_Generator.My.Resources.Resources.WM_Cond_wgl4_0">
+<summary>
+  Looks up a localized resource of type System.Byte[].
 </summary>
 </member>
 </members>
