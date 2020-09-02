@@ -2,13 +2,12 @@
 
 Public Class F_Login
     Private ReadOnly validateUser As Boolean
-
     Private ReadOnly AppState As C_State
     Private ReadOnly pfc As New PrivateFontCollection
-    Private weidFont As Font
 
     Public Event LoginSuccess()
     Private Event TryLogin()
+    Private Event EscapePressed(e As PreviewKeyDownEventArgs)
 
     Public Sub New(ByRef parState As C_State, Optional parValidateUser As Boolean = False)
         InitializeComponent()
@@ -17,11 +16,8 @@ Public Class F_Login
     End Sub
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Dim f As String = My.Resources.WeidFontFile
-        Me.pfc.AddFontFile(f)
-        Me.weidFont = New Font(Me.pfc.Families(0), 14)
         Icon = g_Icon
-        SetFormsCustomFont(Me, Me.weidFont)
+        SetFormsCustomFont(Me, Me.pfc, g_FontResourceName, 14, FontStyle.Regular)
         CenterControlHorizontally(Me, btnLogin)
         CenterForm(Me)
         If Me.validateUser Then
@@ -30,10 +26,6 @@ Public Class F_Login
             txtUsername.Enabled = False
             btnLogin.Text = "Validate"
         End If
-    End Sub
-
-    Private Sub Login_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        RaiseEvent TryLogin()
     End Sub
 
     Private Sub LoginBtn_MouseEnter(sender As Object, e As EventArgs) Handles btnLogin.MouseEnter
@@ -57,6 +49,23 @@ Public Class F_Login
         btnLogin.ForeColor = Color.Black
         btnLogin.BackColor = Color.White
     End Sub
+
+    Private Sub PasswordTxt_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles txtPassword.PreviewKeyDown
+        RaiseEvent EscapePressed(e)
+    End Sub
+
+    Private Sub UsernameTxt_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles txtUsername.PreviewKeyDown
+        RaiseEvent EscapePressed(e)
+    End Sub
+
+    Private Sub LoginBtn_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles btnLogin.PreviewKeyDown
+        RaiseEvent EscapePressed(e)
+    End Sub
+
+    Private Sub LoginBtn_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
+        RaiseEvent TryLogin()
+    End Sub
+
     Private Sub EH_TryLogin() Handles Me.TryLogin
         If LoginInfoValid() Then
             If UserLoggedIn(txtUsername.Text, txtPassword.Text, Me.AppState) Then
@@ -65,6 +74,11 @@ Public Class F_Login
             End If
         End If
     End Sub
+
+    Private Sub EH_EscapePressed(e As PreviewKeyDownEventArgs) Handles Me.EscapePressed
+        If e.KeyCode = Keys.Escape Then Close()
+    End Sub
+
     Private Function LoginInfoValid() As Boolean
         If txtUsername.Text = "" Then
             MsgBox("Enter a valid username to continue.")
@@ -81,7 +95,7 @@ Public Class F_Login
         Return True
     End Function
 
-    Public Function UserLoggedIn(parUsername As String, parPassword As String, parState As C_State) As Boolean
+    Private Function UserLoggedIn(parUsername As String, parPassword As String, parState As C_State) As Boolean
         Dim hashedPw As String
 
         For Each u As C_User In parState.Users

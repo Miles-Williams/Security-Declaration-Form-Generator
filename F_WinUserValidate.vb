@@ -2,41 +2,61 @@
 
 Public Class F_WinUserValidate
     Private ReadOnly pfc As New PrivateFontCollection
-    Private weidFont As Font
 
     Public Event WinUserValidated()
     Private Event ValidateWinUser()
+    Private Event EscapePressed(e As PreviewKeyDownEventArgs)
 
     Private Declare Auto Function LogonUser Lib "advapi32.dll" (ByVal lpszUsername As String, ByVal lpszDomain As String, ByVal lpszPassword As String, ByVal dwLogonType As LogonType, ByVal dwLogonProvider As Integer, ByRef phToken As IntPtr) As Integer
     Private Declare Auto Function CloseHandle Lib "kernel32.dll" (ByVal hObject As IntPtr) As Boolean
-
-    Public Function IsAuthenticated(ByVal Username As String, ByVal Password As String, Optional ByVal Domain As String = "") As Boolean
-        Dim Token As New IntPtr
-        LogonUser(Username, Domain, Password, LogonType.LOGON32_LOGON_INTERACTIVE, 0, Token)
-        CloseHandle(Token)
-        If Token.ToInt32 <> 0 Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
 
     Public Sub New()
         InitializeComponent()
     End Sub
 
     Private Sub F_WinUserValidate_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Dim f As String = My.Resources.WeidFontFile
-        Me.pfc.AddFontFile(f)
-        Me.weidFont = New Font(Me.pfc.Families(0), 14)
         Icon = g_Icon
-        SetFormsCustomFont(Me, Me.weidFont)
+        SetFormsCustomFont(Me, Me.pfc, g_FontResourceName, 14, FontStyle.Regular)
         CenterControlHorizontally(Me, btnValidate)
         CenterForm(Me)
     End Sub
 
     Private Sub ValidateBtn_Click(sender As Object, e As EventArgs) Handles btnValidate.Click
         RaiseEvent ValidateWinUser()
+    End Sub
+
+    Private Sub ValidateBtn_MouseEnter(sender As Object, e As EventArgs) Handles btnValidate.MouseEnter
+        btnValidate.ForeColor = g_WeidOrange
+        btnValidate.BackColor = Color.White
+    End Sub
+
+    Private Sub ValidateBtn_MouseLeave(sender As Object, e As EventArgs) Handles btnValidate.MouseLeave
+        btnValidate.ForeColor = Color.Black
+        btnValidate.BackColor = Color.White
+    End Sub
+
+    Private Sub ValidateBtn_MouseDown(sender As Object, e As MouseEventArgs) Handles btnValidate.MouseDown
+        If e.Button = MouseButtons.Left Then
+            btnValidate.ForeColor = Color.White
+            btnValidate.BackColor = g_WeidOrange
+        End If
+    End Sub
+
+    Private Sub ValidateBtn_MouseUp(sender As Object, e As MouseEventArgs) Handles btnValidate.MouseUp
+        btnValidate.ForeColor = Color.Black
+        btnValidate.BackColor = Color.White
+    End Sub
+
+    Private Sub ValidateBtn_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles btnValidate.PreviewKeyDown
+        RaiseEvent EscapePressed(e)
+    End Sub
+
+    Private Sub PasswordTxt_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles txtPassword.PreviewKeyDown
+        RaiseEvent EscapePressed(e)
+    End Sub
+
+    Private Sub EH_EscapePressed(e As PreviewKeyDownEventArgs) Handles Me.EscapePressed
+        If e.KeyCode = Keys.Escape Then Close()
     End Sub
 
     Private Async Sub EH_ValidateWinUser() Handles Me.ValidateWinUser
@@ -76,26 +96,15 @@ Public Class F_WinUserValidate
         Return b
     End Function
 
-    Private Sub ValidateBtn_MouseEnter(sender As Object, e As EventArgs) Handles btnValidate.MouseEnter
-        btnValidate.ForeColor = g_WeidOrange
-        btnValidate.BackColor = Color.White
-    End Sub
-
-    Private Sub ValidateBtn_MouseLeave(sender As Object, e As EventArgs) Handles btnValidate.MouseLeave
-        btnValidate.ForeColor = Color.Black
-        btnValidate.BackColor = Color.White
-    End Sub
-
-    Private Sub ValidateBtn_MouseDown(sender As Object, e As MouseEventArgs) Handles btnValidate.MouseDown
-        If e.Button = MouseButtons.Left Then
-            btnValidate.ForeColor = Color.White
-            btnValidate.BackColor = g_WeidOrange
+    Private Function IsAuthenticated(ByVal Username As String, ByVal Password As String, Optional ByVal Domain As String = "") As Boolean
+        Dim Token As New IntPtr
+        LogonUser(Username, Domain, Password, LogonType.LOGON32_LOGON_INTERACTIVE, 0, Token)
+        CloseHandle(Token)
+        If Token.ToInt32 <> 0 Then
+            Return True
+        Else
+            Return False
         End If
-    End Sub
-
-    Private Sub ValidateBtn_MouseUp(sender As Object, e As MouseEventArgs) Handles btnValidate.MouseUp
-        btnValidate.ForeColor = Color.Black
-        btnValidate.BackColor = Color.White
-    End Sub
+    End Function
 
 End Class

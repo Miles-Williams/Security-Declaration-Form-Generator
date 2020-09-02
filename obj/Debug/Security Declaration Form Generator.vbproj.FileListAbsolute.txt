@@ -99,7 +99,6 @@ C:\Users\stace\Desktop\Security-Declaration-Form-Generator\obj\Debug\Security De
 C:\Users\stace\Desktop\Security-Declaration-Form-Generator\obj\Debug\Security Declaration Form Generator.exe
 C:\Users\stace\Desktop\Security-Declaration-Form-Generator\obj\Debug\Security Declaration Form Generator.xml
 C:\Users\stace\Desktop\Security-Declaration-Form-Generator\obj\Debug\Security Declaration Form Generator.pdb
-C:\Users\wau0195\Source\Repos\Weidmueller\Security-Declaration-Form-Generator\bin\Debug\Data\WM_Cond_wgl4_0.ttf
 C:\Users\wau0195\Source\Repos\Weidmueller\Security-Declaration-Form-Generator\bin\Debug\Security Declaration Form Generator.exe.config
 C:\Users\wau0195\Source\Repos\Weidmueller\Security-Declaration-Form-Generator\bin\Debug\Security Declaration Form Generator.exe.manifest
 C:\Users\wau0195\Source\Repos\Weidmueller\Security-Declaration-Form-Generator\bin\Debug\Security Declaration Form Generator.application

@@ -18,7 +18,6 @@ C:\Users\wau0195\source\repos\Security Declaration Form Generator\bin\Release\Se
 C:\Users\wau0195\source\repos\Security Declaration Form Generator\obj\Release\Security Declaration Form Generator.exe.manifest
 C:\Users\wau0195\source\repos\Security Declaration Form Generator\obj\Release\Security Declaration Form Generator.application
 C:\Users\wau0195\source\repos\Security Declaration Form Generator\obj\Release\Security_Declaration_Form_Generator.F_WinUserValidate.resources
-C:\Users\wau0195\Source\Repos\Weidmueller\Security-Declaration-Form-Generator\bin\Release\Data\WM_Cond_wgl4_0.ttf
 C:\Users\wau0195\Source\Repos\Weidmueller\Security-Declaration-Form-Generator\bin\Release\Security Declaration Form Generator.exe.config
 C:\Users\wau0195\Source\Repos\Weidmueller\Security-Declaration-Form-Generator\bin\Release\Security Declaration Form Generator.exe.manifest
 C:\Users\wau0195\Source\Repos\Weidmueller\Security-Declaration-Form-Generator\bin\Release\Security Declaration Form Generator.application

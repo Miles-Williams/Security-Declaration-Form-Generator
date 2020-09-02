@@ -88,7 +88,7 @@ Partial Class F_UserDetails
         '
         'txtFullName
         '
-        Me.txtFullName.Location = New System.Drawing.Point(12, 25)
+        Me.txtFullName.Location = New System.Drawing.Point(12, 33)
         Me.txtFullName.Name = "txtFullName"
         Me.txtFullName.Size = New System.Drawing.Size(168, 20)
         Me.txtFullName.TabIndex = 0
@@ -102,7 +102,7 @@ Partial Class F_UserDetails
         '
         'txtPassword
         '
-        Me.txtPassword.Location = New System.Drawing.Point(200, 25)
+        Me.txtPassword.Location = New System.Drawing.Point(200, 33)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(168, 20)
         Me.txtPassword.TabIndex = 2

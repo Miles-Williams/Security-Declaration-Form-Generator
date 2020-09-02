@@ -69,7 +69,7 @@ Partial Class F_Main
         Me.btnCreateConsignment.Location = New System.Drawing.Point(23, 306)
         Me.btnCreateConsignment.Name = "btnCreateConsignment"
         Me.btnCreateConsignment.Size = New System.Drawing.Size(155, 30)
-        Me.btnCreateConsignment.TabIndex = 3
+        Me.btnCreateConsignment.TabIndex = 4
         Me.btnCreateConsignment.Text = "Create Consignment"
         Me.btnCreateConsignment.UseVisualStyleBackColor = True
         '
@@ -79,7 +79,7 @@ Partial Class F_Main
         Me.btnAddConsignment.Location = New System.Drawing.Point(103, 227)
         Me.btnAddConsignment.Name = "btnAddConsignment"
         Me.btnAddConsignment.Size = New System.Drawing.Size(75, 30)
-        Me.btnAddConsignment.TabIndex = 1
+        Me.btnAddConsignment.TabIndex = 2
         Me.btnAddConsignment.Text = "Add"
         Me.btnAddConsignment.UseVisualStyleBackColor = True
         '
@@ -92,7 +92,8 @@ Partial Class F_Main
         Me.tspMenu.Name = "tspMenu"
         Me.tspMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.tspMenu.Size = New System.Drawing.Size(790, 25)
-        Me.tspMenu.TabIndex = 3
+        Me.tspMenu.TabIndex = 0
+        Me.tspMenu.TabStop = True
         '
         'tsbLogin
         '
@@ -148,7 +149,7 @@ Partial Class F_Main
         Me.lstConsignments.Location = New System.Drawing.Point(184, 228)
         Me.lstConsignments.Name = "lstConsignments"
         Me.lstConsignments.Size = New System.Drawing.Size(190, 121)
-        Me.lstConsignments.TabIndex = 3
+        Me.lstConsignments.TabIndex = 1
         '
         'lblCurrentlyLoggedInUser
         '
@@ -179,7 +180,7 @@ Partial Class F_Main
         Me.rdbDomestic.Location = New System.Drawing.Point(10, 68)
         Me.rdbDomestic.Name = "rdbDomestic"
         Me.rdbDomestic.Size = New System.Drawing.Size(69, 17)
-        Me.rdbDomestic.TabIndex = 4
+        Me.rdbDomestic.TabIndex = 5
         Me.rdbDomestic.TabStop = True
         Me.rdbDomestic.Text = "Domestic"
         Me.rdbDomestic.UseVisualStyleBackColor = True
@@ -201,7 +202,7 @@ Partial Class F_Main
         Me.chkTollPrefix.Location = New System.Drawing.Point(10, 150)
         Me.chkTollPrefix.Name = "chkTollPrefix"
         Me.chkTollPrefix.Size = New System.Drawing.Size(110, 17)
-        Me.chkTollPrefix.TabIndex = 6
+        Me.chkTollPrefix.TabIndex = 8
         Me.chkTollPrefix.Text = "Toll prefix (87750)"
         Me.chkTollPrefix.UseVisualStyleBackColor = True
         '
@@ -259,7 +260,7 @@ Partial Class F_Main
         Me.btnRemoveConsignment.Location = New System.Drawing.Point(103, 266)
         Me.btnRemoveConsignment.Name = "btnRemoveConsignment"
         Me.btnRemoveConsignment.Size = New System.Drawing.Size(75, 30)
-        Me.btnRemoveConsignment.TabIndex = 2
+        Me.btnRemoveConsignment.TabIndex = 3
         Me.btnRemoveConsignment.Text = "Remove"
         Me.btnRemoveConsignment.UseVisualStyleBackColor = True
         '
@@ -296,7 +297,7 @@ Partial Class F_Main
         Me.txtContents.Multiline = True
         Me.txtContents.Name = "txtContents"
         Me.txtContents.Size = New System.Drawing.Size(190, 68)
-        Me.txtContents.TabIndex = 12
+        Me.txtContents.TabIndex = 7
         '
         'btnDefaultContents
         '
@@ -304,7 +305,7 @@ Partial Class F_Main
         Me.btnDefaultContents.Location = New System.Drawing.Point(221, 65)
         Me.btnDefaultContents.Name = "btnDefaultContents"
         Me.btnDefaultContents.Size = New System.Drawing.Size(153, 30)
-        Me.btnDefaultContents.TabIndex = 13
+        Me.btnDefaultContents.TabIndex = 6
         Me.btnDefaultContents.Text = "Default Contents"
         Me.btnDefaultContents.UseVisualStyleBackColor = True
         '
@@ -312,7 +313,6 @@ Partial Class F_Main
         '
         Me.grpPrintingOptions.Controls.Add(Me.nudStickerCopies)
         Me.grpPrintingOptions.Controls.Add(Me.nudPaperCopies)
-        Me.grpPrintingOptions.Controls.Add(Me.PictureBox1)
         Me.grpPrintingOptions.Controls.Add(Me.chkSticker)
         Me.grpPrintingOptions.Controls.Add(Me.lblPaperCopies)
         Me.grpPrintingOptions.Controls.Add(Me.chkPaper)
@@ -322,8 +322,8 @@ Partial Class F_Main
         Me.grpPrintingOptions.Controls.Add(Me.lblStickerPrinter)
         Me.grpPrintingOptions.Location = New System.Drawing.Point(402, 35)
         Me.grpPrintingOptions.Name = "grpPrintingOptions"
-        Me.grpPrintingOptions.Size = New System.Drawing.Size(376, 350)
-        Me.grpPrintingOptions.TabIndex = 1
+        Me.grpPrintingOptions.Size = New System.Drawing.Size(376, 313)
+        Me.grpPrintingOptions.TabIndex = 2
         Me.grpPrintingOptions.TabStop = False
         Me.grpPrintingOptions.Text = "Options"
         '
@@ -346,7 +346,7 @@ Partial Class F_Main
         Me.PictureBox1.ErrorImage = Nothing
         Me.PictureBox1.Image = Global.Security_Declaration_Form_Generator.My.Resources.Resources.WeidmullerLogo_Full
         Me.PictureBox1.InitialImage = Nothing
-        Me.PictureBox1.Location = New System.Drawing.Point(197, 316)
+        Me.PictureBox1.Location = New System.Drawing.Point(615, 362)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(163, 23)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -372,7 +372,7 @@ Partial Class F_Main
         Me.grpConsignment.Location = New System.Drawing.Point(12, 35)
         Me.grpConsignment.Name = "grpConsignment"
         Me.grpConsignment.Size = New System.Drawing.Size(380, 350)
-        Me.grpConsignment.TabIndex = 0
+        Me.grpConsignment.TabIndex = 1
         Me.grpConsignment.TabStop = False
         Me.grpConsignment.Text = "Consignment"
         '
@@ -381,7 +381,7 @@ Partial Class F_Main
         Me.txtIssuedBy.Location = New System.Drawing.Point(88, 27)
         Me.txtIssuedBy.Name = "txtIssuedBy"
         Me.txtIssuedBy.Size = New System.Drawing.Size(286, 20)
-        Me.txtIssuedBy.TabIndex = 24
+        Me.txtIssuedBy.TabIndex = 9
         '
         'lblIssuedBy
         '
@@ -400,6 +400,7 @@ Partial Class F_Main
         Me.ClientSize = New System.Drawing.Size(790, 397)
         Me.Controls.Add(Me.lblCurrentUsername)
         Me.Controls.Add(Me.grpConsignment)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.grpPrintingOptions)
         Me.Controls.Add(Me.lblCurrentlyLoggedInUser)
         Me.Controls.Add(Me.tspMenu)

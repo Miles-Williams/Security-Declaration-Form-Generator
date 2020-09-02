@@ -1,6 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Drawing.Printing
 Imports System.Drawing.Text
+Imports System.Runtime.InteropServices
 
 Public Class F_Configuration
 
@@ -17,7 +18,7 @@ Public Class F_Configuration
     Private Event InternationalRbdChanged()
 
     Private ReadOnly pfc As New PrivateFontCollection
-    Private weidFont As Font
+
 
     Public Sub New(ByRef parState As C_State)
         InitializeComponent()
@@ -26,12 +27,13 @@ Public Class F_Configuration
 
     Private Sub Configuration_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Icon = g_Icon
-        Dim f As String = My.Resources.WeidFontFile
-        Me.pfc.AddFontFile(f)
-        Me.weidFont = New Font(Me.pfc.Families(0), 14)
-        SetFormsCustomFont(Me, Me.weidFont)
+        SetFormsCustomFont(Me, Me.pfc, g_FontResourceName, 14, FontStyle.Regular)
         UpdateConfigForm()
         CenterForm(Me)
+    End Sub
+
+    Private Sub F_Configuration_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
+        Me.pfc.Dispose()
     End Sub
 
     Private Sub OkBtn_Click(sender As Object, e As EventArgs) Handles btnOk.Click
@@ -345,7 +347,4 @@ Public Class F_Configuration
         Return path
     End Function
 
-    Private Sub F_Configuration_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-
-    End Sub
 End Class

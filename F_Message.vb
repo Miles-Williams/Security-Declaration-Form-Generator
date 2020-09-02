@@ -4,18 +4,14 @@ Imports System.Text
 Public Class F_Message
     'Displayed while async task running so the user doesn't think the application has frozen
     Private ReadOnly pfc As New PrivateFontCollection
-    Private weidFont As Font
 
     Public Sub New()
         InitializeComponent()
     End Sub
 
     Private Sub F_Message_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim f As String = My.Resources.WeidFontFile
-        Me.pfc.AddFontFile(f)
-        Me.weidFont = New Font(Me.pfc.Families(0), 14)
         Icon = g_Icon
-        SetFormsCustomFont(Me, Me.weidFont)
+        SetFormsCustomFont(Me, Me.pfc, g_FontResourceName, 48, FontStyle.Regular)
         CenterForm(Me)
     End Sub
 

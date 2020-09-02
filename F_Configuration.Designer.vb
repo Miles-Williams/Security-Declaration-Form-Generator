@@ -48,10 +48,10 @@ Partial Class F_Configuration
         Me.lblCurrentSaveDirectoryRoot = New System.Windows.Forms.Label()
         Me.chkTollPrefixDefault = New System.Windows.Forms.CheckBox()
         Me.grpUsers = New System.Windows.Forms.GroupBox()
+        Me.lstUsers = New System.Windows.Forms.ListBox()
         Me.btnEditUser = New System.Windows.Forms.Button()
         Me.btnDeleteUser = New System.Windows.Forms.Button()
         Me.btnAddUser = New System.Windows.Forms.Button()
-        Me.lstUsers = New System.Windows.Forms.ListBox()
         Me.grpSignature = New System.Windows.Forms.GroupBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.grpPrinters.SuspendLayout()
@@ -86,14 +86,14 @@ Partial Class F_Configuration
         Me.nudPaperCopies.Location = New System.Drawing.Point(136, 133)
         Me.nudPaperCopies.Name = "nudPaperCopies"
         Me.nudPaperCopies.Size = New System.Drawing.Size(55, 20)
-        Me.nudPaperCopies.TabIndex = 30
+        Me.nudPaperCopies.TabIndex = 3
         '
         'nudStickerCopies
         '
         Me.nudStickerCopies.Location = New System.Drawing.Point(136, 65)
         Me.nudStickerCopies.Name = "nudStickerCopies"
         Me.nudStickerCopies.Size = New System.Drawing.Size(55, 20)
-        Me.nudStickerCopies.TabIndex = 29
+        Me.nudStickerCopies.TabIndex = 1
         '
         'lblPaperCopies
         '
@@ -119,7 +119,7 @@ Partial Class F_Configuration
         Me.cboPaperPrinter.Location = New System.Drawing.Point(136, 98)
         Me.cboPaperPrinter.Name = "cboPaperPrinter"
         Me.cboPaperPrinter.Size = New System.Drawing.Size(269, 21)
-        Me.cboPaperPrinter.TabIndex = 5
+        Me.cboPaperPrinter.TabIndex = 2
         '
         'cboStickerPrinter
         '
@@ -127,7 +127,7 @@ Partial Class F_Configuration
         Me.cboStickerPrinter.Location = New System.Drawing.Point(136, 29)
         Me.cboStickerPrinter.Name = "cboStickerPrinter"
         Me.cboStickerPrinter.Size = New System.Drawing.Size(269, 21)
-        Me.cboStickerPrinter.TabIndex = 4
+        Me.cboStickerPrinter.TabIndex = 0
         '
         'lblPaperPrinter
         '
@@ -153,7 +153,7 @@ Partial Class F_Configuration
         Me.btnOk.Location = New System.Drawing.Point(436, 357)
         Me.btnOk.Name = "btnOk"
         Me.btnOk.Size = New System.Drawing.Size(106, 30)
-        Me.btnOk.TabIndex = 1
+        Me.btnOk.TabIndex = 3
         Me.btnOk.Text = "OK"
         Me.btnOk.UseVisualStyleBackColor = True
         '
@@ -164,7 +164,7 @@ Partial Class F_Configuration
         Me.btnCancel.Location = New System.Drawing.Point(666, 357)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(106, 30)
-        Me.btnCancel.TabIndex = 2
+        Me.btnCancel.TabIndex = 5
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
@@ -174,7 +174,7 @@ Partial Class F_Configuration
         Me.btnApply.Location = New System.Drawing.Point(551, 357)
         Me.btnApply.Name = "btnApply"
         Me.btnApply.Size = New System.Drawing.Size(106, 30)
-        Me.btnApply.TabIndex = 3
+        Me.btnApply.TabIndex = 4
         Me.btnApply.Text = "Apply"
         Me.btnApply.UseVisualStyleBackColor = True
         '
@@ -203,7 +203,7 @@ Partial Class F_Configuration
         Me.grpDefaultSettings.Location = New System.Drawing.Point(12, 194)
         Me.grpDefaultSettings.Name = "grpDefaultSettings"
         Me.grpDefaultSettings.Size = New System.Drawing.Size(411, 235)
-        Me.grpDefaultSettings.TabIndex = 6
+        Me.grpDefaultSettings.TabIndex = 1
         Me.grpDefaultSettings.TabStop = False
         Me.grpDefaultSettings.Text = "Default Settings"
         '
@@ -212,7 +212,7 @@ Partial Class F_Configuration
         Me.txtKnownConsignor.Location = New System.Drawing.Point(136, 192)
         Me.txtKnownConsignor.Name = "txtKnownConsignor"
         Me.txtKnownConsignor.Size = New System.Drawing.Size(269, 20)
-        Me.txtKnownConsignor.TabIndex = 13
+        Me.txtKnownConsignor.TabIndex = 5
         '
         'lblKnownConsignor
         '
@@ -228,7 +228,7 @@ Partial Class F_Configuration
         Me.txtDefaultContents.Location = New System.Drawing.Point(136, 156)
         Me.txtDefaultContents.Name = "txtDefaultContents"
         Me.txtDefaultContents.Size = New System.Drawing.Size(269, 20)
-        Me.txtDefaultContents.TabIndex = 11
+        Me.txtDefaultContents.TabIndex = 4
         '
         'rdbInternational
         '
@@ -236,7 +236,7 @@ Partial Class F_Configuration
         Me.rdbInternational.Location = New System.Drawing.Point(253, 115)
         Me.rdbInternational.Name = "rdbInternational"
         Me.rdbInternational.Size = New System.Drawing.Size(83, 17)
-        Me.rdbInternational.TabIndex = 5
+        Me.rdbInternational.TabIndex = 3
         Me.rdbInternational.TabStop = True
         Me.rdbInternational.Text = "International"
         Me.rdbInternational.UseVisualStyleBackColor = True
@@ -247,7 +247,7 @@ Partial Class F_Configuration
         Me.btnSaveDirectoryRoot.Location = New System.Drawing.Point(10, 80)
         Me.btnSaveDirectoryRoot.Name = "btnSaveDirectoryRoot"
         Me.btnSaveDirectoryRoot.Size = New System.Drawing.Size(103, 30)
-        Me.btnSaveDirectoryRoot.TabIndex = 2
+        Me.btnSaveDirectoryRoot.TabIndex = 0
         Me.btnSaveDirectoryRoot.Text = "Change SDR"
         Me.btnSaveDirectoryRoot.UseVisualStyleBackColor = True
         '
@@ -275,7 +275,7 @@ Partial Class F_Configuration
         Me.rdbDomestic.Location = New System.Drawing.Point(162, 115)
         Me.rdbDomestic.Name = "rdbDomestic"
         Me.rdbDomestic.Size = New System.Drawing.Size(69, 17)
-        Me.rdbDomestic.TabIndex = 4
+        Me.rdbDomestic.TabIndex = 2
         Me.rdbDomestic.TabStop = True
         Me.rdbDomestic.Text = "Domestic"
         Me.rdbDomestic.UseVisualStyleBackColor = True
@@ -294,23 +294,31 @@ Partial Class F_Configuration
         Me.chkTollPrefixDefault.Location = New System.Drawing.Point(10, 116)
         Me.chkTollPrefixDefault.Name = "chkTollPrefixDefault"
         Me.chkTollPrefixDefault.Size = New System.Drawing.Size(94, 17)
-        Me.chkTollPrefixDefault.TabIndex = 3
+        Me.chkTollPrefixDefault.TabIndex = 1
         Me.chkTollPrefixDefault.Text = "Use Toll Prefix"
         Me.chkTollPrefixDefault.UseVisualStyleBackColor = True
         '
         'grpUsers
         '
+        Me.grpUsers.Controls.Add(Me.lstUsers)
         Me.grpUsers.Controls.Add(Me.btnEditUser)
         Me.grpUsers.Controls.Add(Me.btnDeleteUser)
         Me.grpUsers.Controls.Add(Me.btnAddUser)
-        Me.grpUsers.Controls.Add(Me.lstUsers)
         Me.grpUsers.Controls.Add(Me.grpSignature)
         Me.grpUsers.Location = New System.Drawing.Point(429, 12)
         Me.grpUsers.Name = "grpUsers"
         Me.grpUsers.Size = New System.Drawing.Size(349, 332)
-        Me.grpUsers.TabIndex = 7
+        Me.grpUsers.TabIndex = 2
         Me.grpUsers.TabStop = False
         Me.grpUsers.Text = "Users"
+        '
+        'lstUsers
+        '
+        Me.lstUsers.FormattingEnabled = True
+        Me.lstUsers.Location = New System.Drawing.Point(9, 30)
+        Me.lstUsers.Name = "lstUsers"
+        Me.lstUsers.Size = New System.Drawing.Size(203, 134)
+        Me.lstUsers.TabIndex = 10
         '
         'btnEditUser
         '
@@ -318,7 +326,7 @@ Partial Class F_Configuration
         Me.btnEditUser.Location = New System.Drawing.Point(218, 130)
         Me.btnEditUser.Name = "btnEditUser"
         Me.btnEditUser.Size = New System.Drawing.Size(106, 30)
-        Me.btnEditUser.TabIndex = 9
+        Me.btnEditUser.TabIndex = 2
         Me.btnEditUser.Text = "Edit User"
         Me.btnEditUser.UseVisualStyleBackColor = True
         '
@@ -328,7 +336,7 @@ Partial Class F_Configuration
         Me.btnDeleteUser.Location = New System.Drawing.Point(218, 78)
         Me.btnDeleteUser.Name = "btnDeleteUser"
         Me.btnDeleteUser.Size = New System.Drawing.Size(106, 30)
-        Me.btnDeleteUser.TabIndex = 8
+        Me.btnDeleteUser.TabIndex = 1
         Me.btnDeleteUser.Text = "Delete User"
         Me.btnDeleteUser.UseVisualStyleBackColor = True
         '
@@ -338,17 +346,9 @@ Partial Class F_Configuration
         Me.btnAddUser.Location = New System.Drawing.Point(218, 30)
         Me.btnAddUser.Name = "btnAddUser"
         Me.btnAddUser.Size = New System.Drawing.Size(106, 30)
-        Me.btnAddUser.TabIndex = 7
+        Me.btnAddUser.TabIndex = 0
         Me.btnAddUser.Text = "Add User"
         Me.btnAddUser.UseVisualStyleBackColor = True
-        '
-        'lstUsers
-        '
-        Me.lstUsers.FormattingEnabled = True
-        Me.lstUsers.Location = New System.Drawing.Point(9, 30)
-        Me.lstUsers.Name = "lstUsers"
-        Me.lstUsers.Size = New System.Drawing.Size(203, 134)
-        Me.lstUsers.TabIndex = 6
         '
         'grpSignature
         '
@@ -356,7 +356,7 @@ Partial Class F_Configuration
         Me.grpSignature.Location = New System.Drawing.Point(6, 182)
         Me.grpSignature.Name = "grpSignature"
         Me.grpSignature.Size = New System.Drawing.Size(337, 144)
-        Me.grpSignature.TabIndex = 5
+        Me.grpSignature.TabIndex = 4
         Me.grpSignature.TabStop = False
         Me.grpSignature.Text = "Signature"
         '
@@ -427,7 +427,6 @@ Partial Class F_Configuration
     Friend WithEvents btnEditUser As Button
     Friend WithEvents btnDeleteUser As Button
     Friend WithEvents btnAddUser As Button
-    Friend WithEvents lstUsers As ListBox
     Friend WithEvents lblPaperCopies As Label
     Friend WithEvents lblStickerCopies As Label
     Friend WithEvents txtDefaultContents As TextBox
@@ -437,4 +436,5 @@ Partial Class F_Configuration
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents nudPaperCopies As NumericUpDown
     Friend WithEvents nudStickerCopies As NumericUpDown
+    Friend WithEvents lstUsers As ListBox
 End Class

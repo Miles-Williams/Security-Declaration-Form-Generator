@@ -1,5 +1,7 @@
 ﻿Imports System.DirectoryServices.AccountManagement
+Imports System.Drawing.Text
 Imports System.IO
+Imports System.Runtime.InteropServices
 Imports System.Runtime.Serialization.Formatters.Binary
 Imports System.Security.Cryptography
 Imports System.Text
@@ -31,6 +33,7 @@ Module M_Globals
     Public g_Validated As Boolean
     Public g_IsDomain As Boolean
     Public g_WeidOrange As Color = Color.FromArgb(235, 140, 0)
+    Public g_FontResourceName As String = "WM_Cond_wgl4_0"
     'Public g_weidCondensed As Font
 
     'Public Sub Main()
@@ -43,18 +46,31 @@ Module M_Globals
     '    g_weidCondensed = New Font(pfc.Families(0), 14)
     '    Application.Run(F_Main)
     'End Sub
+    Public Sub SetFormsCustomFont(parForm As Form,
+                                  parPfc As PrivateFontCollection,
+                                  parFontResourceName As String,
+                                  parSize As Integer,
+                                  parStyle As FontStyle)
+        Dim weidFont As Font
+        Dim FontBytes() As Byte = CType(My.Resources.ResourceManager.GetObject(parFontResourceName), Byte())
+        Dim fontPtr As IntPtr = Marshal.AllocCoTaskMem(FontBytes.Length)
+        Marshal.Copy(FontBytes, 0, fontPtr, FontBytes.Length)
+        parPfc.AddMemoryFont(fontPtr, FontBytes.Length)
+        weidFont = New Font(parPfc.Families(0), parSize, parStyle)
+        ApplyControlsCustomFonts(parForm, weidFont)
+    End Sub
 
-    Public Sub SetFormsCustomFont(parForm As Form, parFont As Font)
+    Public Sub ApplyControlsCustomFonts(parForm As Form, parFont As Font)
         For Each c As Control In parForm.Controls
-            SetControlsCustomFontsRecursively(c, parFont)
+            ApplyControlsCustomFontsRecursively(c, parFont)
         Next
     End Sub
 
-    Private Sub SetControlsCustomFontsRecursively(parControl As Control, parFont As Font)
+    Private Sub ApplyControlsCustomFontsRecursively(parControl As Control, parFont As Font)
         Try
             If parControl.HasChildren Then
                 For Each c As Control In parControl.Controls
-                    SetControlsCustomFontsRecursively(c, parFont)
+                    ApplyControlsCustomFontsRecursively(c, parFont)
                 Next
             End If
 
@@ -206,13 +222,6 @@ ReturnFalse:
     Public Function GetHashedPw(ByVal parPw As String, parSalt As String) As String
         Return GetSHA512String(parPw & parSalt)
     End Function
-
-    Public Sub CheckForExcel()
-        MsgBox("Entered CheckForExcel")
-        Dim officeType As Type = Type.GetTypeFromProgID("Excel.Application")
-        If officeType Is Nothing Then MsgBox("This application requires Microsoft Excel 2013 or later to function.")
-        MsgBox("Leaving CheckForExcel")
-    End Sub
 
     Public Async Sub GetContextAsync(parUseDomain As Boolean)
         If parUseDomain Then

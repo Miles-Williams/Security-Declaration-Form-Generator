@@ -12,9 +12,9 @@ Public Class F_Main
     Private WithEvents ValidateUserForm As F_Login
     Private WithEvents WinUserValidateForm As F_WinUserValidate
 
-    Private userValidated As Boolean
     Private ReadOnly pfc As New PrivateFontCollection
-    Private weidFont As Font
+
+    Private userValidated As Boolean
 
     Private Event AddConNumToList()
     Private Event RemoveConNumFromList()
@@ -36,11 +36,11 @@ Public Class F_Main
     End Sub
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim f As String = My.Resources.WeidFontFile
-        Me.pfc.AddFontFile(f)
-        Me.weidFont = New Font(Me.pfc.Families(0), 14)
+        'Dim f As String = My.Resources.WeidFontFile
+        'Me.pfc.AddFontFile(f)
+        'Me.weidFont = New Font(Me.pfc.Families(0), 14)
         Icon = g_Icon
-        SetFormsCustomFont(Me, Me.weidFont)
+        SetFormsCustomFont(Me, Me.pfc, g_FontResourceName, 14, FontStyle.Regular)
         InitMainForm()
         CenterForm(Me)
     End Sub

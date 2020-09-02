@@ -42,6 +42,7 @@ Partial Class F_Message
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Window
         Me.ClientSize = New System.Drawing.Size(194, 100)
+        Me.ControlBox = False
         Me.Controls.Add(Me.lblValidating)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False

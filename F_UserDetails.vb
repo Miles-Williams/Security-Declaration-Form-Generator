@@ -2,7 +2,6 @@
 
 Public Class F_UserDetails
     Private ReadOnly pfc As New PrivateFontCollection
-    Private weidFont As Font
     Private ReadOnly TempState As C_State
     Private TempUser As C_User
 
@@ -18,11 +17,8 @@ Public Class F_UserDetails
     End Sub
 
     Private Sub UserDetails_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Dim f As String = My.Resources.WeidFontFile
-        Me.pfc.AddFontFile(f)
-        Me.weidFont = New Font(Me.pfc.Families(0), 14)
         Icon = g_Icon
-        SetFormsCustomFont(Me, Me.weidFont)
+        SetFormsCustomFont(Me, Me.pfc, g_FontResourceName, 14, FontStyle.Regular)
         CenterControlHorizontally(Me, btnProceed)
         CenterControlHorizontally(Me, picSignature)
     End Sub

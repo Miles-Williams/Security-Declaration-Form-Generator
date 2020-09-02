@@ -90,4 +90,9 @@ Module M_Excel_Helpers
 
     End Sub
 
+    Public Sub CheckForExcel()
+        Dim officeType As Type = Type.GetTypeFromProgID("Excel.Application")
+        If officeType Is Nothing Then MsgBox("This application requires Microsoft Excel 2013 or later to function.")
+    End Sub
+
 End Module
