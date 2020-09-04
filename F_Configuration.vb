@@ -1,10 +1,11 @@
-﻿Imports System.ComponentModel
-Imports System.Drawing.Printing
+﻿Imports System.Drawing.Printing
 Imports System.Drawing.Text
-Imports System.Runtime.InteropServices
 
 Public Class F_Configuration
 
+    Private ReadOnly pfc As New PrivateFontCollection
+
+    Private weidFont As Font
     Private TempState As C_State
 
     Private WithEvents NewUserForm As F_UserDetails
@@ -17,9 +18,6 @@ Public Class F_Configuration
     Private Event TollPrefixDefaultChkChanged()
     Private Event InternationalRbdChanged()
 
-    Private ReadOnly pfc As New PrivateFontCollection
-
-
     Public Sub New(ByRef parState As C_State)
         InitializeComponent()
         Me.TempState = parState
@@ -27,7 +25,9 @@ Public Class F_Configuration
 
     Private Sub Configuration_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Icon = g_Icon
-        SetFormsCustomFont(Me, Me.pfc, g_FontResourceName, 14, FontStyle.Regular)
+        Me.pfc.AddFontFile(My.Resources.WeidFontFile)
+        Me.weidFont = New Font(Me.pfc.Families(0), 14)
+        ApplyControlsCustomFonts(Me, Me.weidFont)
         UpdateConfigForm()
         CenterForm(Me)
     End Sub
@@ -57,7 +57,7 @@ Public Class F_Configuration
     End Sub
 
     Private Sub SaveDirectoryRoot_Click(sender As Object, e As EventArgs) Handles btnSaveDirectoryRoot.Click
-        lblCurrentSaveDirectoryRoot.Text = UserSelectedFolder()
+        lblCurrentSaveDirectoryRoot.Text = GetUserSelectedFolder()
     End Sub
 
     Private Sub EditUserBtn_Click(sender As Object, e As EventArgs) Handles btnEditUser.Click
@@ -336,7 +336,7 @@ Public Class F_Configuration
         End With
     End Sub
 
-    Private Function UserSelectedFolder() As String
+    Private Function GetUserSelectedFolder() As String
         Dim path As String = ""
         Dim fbd As New FolderBrowserDialog()
 

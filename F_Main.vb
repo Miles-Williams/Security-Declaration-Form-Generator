@@ -3,6 +3,12 @@ Imports System.Drawing.Text
 Imports System.Text
 
 Public Class F_Main
+
+    Private ReadOnly pfc As New PrivateFontCollection
+
+    Private weidFont As Font
+    Private userValidated As Boolean
+
     Private AppState As C_State
     Private TempState As C_State
     Private ExcelData As C_ExcelData
@@ -11,10 +17,6 @@ Public Class F_Main
     Private WithEvents LoginForm As F_Login
     Private WithEvents ValidateUserForm As F_Login
     Private WithEvents WinUserValidateForm As F_WinUserValidate
-
-    Private ReadOnly pfc As New PrivateFontCollection
-
-    Private userValidated As Boolean
 
     Private Event AddConNumToList()
     Private Event RemoveConNumFromList()
@@ -36,11 +38,10 @@ Public Class F_Main
     End Sub
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Dim f As String = My.Resources.WeidFontFile
-        'Me.pfc.AddFontFile(f)
-        'Me.weidFont = New Font(Me.pfc.Families(0), 14)
         Icon = g_Icon
-        SetFormsCustomFont(Me, Me.pfc, g_FontResourceName, 14, FontStyle.Regular)
+        Me.pfc.AddFontFile(My.Resources.WeidFontFile)
+        Me.weidFont = New Font(Me.pfc.Families(0), 14)
+        ApplyControlsCustomFonts(Me, Me.weidFont)
         InitMainForm()
         CenterForm(Me)
     End Sub
@@ -48,6 +49,10 @@ Public Class F_Main
     Private Sub F_Main_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         PrepareStateForClose(Me.AppState)
         SerializeState(Me.AppState)
+    End Sub
+
+    Private Sub F_Main_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
+        Me.pfc.Dispose()
     End Sub
 
     Private Sub AddConsignmentBtn_Click(sender As Object, e As EventArgs) Handles btnAddConsignment.Click
@@ -229,6 +234,7 @@ Public Class F_Main
 
     'Custom Event Handlers
 
+    'From child form events
     Private Sub EH_UserValidated() Handles ValidateUserForm.LoginSuccess
         Me.userValidated = True
     End Sub
@@ -251,6 +257,7 @@ Public Class F_Main
         txtIssuedBy.Enabled = False
     End Sub
 
+    'From internal events
     Private Sub EH_AddConNumToList() Handles Me.AddConNumToList
         Dim consignment As String = txtConsignment.Text
         If consignment <> "" Then
@@ -360,7 +367,6 @@ Clear:
     End Sub
 
     'Private Procedures
-
     Private Sub InitMainForm()
         With Me.AppState
             If .Configuration.DefaultsToInternational Then

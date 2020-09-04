@@ -1,7 +1,10 @@
 ﻿Imports System.Drawing.Text
 
 Public Class F_WinUserValidate
+
     Private ReadOnly pfc As New PrivateFontCollection
+
+    Private weidFont As Font
 
     Public Event WinUserValidated()
     Private Event ValidateWinUser()
@@ -16,9 +19,15 @@ Public Class F_WinUserValidate
 
     Private Sub F_WinUserValidate_Load(sender As Object, e As EventArgs) Handles Me.Load
         Icon = g_Icon
-        SetFormsCustomFont(Me, Me.pfc, g_FontResourceName, 14, FontStyle.Regular)
+        Me.pfc.AddFontFile(My.Resources.WeidFontFile)
+        Me.weidFont = New Font(Me.pfc.Families(0), 14)
+        ApplyControlsCustomFonts(Me, Me.weidFont)
         CenterControlHorizontally(Me, btnValidate)
         CenterForm(Me)
+    End Sub
+
+    Private Sub F_WinUserValidate_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
+        Me.pfc.Dispose()
     End Sub
 
     Private Sub ValidateBtn_Click(sender As Object, e As EventArgs) Handles btnValidate.Click
@@ -55,6 +64,7 @@ Public Class F_WinUserValidate
         RaiseEvent EscapePressed(e)
     End Sub
 
+    'Custom Event Handlers
     Private Sub EH_EscapePressed(e As PreviewKeyDownEventArgs) Handles Me.EscapePressed
         If e.KeyCode = Keys.Escape Then Close()
     End Sub
@@ -85,6 +95,7 @@ Public Class F_WinUserValidate
         Close()
     End Sub
 
+    'Private procedures
     Private Async Function ValidateAsync(parUn As String, parPw As String) As Task(Of Boolean)
         Dim b As Boolean
         If g_IsDomain Then

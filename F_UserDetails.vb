@@ -1,8 +1,11 @@
 ﻿Imports System.Drawing.Text
 
 Public Class F_UserDetails
+
     Private ReadOnly pfc As New PrivateFontCollection
     Private ReadOnly TempState As C_State
+
+    Private weidFont As Font
     Private TempUser As C_User
 
     Public Event UserAdded()
@@ -18,9 +21,15 @@ Public Class F_UserDetails
 
     Private Sub UserDetails_Load(sender As Object, e As EventArgs) Handles Me.Load
         Icon = g_Icon
-        SetFormsCustomFont(Me, Me.pfc, g_FontResourceName, 14, FontStyle.Regular)
+        Me.pfc.AddFontFile(My.Resources.WeidFontFile)
+        Me.weidFont = New Font(Me.pfc.Families(0), 14)
+        ApplyControlsCustomFonts(Me, Me.weidFont)
         CenterControlHorizontally(Me, btnProceed)
         CenterControlHorizontally(Me, picSignature)
+    End Sub
+
+    Private Sub F_UserDetails_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
+        Me.pfc.Dispose()
     End Sub
 
     Private Sub ProceedBtn_Click(sender As Object, e As EventArgs) Handles btnProceed.Click
@@ -74,6 +83,7 @@ Public Class F_UserDetails
         btnProceed.BackColor = Color.White
     End Sub
 
+    'Custom event handlers
     Private Sub EH_ProceedBtnClicked() Handles Me.ProceedBtnClicked
         If UserInfoValid() Then
             If Me.TempUser Is Nothing Then
@@ -99,6 +109,7 @@ Public Class F_UserDetails
         End If
     End Sub
 
+    'Private procedures
     Private Sub InitFormForEdit()
         Text = "Edit User"
         txtFullName.Text = Me.TempUser.FullName

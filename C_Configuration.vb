@@ -10,4 +10,5 @@ Public Class C_Configuration
     Public Property TollPrefixDefault As Boolean
     Public Property DefaultContents As String
     Public Property KnownConsignorRef As String
+
 End Class

@@ -1,7 +1,5 @@
 ﻿Imports System.DirectoryServices.AccountManagement
-Imports System.Drawing.Text
 Imports System.IO
-Imports System.Runtime.InteropServices
 Imports System.Runtime.Serialization.Formatters.Binary
 Imports System.Security.Cryptography
 Imports System.Text
@@ -33,32 +31,12 @@ Module M_Globals
     Public g_Validated As Boolean
     Public g_IsDomain As Boolean
     Public g_WeidOrange As Color = Color.FromArgb(235, 140, 0)
-    Public g_FontResourceName As String = "WM_Cond_wgl4_0"
-    'Public g_weidCondensed As Font
 
     'Public Sub Main()
-    '    MsgBox("Entered Main")
     '    Application.EnableVisualStyles()
-    '    'Application.SetCompatibleTextRenderingDefault(True)
-    '    Dim f As String = My.Resources.WeidFontFile
-    '    Dim pfc As New PrivateFontCollection
-    '    pfc.AddFontFile(f)
-    '    g_weidCondensed = New Font(pfc.Families(0), 14)
+    '    Application.SetCompatibleTextRenderingDefault(True)
     '    Application.Run(F_Main)
     'End Sub
-    Public Sub SetFormsCustomFont(parForm As Form,
-                                  parPfc As PrivateFontCollection,
-                                  parFontResourceName As String,
-                                  parSize As Integer,
-                                  parStyle As FontStyle)
-        Dim weidFont As Font
-        Dim FontBytes() As Byte = CType(My.Resources.ResourceManager.GetObject(parFontResourceName), Byte())
-        Dim fontPtr As IntPtr = Marshal.AllocCoTaskMem(FontBytes.Length)
-        Marshal.Copy(FontBytes, 0, fontPtr, FontBytes.Length)
-        parPfc.AddMemoryFont(fontPtr, FontBytes.Length)
-        weidFont = New Font(parPfc.Families(0), parSize, parStyle)
-        ApplyControlsCustomFonts(parForm, weidFont)
-    End Sub
 
     Public Sub ApplyControlsCustomFonts(parForm As Form, parFont As Font)
         For Each c As Control In parForm.Controls

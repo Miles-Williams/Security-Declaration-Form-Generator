@@ -5,7 +5,6 @@ Imports System.IO
 Module M_Excel_Helpers
 
     Public Sub PassToExcel(parExcelData As C_ExcelData)
-
         Dim Proceed As Boolean = False
         Dim xlApp = New Excel.Application With {
             .DisplayAlerts = False
@@ -46,11 +45,10 @@ Module M_Excel_Helpers
         If Not xlWorkBook Is Nothing Then ReleaseComObject(xlWorkBook)
         If Not xlWorkBooks Is Nothing Then ReleaseComObject(xlWorkBooks)
         If Not xlApp Is Nothing Then ReleaseComObject(xlApp)
-
     End Sub
 
     <CodeAnalysis.SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification:="<Pending>")>
-    Public Sub ReleaseComObject(ByVal obj As Object)
+    Private Sub ReleaseComObject(ByVal obj As Object)
         Try
             Runtime.InteropServices.Marshal.ReleaseComObject(obj)
             obj = Nothing

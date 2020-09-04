@@ -1,9 +1,12 @@
 ﻿Imports System.Drawing.Text
 
 Public Class F_Login
+
     Private ReadOnly validateUser As Boolean
     Private ReadOnly AppState As C_State
     Private ReadOnly pfc As New PrivateFontCollection
+
+    Private weidFont As Font
 
     Public Event LoginSuccess()
     Private Event TryLogin()
@@ -17,7 +20,9 @@ Public Class F_Login
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles Me.Load
         Icon = g_Icon
-        SetFormsCustomFont(Me, Me.pfc, g_FontResourceName, 14, FontStyle.Regular)
+        Me.pfc.AddFontFile(My.Resources.WeidFontFile)
+        Me.weidFont = New Font(Me.pfc.Families(0), 14)
+        ApplyControlsCustomFonts(Me, Me.weidFont)
         CenterControlHorizontally(Me, btnLogin)
         CenterForm(Me)
         If Me.validateUser Then
@@ -26,6 +31,10 @@ Public Class F_Login
             txtUsername.Enabled = False
             btnLogin.Text = "Validate"
         End If
+    End Sub
+
+    Private Sub F_Login_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
+        Me.pfc.Dispose()
     End Sub
 
     Private Sub LoginBtn_MouseEnter(sender As Object, e As EventArgs) Handles btnLogin.MouseEnter
@@ -66,6 +75,7 @@ Public Class F_Login
         RaiseEvent TryLogin()
     End Sub
 
+    'Custom Event Handlers
     Private Sub EH_TryLogin() Handles Me.TryLogin
         If LoginInfoValid() Then
             If UserLoggedIn(txtUsername.Text, txtPassword.Text, Me.AppState) Then
@@ -79,6 +89,7 @@ Public Class F_Login
         If e.KeyCode = Keys.Escape Then Close()
     End Sub
 
+    'Private procedures
     Private Function LoginInfoValid() As Boolean
         If txtUsername.Text = "" Then
             MsgBox("Enter a valid username to continue.")

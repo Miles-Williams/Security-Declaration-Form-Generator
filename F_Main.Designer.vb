@@ -173,6 +173,7 @@ Partial Class F_Main
         Me.lblCurrentUsername.Size = New System.Drawing.Size(143, 13)
         Me.lblCurrentUsername.TabIndex = 8
         Me.lblCurrentUsername.Text = "<no user currently logged in>"
+        Me.lblCurrentUsername.TextAlign = System.Drawing.ContentAlignment.BottomLeft
         '
         'rdbDomestic
         '

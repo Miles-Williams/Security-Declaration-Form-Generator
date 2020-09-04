@@ -11,6 +11,7 @@ Module M_Save_Helpers
     Private Function BuildSaveFileName(parExcelData As C_ExcelData) As String
         Return GetSaveLocationPath(parExcelData) & "\" & GetFileNamePrefix(parExcelData) & "_" & parExcelData.FirstConNumber
     End Function
+
     Private Function GetSaveLocationPath(parExcelData As C_ExcelData) As String
         Dim destination As String = ""
 
