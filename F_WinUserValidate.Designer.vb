@@ -72,7 +72,6 @@ Partial Class F_WinUserValidate
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Window
         Me.ClientSize = New System.Drawing.Size(209, 261)
-        Me.ControlBox = False
         Me.Controls.Add(Me.btnValidate)
         Me.Controls.Add(Me.lblNote)
         Me.Controls.Add(Me.lblPassword)
