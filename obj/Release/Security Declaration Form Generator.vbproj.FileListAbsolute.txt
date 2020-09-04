@@ -19,3 +19,4 @@ C:\Users\wau0195\Source\Repos\Weidmueller\Security-Declaration-Form-Generator\ob
 C:\Users\wau0195\Source\Repos\Weidmueller\Security-Declaration-Form-Generator\obj\Release\Security Declaration Form Generator.exe
 C:\Users\wau0195\Source\Repos\Weidmueller\Security-Declaration-Form-Generator\obj\Release\Security Declaration Form Generator.xml
 C:\Users\wau0195\Source\Repos\Weidmueller\Security-Declaration-Form-Generator\obj\Release\Security Declaration Form Generator.pdb
+C:\Users\wau0195\Source\Repos\Weidmueller\Security-Declaration-Form-Generator\obj\Release\Security Declaration Form Generator.vbprojAssemblyReference.cache

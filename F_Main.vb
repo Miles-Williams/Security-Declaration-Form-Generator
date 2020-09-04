@@ -429,6 +429,7 @@ Clear:
     End Function
 
     Public Sub RunPreExcelInit(parState As C_State)
+        Me.userValidated = False
         If parState.VolatileState.CurrentUser.Username <> "Guest" Then
             ValidateUserForm = New F_Login(parState, True)
             ValidateUserForm.ShowDialog()

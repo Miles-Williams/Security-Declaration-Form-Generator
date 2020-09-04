@@ -1,0 +1,66 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Security Declaration Form Generator
+</name>
+</assembly>
+<members>
+<member name="T:Security_Declaration_Form_Generator.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Security_Declaration_Form_Generator.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Security_Declaration_Form_Generator.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:Security_Declaration_Form_Generator.My.Resources.Resources.ExcelSheetName">
+<summary>
+  Looks up a localized string similar to Declaration.
+</summary>
+</member>
+<member name="P:Security_Declaration_Form_Generator.My.Resources.Resources.SdfTemplate">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:Security_Declaration_Form_Generator.My.Resources.Resources.StateFileName">
+<summary>
+  Looks up a localized string similar to .\Data\AppState.bin.
+</summary>
+</member>
+<member name="P:Security_Declaration_Form_Generator.My.Resources.Resources.WeidFontFile">
+<summary>
+  Looks up a localized string similar to .\Data\WM_Cond_wgl4_0.ttf.
+</summary>
+</member>
+<member name="P:Security_Declaration_Form_Generator.My.Resources.Resources.WeidLogo">
+<summary>
+  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+</summary>
+</member>
+<member name="P:Security_Declaration_Form_Generator.My.Resources.Resources.WeidLogoLightGrey">
+<summary>
+  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+</summary>
+</member>
+<member name="P:Security_Declaration_Form_Generator.My.Resources.Resources.WeidmullerLogo_Full">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Security_Declaration_Form_Generator.My.Resources.Resources.WM_Cond_wgl4_0">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+</members>
+</doc>
