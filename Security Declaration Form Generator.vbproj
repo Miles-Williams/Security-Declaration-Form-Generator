@@ -216,6 +216,28 @@
     <EmbeddedResource Include="Data\WM_Cond_wgl4_0.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <None Include="Data\Books\ASPdotNET MVC 5 with Bootstrap and Knockoutdotjs.pdf" />
+    <None Include="Data\Books\Beginning ASP.NET Security.pdf" />
+    <None Include="Data\Books\Beginning Entity Framework Core 2.0.pdf" />
+    <None Include="Data\Books\Beginning SOLID Principles and Design Patterns for ASP.NET  Developers.pdf" />
+    <None Include="Data\Books\C and XML Primer.pdf" />
+    <None Include="Data\Books\C- 8 Quick Syntax Reference, 3rd Edition.pdf" />
+    <None Include="Data\Books\Dependency Injection in .NET.pdf" />
+    <None Include="Data\Books\Dependency Injection Principles, Practices, and Patterns.pdf" />
+    <None Include="Data\Books\Essential ASP.NET Web Forms Development.pdf" />
+    <None Include="Data\Books\Essential Docker for ASP.NET Core MVC.pdf" />
+    <None Include="Data\Books\Exploring Advanced Features in C-.pdf" />
+    <None Include="Data\Books\Exploring the .NET Core 3.0 Runtime.pdf" />
+    <None Include="Data\Books\Front-end Development with ASP.NET Core, Angular, and Bootstrap.pdf" />
+    <None Include="Data\Books\Pro Agile .NET Development with SCRUM.pdf" />
+    <None Include="Data\Books\Pro ASP.NET Core 3, 8th. Edition.pdf" />
+    <None Include="Data\Books\Pro ASP.NET SignalR.pdf" />
+    <None Include="Data\Books\Pro ASP.NET Web API Security.pdf" />
+    <None Include="Data\Books\Pro Entity Framework Core 2 for ASP.NET Core MVC.pdf" />
+    <None Include="Data\Books\Professional ASP.NET Design Patterns.pdf" />
+    <None Include="Data\Books\SignalR Programming in Microsoft ASP.NET.pdf" />
+    <None Include="Data\Books\Understanding System.IO for .NET Core 3.pdf" />
+    <None Include="Data\Books\Web Applications on Azure.pdf" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
