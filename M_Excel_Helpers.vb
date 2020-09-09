@@ -5,63 +5,50 @@ Imports System.IO
 Module M_Excel_Helpers
 
     Public Sub PassToExcel(parExcelData As C_ExcelData)
-
         Dim Proceed As Boolean = False
-        'Dim xlApp As Excel.Application = Nothing
-        'Dim xlWorkBooks As Excel.Workbooks = Nothing
-        'Dim xlWorkBook As Excel.Workbook = Nothing
-        Dim xlWorkSheet As Excel.Worksheet = Nothing
-        'Dim xlWorkSheets As Excel.Sheets = Nothing
-        'Dim xlCells As Excel.Range = Nothing
+        Dim xlApp = New Excel.Application With {
+            .DisplayAlerts = False
+        }
 
-        Dim xlApp = New Excel.Application
-        xlApp.DisplayAlerts = False
-
-        Dim tempFilePath As String = Path.GetTempFileName()
-        File.WriteAllBytes(tempFilePath, My.Resources.SdfTemplate)
-
+        Dim tempFile As String = Path.GetTempFileName()
+        File.WriteAllBytes(tempFile, My.Resources.SdfTemplate)
         Dim xlWorkBooks = xlApp.Workbooks
-        Dim xlWorkBook = xlWorkBooks.Open(Path.GetFullPath(tempFilePath))
+        Dim xlWorkBook = xlWorkBooks.Open(Path.GetFullPath(tempFile))
         Dim xlWorkSheets = xlWorkBook.Sheets
-
-
+        Dim xlWorkSheet As Excel.Worksheet = Nothing
+        Dim xlCells = xlApp.Range("A1:B24")
         For x As Integer = 1 To xlWorkSheets.Count
             xlWorkSheet = CType(xlWorkSheets(x), Excel.Worksheet)
-
             If xlWorkSheet.Name = My.Resources.ExcelSheetName Then
                 Proceed = True
                 Exit For
             End If
-
             Runtime.InteropServices.Marshal.FinalReleaseComObject(xlWorkSheet)
             xlWorkSheet = Nothing
         Next
 
-        FillInForm(xlWorkSheet, parExcelData)
-
         If Proceed Then
+            FillInForm(xlWorkSheet, parExcelData)
             PrintExcelDocument(xlWorkSheet, parExcelData)
+            SaveToPdf(parExcelData, xlCells)
         Else
             MessageBox.Show(My.Resources.ExcelSheetName & " not found.")
         End If
-
-        Dim xlCells = xlApp.Range("A1:B24")
-
-        SaveToPdf(parExcelData, xlCells)
 
         xlWorkBook.Close()
         xlApp.UserControl = True
         xlApp.Quit()
 
-        If Not IsNothing(xlCells) Then ReleaseComObject(xlCells)
-        If Not IsNothing(xlWorkSheets) Then ReleaseComObject(xlWorkSheets)
-        If Not IsNothing(xlWorkSheet) Then ReleaseComObject(xlWorkSheet)
-        If Not IsNothing(xlWorkBook) Then ReleaseComObject(xlWorkBook)
-        If Not IsNothing(xlWorkBooks) Then ReleaseComObject(xlWorkBooks)
-        If Not IsNothing(xlApp) Then ReleaseComObject(xlApp)
-
+        If Not xlCells Is Nothing Then ReleaseComObject(xlCells)
+        If Not xlWorkSheets Is Nothing Then ReleaseComObject(xlWorkSheets)
+        If Not xlWorkSheet Is Nothing Then ReleaseComObject(xlWorkSheet)
+        If Not xlWorkBook Is Nothing Then ReleaseComObject(xlWorkBook)
+        If Not xlWorkBooks Is Nothing Then ReleaseComObject(xlWorkBooks)
+        If Not xlApp Is Nothing Then ReleaseComObject(xlApp)
     End Sub
-    Public Sub ReleaseComObject(ByVal obj As Object)
+
+    <CodeAnalysis.SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification:="<Pending>")>
+    Private Sub ReleaseComObject(ByVal obj As Object)
         Try
             Runtime.InteropServices.Marshal.ReleaseComObject(obj)
             obj = Nothing
@@ -76,6 +63,7 @@ Module M_Excel_Helpers
         parWorkSheet.Range("Contents_Of_Consignment").Value = parExcelData.Contents
         parWorkSheet.Range("Consignment_Number").Value = parExcelData.ConNumbers
         parWorkSheet.Range("Issue_Date").Value = parExcelData.IssuedOn
+        parWorkSheet.Range("Known_Consignor_Ref").Value = parExcelData.KnownConsignorRef
 
         If parExcelData.SigPath <> "" Then
             parWorkSheet.Shapes.AddPicture(parExcelData.SigPath, Core.MsoTriState.msoFalse, Core.MsoTriState.msoCTrue, 130, 900, 300, 100)
@@ -98,6 +86,11 @@ Module M_Excel_Helpers
                 parWkSht.PrintOutEx(ActivePrinter:=parExcelData.StickerPrinter, Copies:=stickerCopies)
         End Select
 
+    End Sub
+
+    Public Sub CheckForExcel()
+        Dim officeType As Type = Type.GetTypeFromProgID("Excel.Application")
+        If officeType Is Nothing Then MsgBox("This application requires Microsoft Excel 2013 or later to function.")
     End Sub
 
 End Module

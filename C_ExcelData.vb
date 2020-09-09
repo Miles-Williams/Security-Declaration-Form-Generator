@@ -1,6 +1,6 @@
 ﻿Public Class C_ExcelData
-
     Public Property Contents As String
+    Public Property KnownConsignorRef As String
     Public Property FirstConNumber As String
     Public Property ConNumbers As String
     Public Property IssuedOn As String
@@ -14,19 +14,8 @@
     Public Property FullName As String
     Public Property SigPath As String
 
-    Public Enum E_Destination
-        Domestic
-        International
-    End Enum
-
-    Public Enum E_PrintMedium
-        Paper
-        Sticker
-        Both
-        None
-    End Enum
-
     Public Sub New(parContents As String,
+                   parKnownConsignorRef As String,
                    parFirstCon As String,
                    parConNumbers As String,
                    parIssuedOn As String,
@@ -41,6 +30,7 @@
                    Optional parSigPath As String = "")
 
         Contents = parContents
+        KnownConsignorRef = parKnownConsignorRef
         FirstConNumber = parFirstCon
         ConNumbers = parConNumbers
         IssuedOn = parIssuedOn

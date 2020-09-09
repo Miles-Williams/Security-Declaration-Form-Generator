@@ -1,35 +1,18 @@
 ﻿Imports System.IO
 Imports Excel = Microsoft.Office.Interop.Excel
 
-Public Enum E_Destination
-    Domestic
-    International
-End Enum
-
-Public Enum E_PrintMedium
-    Paper
-    Sticker
-    Both
-    None
-End Enum
-
 Module M_Save_Helpers
 
     Public Sub SaveToPdf(parExcelData As C_ExcelData, parCells As Excel.Range)
-
         Dim fileName As String = BuildSaveFileName(parExcelData)
-
         SaveDocument(fileName, parCells)
-
     End Sub
 
     Private Function BuildSaveFileName(parExcelData As C_ExcelData) As String
-
         Return GetSaveLocationPath(parExcelData) & "\" & GetFileNamePrefix(parExcelData) & "_" & parExcelData.FirstConNumber
-
     End Function
-    Private Function GetSaveLocationPath(parExcelData As C_ExcelData) As String
 
+    Private Function GetSaveLocationPath(parExcelData As C_ExcelData) As String
         Dim destination As String = ""
 
         Select Case parExcelData.Destination
@@ -55,7 +38,6 @@ Module M_Save_Helpers
         If Not Directory.Exists(completePath) Then Directory.CreateDirectory(completePath)
 
         Return completePath
-
     End Function
 
     Private Function GetFileNamePrefix(parExcelData As C_ExcelData) As String
@@ -63,32 +45,29 @@ Module M_Save_Helpers
     End Function
 
     Private Function GetDocumentTypeTla(parExcelData As C_ExcelData) As String
-
-        Dim ret As String = ""
+        Dim Tla As String = ""
 
         Select Case parExcelData.Destination
             Case E_Destination.Domestic
-                ret = "SDD"
+                Tla = "SDD"
             Case E_Destination.International
-                ret = "SDI"
+                Tla = "SDI"
         End Select
 
-        Return ret
-
+        Return Tla
     End Function
-    Private Function BuildFileNameDateComponent() As String
 
+    Private Function BuildFileNameDateComponent() As String
         Dim iTempDay As Integer
         Dim iTempMonth As Integer
         Dim iTempYear As Integer
-
         Dim sDay As String
         Dim sMonth As String
         Dim sYear As String
 
         iTempDay = Microsoft.VisualBasic.Day(Now)
         iTempMonth = Month(Now)
-        iTempYear = CStr(Year(Now))
+        iTempYear = Year(Now)
 
         If iTempDay >= 10 Then
             sDay = CStr(iTempDay)
@@ -102,14 +81,11 @@ Module M_Save_Helpers
             sMonth = CStr(iTempMonth)
         End If
 
-        sYear = Mid(iTempYear, 3, 4)
-
+        sYear = Mid(CStr(iTempYear), 3, 4)
         BuildFileNameDateComponent = sDay & sMonth & sYear
-
     End Function
 
     Private Sub SaveDocument(parName As String, parCells As Excel.Range)
-
         Dim res As MsgBoxResult = MsgBoxResult.Yes
 
         If File.Exists(parName & ".pdf") Then
@@ -123,7 +99,6 @@ Module M_Save_Helpers
         Else
             MsgBox("File not saved.", MsgBoxStyle.Critical)
         End If
-
     End Sub
 
 End Module

@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("Security Declaration Form Generator")>
-<Assembly: AssemblyDescription("Create and print security declarations for the known consignor scheme and save as PDF")>
+<Assembly: AssemblyDescription("Create, print, and save digitally signed PDF Security Declaration Forms.")>
 <Assembly: AssemblyCompany("Weidmuller Australia Pty Ltd")>
 <Assembly: AssemblyProduct("Security Declaration Form Generator")>
 <Assembly: AssemblyCopyright("Copyright © Miles Williams 2020")>

@@ -42,7 +42,7 @@ Partial Class F_Login
         'lblPassword
         '
         Me.lblPassword.AutoSize = True
-        Me.lblPassword.Location = New System.Drawing.Point(12, 48)
+        Me.lblPassword.Location = New System.Drawing.Point(12, 77)
         Me.lblPassword.Name = "lblPassword"
         Me.lblPassword.Size = New System.Drawing.Size(56, 13)
         Me.lblPassword.TabIndex = 1
@@ -50,7 +50,7 @@ Partial Class F_Login
         '
         'txtPassword
         '
-        Me.txtPassword.Location = New System.Drawing.Point(12, 64)
+        Me.txtPassword.Location = New System.Drawing.Point(12, 101)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(138, 20)
         Me.txtPassword.TabIndex = 1
@@ -58,25 +58,28 @@ Partial Class F_Login
         '
         'txtUsername
         '
-        Me.txtUsername.Location = New System.Drawing.Point(12, 25)
+        Me.txtUsername.Location = New System.Drawing.Point(12, 33)
         Me.txtUsername.Name = "txtUsername"
         Me.txtUsername.Size = New System.Drawing.Size(138, 20)
         Me.txtUsername.TabIndex = 0
         '
         'btnLogin
         '
-        Me.btnLogin.Location = New System.Drawing.Point(43, 102)
+        Me.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLogin.Location = New System.Drawing.Point(41, 149)
         Me.btnLogin.Name = "btnLogin"
-        Me.btnLogin.Size = New System.Drawing.Size(75, 23)
+        Me.btnLogin.Size = New System.Drawing.Size(75, 30)
         Me.btnLogin.TabIndex = 2
         Me.btnLogin.Text = "Login"
         Me.btnLogin.UseVisualStyleBackColor = True
         '
         'F_Login
         '
+        Me.AcceptButton = Me.btnLogin
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(162, 137)
+        Me.BackColor = System.Drawing.SystemColors.Window
+        Me.ClientSize = New System.Drawing.Size(162, 187)
         Me.Controls.Add(Me.btnLogin)
         Me.Controls.Add(Me.txtUsername)
         Me.Controls.Add(Me.txtPassword)

@@ -70,6 +70,25 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Weidmuller Security Declaration Form.
+        '''
+        '''• Microsoft Excel 2013 or later is required for this application to create PDF files.
+        '''
+        '''• The &quot;Data&quot; folder is required to be in the same folder as the executable, ensure that this folder is available!
+        '''
+        '''• To add new user accounts to the application, select “Configuration” from the menu strip.
+        '''
+        '''• The Configuration tool requires you to provide your Windows login credentials for access (the password for the computer you are using the application on).
+        '''
+        '''• Once you  [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property README() As String
+            Get
+                Return ResourceManager.GetString("README", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Byte[].
         '''</summary>
         Friend ReadOnly Property SdfTemplate() As Byte()
@@ -85,6 +104,15 @@ Namespace My.Resources
         Friend ReadOnly Property StateFileName() As String
             Get
                 Return ResourceManager.GetString("StateFileName", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to .\Data\WM_Cond_wgl4_0.ttf.
+        '''</summary>
+        Friend ReadOnly Property WeidFontFile() As String
+            Get
+                Return ResourceManager.GetString("WeidFontFile", resourceCulture)
             End Get
         End Property
         
@@ -115,6 +143,16 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("WeidmullerLogo_Full", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property WM_Cond_wgl4_0() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("WM_Cond_wgl4_0", resourceCulture)
+                Return CType(obj,Byte())
             End Get
         End Property
     End Module
