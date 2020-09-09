@@ -254,5 +254,10 @@
   <ItemGroup>
     <None Include="Data\SdfTemplate.xlsx" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\README.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
