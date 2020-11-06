@@ -3,7 +3,7 @@
     Public Property KnownConsignorRef As String
     Public Property FirstConNumber As String
     Public Property ConNumbers As String
-    Public Property IssuedOn As String
+    Public Property IssuedOn As Date
     Public Property PaperCopies As Integer
     Public Property StickerCopies As Integer
     Public Property PrintMedium As E_PrintMedium
@@ -18,7 +18,7 @@
                    parKnownConsignorRef As String,
                    parFirstCon As String,
                    parConNumbers As String,
-                   parIssuedOn As String,
+                   parIssuedOn As Date,
                    parPaperCopies As Integer,
                    parStickerCopies As Integer,
                    parPrintMedium As E_PrintMedium,
