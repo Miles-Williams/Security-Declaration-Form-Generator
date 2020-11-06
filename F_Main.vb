@@ -442,7 +442,7 @@ Clear:
                                         parState.Configuration.KnownConsignorRef,
                                         parState.VolatileState.FirstConNumber,
                                         parState.VolatileState.ConNumbers,
-                                        Date.Now.ToString(),
+                                        Date.Now(),
                                         parState.PaperCopies,
                                         parState.StickerCopies,
                                         parState.PrintMedium,
