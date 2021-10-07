@@ -64,6 +64,8 @@ Module M_Excel_Helpers
         parWorkSheet.Range("Consignment_Number").Value = parExcelData.ConNumbers
         parWorkSheet.Range("Issue_Date").Value = parExcelData.IssuedOn
         parWorkSheet.Range("Known_Consignor_Ref").Value = parExcelData.KnownConsignorRef
+        parWorkSheet.Range("Cargo_Dest_Name").Value = parExcelData.CargoDestinationName
+        parWorkSheet.Range("Cargo_Dest_Address").Value = parExcelData.CargoDestinationAddress
 
         If parExcelData.SigPath <> "" Then
             parWorkSheet.Shapes.AddPicture(parExcelData.SigPath, Core.MsoTriState.msoFalse, Core.MsoTriState.msoCTrue, 130, 900, 300, 100)

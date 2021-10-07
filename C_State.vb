@@ -29,7 +29,7 @@ Public Class C_State
             .DefaultsToInternational = False,
             .TollPrefixDefault = False,
             .DefaultContents = "Electrical/Electronic Components",
-            .KnownConsignorRef = "KNOWN CONSIGNOR: AU-KC/01327-01"
+            .KnownConsignorRef = "AU-KC/01327-01"
         }
 
         If VolatileState Is Nothing Then
@@ -38,6 +38,8 @@ Public Class C_State
                 .FirstConNumber = ""
             }
             If VolatileState.CurrentUser Is Nothing Then VolatileState.CurrentUser = New C_User("", "Guest", "", "")
+            If VolatileState.CargoDestination Is Nothing Then VolatileState.CargoDestination = New C_Destination("", "")
+
         End If
 
         Contents = Configuration.DefaultContents
@@ -53,6 +55,8 @@ Public Class C_State
         Public Property FirstConNumber As String
         Public Property ConNumbers As String
         Public Property CurrentUser As C_User
+        Public Property CargoDestination As C_Destination
+
     End Class
 
 End Class

@@ -267,7 +267,7 @@ Public Class F_Main
                        """ < > | ? \ / * :")
                 GoTo Clear
             End If
-            If chkTollPrefix.Checked Then consignment = "87750" & consignment
+            If chkTollPrefix.Checked Then consignment = "240100" & consignment
             lstConsignments.Items.Add(consignment)
         End If
 Clear:
@@ -284,6 +284,8 @@ Clear:
             If Me.AppState.VolatileState.CurrentUser.Username = "Guest" Then Me.AppState.VolatileState.CurrentUser.FullName = txtIssuedBy.Text
             Me.AppState.VolatileState.FirstConNumber = CStr(lstConsignments.Items.Item(0))
             Me.AppState.VolatileState.ConNumbers = CreateConNumString(lstConsignments.Items)
+            Me.AppState.VolatileState.CargoDestination.Name = txtCDName.Text
+            Me.AppState.VolatileState.CargoDestination.Address = txtCDAddress.Text
             Me.AppState.PaperCopies = CInt(nudPaperCopies.Value)
             Me.AppState.StickerCopies = CInt(nudStickerCopies.Value)
             RunPreExcelInit(Me.AppState)
@@ -450,6 +452,8 @@ Clear:
                                         parState.Configuration.SaveDirectoryRoot,
                                         parState.Configuration.CurrentPaperPrinter,
                                         parState.Configuration.CurrentStickerPrinter,
+                                        parState.VolatileState.CargoDestination.Name,
+                                        parState.VolatileState.CargoDestination.Address,
                                         parState.VolatileState.CurrentUser.FullName,
                                         parState.VolatileState.CurrentUser.SigPath)
 
@@ -460,6 +464,8 @@ Clear:
                 parState.VolatileState.CurrentUser.FullName = ""
             End If
 
+            txtCDName.Clear()
+            txtCDAddress.Clear()
             lstConsignments.Items.Clear()
             txtConsignment.Clear()
             txtConsignment.Select()

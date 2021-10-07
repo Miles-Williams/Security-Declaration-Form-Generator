@@ -55,18 +55,24 @@ Partial Class F_Main
         Me.grpConsignment = New System.Windows.Forms.GroupBox()
         Me.txtIssuedBy = New System.Windows.Forms.TextBox()
         Me.lblIssuedBy = New System.Windows.Forms.Label()
+        Me.grpCargoDestination = New System.Windows.Forms.GroupBox()
+        Me.lblCargoDestName = New System.Windows.Forms.Label()
+        Me.txtCDName = New System.Windows.Forms.TextBox()
+        Me.txtCDAddress = New System.Windows.Forms.TextBox()
+        Me.lblCDAddress = New System.Windows.Forms.Label()
         Me.tspMenu.SuspendLayout()
         Me.grpPrintingOptions.SuspendLayout()
         CType(Me.nudStickerCopies, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudPaperCopies, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpConsignment.SuspendLayout()
+        Me.grpCargoDestination.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnCreateConsignment
         '
         Me.btnCreateConsignment.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCreateConsignment.Location = New System.Drawing.Point(23, 306)
+        Me.btnCreateConsignment.Location = New System.Drawing.Point(23, 319)
         Me.btnCreateConsignment.Name = "btnCreateConsignment"
         Me.btnCreateConsignment.Size = New System.Drawing.Size(155, 30)
         Me.btnCreateConsignment.TabIndex = 4
@@ -76,7 +82,7 @@ Partial Class F_Main
         'btnAddConsignment
         '
         Me.btnAddConsignment.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAddConsignment.Location = New System.Drawing.Point(103, 227)
+        Me.btnAddConsignment.Location = New System.Drawing.Point(103, 240)
         Me.btnAddConsignment.Name = "btnAddConsignment"
         Me.btnAddConsignment.Size = New System.Drawing.Size(75, 30)
         Me.btnAddConsignment.TabIndex = 2
@@ -91,7 +97,7 @@ Partial Class F_Main
         Me.tspMenu.Location = New System.Drawing.Point(0, 0)
         Me.tspMenu.Name = "tspMenu"
         Me.tspMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.tspMenu.Size = New System.Drawing.Size(790, 25)
+        Me.tspMenu.Size = New System.Drawing.Size(820, 25)
         Me.tspMenu.TabIndex = 0
         Me.tspMenu.TabStop = True
         '
@@ -129,7 +135,7 @@ Partial Class F_Main
         '
         'txtConsignment
         '
-        Me.txtConsignment.Location = New System.Drawing.Point(184, 187)
+        Me.txtConsignment.Location = New System.Drawing.Point(184, 200)
         Me.txtConsignment.Name = "txtConsignment"
         Me.txtConsignment.Size = New System.Drawing.Size(190, 20)
         Me.txtConsignment.TabIndex = 0
@@ -137,7 +143,7 @@ Partial Class F_Main
         'lblConsignmentNumber
         '
         Me.lblConsignmentNumber.AutoSize = True
-        Me.lblConsignmentNumber.Location = New System.Drawing.Point(10, 190)
+        Me.lblConsignmentNumber.Location = New System.Drawing.Point(10, 203)
         Me.lblConsignmentNumber.Name = "lblConsignmentNumber"
         Me.lblConsignmentNumber.Size = New System.Drawing.Size(111, 13)
         Me.lblConsignmentNumber.TabIndex = 5
@@ -146,7 +152,7 @@ Partial Class F_Main
         'lstConsignments
         '
         Me.lstConsignments.FormattingEnabled = True
-        Me.lstConsignments.Location = New System.Drawing.Point(184, 228)
+        Me.lstConsignments.Location = New System.Drawing.Point(184, 241)
         Me.lstConsignments.Name = "lstConsignments"
         Me.lstConsignments.Size = New System.Drawing.Size(190, 121)
         Me.lstConsignments.TabIndex = 1
@@ -178,7 +184,7 @@ Partial Class F_Main
         'rdbDomestic
         '
         Me.rdbDomestic.AutoSize = True
-        Me.rdbDomestic.Location = New System.Drawing.Point(10, 68)
+        Me.rdbDomestic.Location = New System.Drawing.Point(10, 38)
         Me.rdbDomestic.Name = "rdbDomestic"
         Me.rdbDomestic.Size = New System.Drawing.Size(69, 17)
         Me.rdbDomestic.TabIndex = 5
@@ -189,7 +195,7 @@ Partial Class F_Main
         'rdbInternational
         '
         Me.rdbInternational.AutoSize = True
-        Me.rdbInternational.Location = New System.Drawing.Point(101, 68)
+        Me.rdbInternational.Location = New System.Drawing.Point(101, 38)
         Me.rdbInternational.Name = "rdbInternational"
         Me.rdbInternational.Size = New System.Drawing.Size(83, 17)
         Me.rdbInternational.TabIndex = 5
@@ -200,11 +206,11 @@ Partial Class F_Main
         'chkTollPrefix
         '
         Me.chkTollPrefix.AutoSize = True
-        Me.chkTollPrefix.Location = New System.Drawing.Point(10, 150)
+        Me.chkTollPrefix.Location = New System.Drawing.Point(13, 154)
         Me.chkTollPrefix.Name = "chkTollPrefix"
-        Me.chkTollPrefix.Size = New System.Drawing.Size(110, 17)
+        Me.chkTollPrefix.Size = New System.Drawing.Size(116, 17)
         Me.chkTollPrefix.TabIndex = 8
-        Me.chkTollPrefix.Text = "Toll prefix (87750)"
+        Me.chkTollPrefix.Text = "Toll prefix (240100)"
         Me.chkTollPrefix.UseVisualStyleBackColor = True
         '
         'chkSticker
@@ -220,7 +226,7 @@ Partial Class F_Main
         'chkPaper
         '
         Me.chkPaper.AutoSize = True
-        Me.chkPaper.Location = New System.Drawing.Point(10, 150)
+        Me.chkPaper.Location = New System.Drawing.Point(289, 30)
         Me.chkPaper.Name = "chkPaper"
         Me.chkPaper.Size = New System.Drawing.Size(155, 17)
         Me.chkPaper.TabIndex = 9
@@ -230,7 +236,7 @@ Partial Class F_Main
         'chkBothPrinters
         '
         Me.chkBothPrinters.AutoSize = True
-        Me.chkBothPrinters.Location = New System.Drawing.Point(10, 270)
+        Me.chkBothPrinters.Location = New System.Drawing.Point(564, 30)
         Me.chkBothPrinters.Name = "chkBothPrinters"
         Me.chkBothPrinters.Size = New System.Drawing.Size(120, 17)
         Me.chkBothPrinters.TabIndex = 11
@@ -240,7 +246,7 @@ Partial Class F_Main
         'lblPaperPrinter
         '
         Me.lblPaperPrinter.AutoSize = True
-        Me.lblPaperPrinter.Location = New System.Drawing.Point(10, 190)
+        Me.lblPaperPrinter.Location = New System.Drawing.Point(289, 70)
         Me.lblPaperPrinter.Name = "lblPaperPrinter"
         Me.lblPaperPrinter.Size = New System.Drawing.Size(140, 13)
         Me.lblPaperPrinter.TabIndex = 14
@@ -258,7 +264,7 @@ Partial Class F_Main
         'btnRemoveConsignment
         '
         Me.btnRemoveConsignment.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRemoveConsignment.Location = New System.Drawing.Point(103, 266)
+        Me.btnRemoveConsignment.Location = New System.Drawing.Point(103, 279)
         Me.btnRemoveConsignment.Name = "btnRemoveConsignment"
         Me.btnRemoveConsignment.Size = New System.Drawing.Size(75, 30)
         Me.btnRemoveConsignment.TabIndex = 3
@@ -277,7 +283,7 @@ Partial Class F_Main
         'lblPaperCopies
         '
         Me.lblPaperCopies.AutoSize = True
-        Me.lblPaperCopies.Location = New System.Drawing.Point(10, 230)
+        Me.lblPaperCopies.Location = New System.Drawing.Point(289, 110)
         Me.lblPaperCopies.Name = "lblPaperCopies"
         Me.lblPaperCopies.Size = New System.Drawing.Size(103, 13)
         Me.lblPaperCopies.TabIndex = 20
@@ -286,7 +292,7 @@ Partial Class F_Main
         'lblContents
         '
         Me.lblContents.AutoSize = True
-        Me.lblContents.Location = New System.Drawing.Point(10, 110)
+        Me.lblContents.Location = New System.Drawing.Point(10, 93)
         Me.lblContents.Name = "lblContents"
         Me.lblContents.Size = New System.Drawing.Size(116, 13)
         Me.lblContents.TabIndex = 23
@@ -294,16 +300,16 @@ Partial Class F_Main
         '
         'txtContents
         '
-        Me.txtContents.Location = New System.Drawing.Point(184, 107)
+        Me.txtContents.Location = New System.Drawing.Point(184, 90)
         Me.txtContents.Multiline = True
         Me.txtContents.Name = "txtContents"
-        Me.txtContents.Size = New System.Drawing.Size(190, 68)
+        Me.txtContents.Size = New System.Drawing.Size(190, 81)
         Me.txtContents.TabIndex = 7
         '
         'btnDefaultContents
         '
         Me.btnDefaultContents.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDefaultContents.Location = New System.Drawing.Point(221, 65)
+        Me.btnDefaultContents.Location = New System.Drawing.Point(221, 35)
         Me.btnDefaultContents.Name = "btnDefaultContents"
         Me.btnDefaultContents.Size = New System.Drawing.Size(153, 30)
         Me.btnDefaultContents.TabIndex = 6
@@ -314,6 +320,7 @@ Partial Class F_Main
         '
         Me.grpPrintingOptions.Controls.Add(Me.nudStickerCopies)
         Me.grpPrintingOptions.Controls.Add(Me.nudPaperCopies)
+        Me.grpPrintingOptions.Controls.Add(Me.PictureBox1)
         Me.grpPrintingOptions.Controls.Add(Me.chkSticker)
         Me.grpPrintingOptions.Controls.Add(Me.lblPaperCopies)
         Me.grpPrintingOptions.Controls.Add(Me.chkPaper)
@@ -321,9 +328,9 @@ Partial Class F_Main
         Me.grpPrintingOptions.Controls.Add(Me.lblStickerCopies)
         Me.grpPrintingOptions.Controls.Add(Me.lblPaperPrinter)
         Me.grpPrintingOptions.Controls.Add(Me.lblStickerPrinter)
-        Me.grpPrintingOptions.Location = New System.Drawing.Point(402, 35)
+        Me.grpPrintingOptions.Location = New System.Drawing.Point(12, 425)
         Me.grpPrintingOptions.Name = "grpPrintingOptions"
-        Me.grpPrintingOptions.Size = New System.Drawing.Size(376, 313)
+        Me.grpPrintingOptions.Size = New System.Drawing.Size(794, 149)
         Me.grpPrintingOptions.TabIndex = 2
         Me.grpPrintingOptions.TabStop = False
         Me.grpPrintingOptions.Text = "Options"
@@ -337,7 +344,7 @@ Partial Class F_Main
         '
         'nudPaperCopies
         '
-        Me.nudPaperCopies.Location = New System.Drawing.Point(159, 228)
+        Me.nudPaperCopies.Location = New System.Drawing.Point(438, 108)
         Me.nudPaperCopies.Name = "nudPaperCopies"
         Me.nudPaperCopies.Size = New System.Drawing.Size(55, 20)
         Me.nudPaperCopies.TabIndex = 26
@@ -347,15 +354,16 @@ Partial Class F_Main
         Me.PictureBox1.ErrorImage = Nothing
         Me.PictureBox1.Image = Global.Security_Declaration_Form_Generator.My.Resources.Resources.WeidmullerLogo_Full
         Me.PictureBox1.InitialImage = Nothing
-        Me.PictureBox1.Location = New System.Drawing.Point(615, 362)
+        Me.PictureBox1.Location = New System.Drawing.Point(564, 97)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(163, 23)
+        Me.PictureBox1.Size = New System.Drawing.Size(215, 31)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 27
         Me.PictureBox1.TabStop = False
         '
         'grpConsignment
         '
+        Me.grpConsignment.Controls.Add(Me.grpCargoDestination)
         Me.grpConsignment.Controls.Add(Me.txtIssuedBy)
         Me.grpConsignment.Controls.Add(Me.lblContents)
         Me.grpConsignment.Controls.Add(Me.btnCreateConsignment)
@@ -372,36 +380,82 @@ Partial Class F_Main
         Me.grpConsignment.Controls.Add(Me.txtConsignment)
         Me.grpConsignment.Location = New System.Drawing.Point(12, 35)
         Me.grpConsignment.Name = "grpConsignment"
-        Me.grpConsignment.Size = New System.Drawing.Size(380, 350)
+        Me.grpConsignment.Size = New System.Drawing.Size(794, 384)
         Me.grpConsignment.TabIndex = 1
         Me.grpConsignment.TabStop = False
         Me.grpConsignment.Text = "Consignment"
         '
         'txtIssuedBy
         '
-        Me.txtIssuedBy.Location = New System.Drawing.Point(88, 27)
+        Me.txtIssuedBy.Location = New System.Drawing.Point(500, 37)
         Me.txtIssuedBy.Name = "txtIssuedBy"
-        Me.txtIssuedBy.Size = New System.Drawing.Size(286, 20)
+        Me.txtIssuedBy.Size = New System.Drawing.Size(279, 20)
         Me.txtIssuedBy.TabIndex = 9
         '
         'lblIssuedBy
         '
         Me.lblIssuedBy.AutoSize = True
-        Me.lblIssuedBy.Location = New System.Drawing.Point(10, 30)
+        Me.lblIssuedBy.Location = New System.Drawing.Point(422, 40)
         Me.lblIssuedBy.Name = "lblIssuedBy"
         Me.lblIssuedBy.Size = New System.Drawing.Size(56, 13)
         Me.lblIssuedBy.TabIndex = 21
         Me.lblIssuedBy.Text = "Issued By:"
+        '
+        'grpCargoDestination
+        '
+        Me.grpCargoDestination.Controls.Add(Me.txtCDAddress)
+        Me.grpCargoDestination.Controls.Add(Me.lblCDAddress)
+        Me.grpCargoDestination.Controls.Add(Me.txtCDName)
+        Me.grpCargoDestination.Controls.Add(Me.lblCargoDestName)
+        Me.grpCargoDestination.Location = New System.Drawing.Point(416, 90)
+        Me.grpCargoDestination.Name = "grpCargoDestination"
+        Me.grpCargoDestination.Size = New System.Drawing.Size(370, 288)
+        Me.grpCargoDestination.TabIndex = 24
+        Me.grpCargoDestination.TabStop = False
+        Me.grpCargoDestination.Text = "Cargo Destination"
+        '
+        'lblCargoDestName
+        '
+        Me.lblCargoDestName.AutoSize = True
+        Me.lblCargoDestName.Location = New System.Drawing.Point(6, 42)
+        Me.lblCargoDestName.Name = "lblCargoDestName"
+        Me.lblCargoDestName.Size = New System.Drawing.Size(38, 13)
+        Me.lblCargoDestName.TabIndex = 0
+        Me.lblCargoDestName.Text = "Name:"
+        '
+        'txtCDName
+        '
+        Me.txtCDName.Location = New System.Drawing.Point(84, 39)
+        Me.txtCDName.Multiline = True
+        Me.txtCDName.Name = "txtCDName"
+        Me.txtCDName.Size = New System.Drawing.Size(280, 91)
+        Me.txtCDName.TabIndex = 25
+        '
+        'txtCDAddress
+        '
+        Me.txtCDAddress.Location = New System.Drawing.Point(84, 150)
+        Me.txtCDAddress.Multiline = True
+        Me.txtCDAddress.Name = "txtCDAddress"
+        Me.txtCDAddress.Size = New System.Drawing.Size(280, 122)
+        Me.txtCDAddress.TabIndex = 27
+        '
+        'lblCDAddress
+        '
+        Me.lblCDAddress.AutoSize = True
+        Me.lblCDAddress.Location = New System.Drawing.Point(6, 150)
+        Me.lblCDAddress.Name = "lblCDAddress"
+        Me.lblCDAddress.Size = New System.Drawing.Size(48, 13)
+        Me.lblCDAddress.TabIndex = 26
+        Me.lblCDAddress.Text = "Address:"
         '
         'F_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.SystemColors.Window
-        Me.ClientSize = New System.Drawing.Size(790, 397)
+        Me.ClientSize = New System.Drawing.Size(820, 586)
         Me.Controls.Add(Me.lblCurrentUsername)
         Me.Controls.Add(Me.grpConsignment)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.grpPrintingOptions)
         Me.Controls.Add(Me.lblCurrentlyLoggedInUser)
         Me.Controls.Add(Me.tspMenu)
@@ -419,6 +473,8 @@ Partial Class F_Main
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpConsignment.ResumeLayout(False)
         Me.grpConsignment.PerformLayout()
+        Me.grpCargoDestination.ResumeLayout(False)
+        Me.grpCargoDestination.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -455,4 +511,9 @@ Partial Class F_Main
     Friend WithEvents txtIssuedBy As TextBox
     Friend WithEvents nudStickerCopies As NumericUpDown
     Friend WithEvents nudPaperCopies As NumericUpDown
+    Friend WithEvents grpCargoDestination As GroupBox
+    Friend WithEvents txtCDAddress As TextBox
+    Friend WithEvents lblCDAddress As Label
+    Friend WithEvents txtCDName As TextBox
+    Friend WithEvents lblCargoDestName As Label
 End Class

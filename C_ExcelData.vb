@@ -13,6 +13,9 @@
     Public Property StickerPrinter As String
     Public Property FullName As String
     Public Property SigPath As String
+    Public Property CargoDestinationName As String
+    Public Property CargoDestinationAddress As String
+
 
     Public Sub New(parContents As String,
                    parKnownConsignorRef As String,
@@ -26,6 +29,8 @@
                    parSdr As String,
                    parPaperPrinter As String,
                    parStickerPrinter As String,
+                   parCargoDestinationName As String,
+                   parCargoDestinationAddress As String,
                    Optional parFullName As String = "",
                    Optional parSigPath As String = "")
 
@@ -41,6 +46,8 @@
         SaveDirectoryRoot = parSdr
         PaperPrinter = parPaperPrinter
         StickerPrinter = parStickerPrinter
+        CargoDestinationName = parCargoDestinationName
+        CargoDestinationAddress = parCargoDestinationAddress
         FullName = parFullName
         SigPath = parSigPath
 
