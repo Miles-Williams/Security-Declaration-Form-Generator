@@ -67,8 +67,11 @@ Module M_Excel_Helpers
         parWorkSheet.Range("Cargo_Dest_Name").Value = parExcelData.CargoDestinationName
         parWorkSheet.Range("Cargo_Dest_Address").Value = parExcelData.CargoDestinationAddress
 
+        Dim sigImageTopLocation As Single
+        sigImageTopLocation = Single.Parse(parWorkSheet.Range("A1:A23").Height.ToString)
+
         If parExcelData.SigPath <> "" Then
-            parWorkSheet.Shapes.AddPicture(parExcelData.SigPath, Core.MsoTriState.msoFalse, Core.MsoTriState.msoCTrue, 130, 900, 300, 100)
+            parWorkSheet.Shapes.AddPicture(parExcelData.SigPath, Core.MsoTriState.msoFalse, Core.MsoTriState.msoCTrue, 130, sigImageTopLocation, 300, 100)
         End If
 
     End Sub

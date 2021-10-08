@@ -284,6 +284,7 @@ Clear:
             If Me.AppState.VolatileState.CurrentUser.Username = "Guest" Then Me.AppState.VolatileState.CurrentUser.FullName = txtIssuedBy.Text
             Me.AppState.VolatileState.FirstConNumber = CStr(lstConsignments.Items.Item(0))
             Me.AppState.VolatileState.ConNumbers = CreateConNumString(lstConsignments.Items)
+            If AppState.VolatileState.CargoDestination Is Nothing Then AppState.VolatileState.CargoDestination = New C_Destination("", "")
             Me.AppState.VolatileState.CargoDestination.Name = txtCDName.Text
             Me.AppState.VolatileState.CargoDestination.Address = txtCDAddress.Text
             Me.AppState.PaperCopies = CInt(nudPaperCopies.Value)
