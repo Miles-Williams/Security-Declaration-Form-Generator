@@ -404,6 +404,7 @@ Partial Class F_Main
         Me.txtCDAddress.Location = New System.Drawing.Point(84, 150)
         Me.txtCDAddress.Multiline = True
         Me.txtCDAddress.Name = "txtCDAddress"
+        Me.txtCDAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtCDAddress.Size = New System.Drawing.Size(280, 122)
         Me.txtCDAddress.TabIndex = 1
         '
@@ -421,6 +422,7 @@ Partial Class F_Main
         Me.txtCDName.Location = New System.Drawing.Point(84, 39)
         Me.txtCDName.Multiline = True
         Me.txtCDName.Name = "txtCDName"
+        Me.txtCDName.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtCDName.Size = New System.Drawing.Size(280, 91)
         Me.txtCDName.TabIndex = 0
         '

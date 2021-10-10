@@ -6,10 +6,10 @@ Public Class C_User
     Public Property HashedPw As String
     Public Property SigPath As String
 
-    Public Sub New(parFullName As String,
-                   parUsername As String,
-                   parSalt As String,
-                   parHashedPw As String,
+    Public Sub New(Optional parFullName As String = "",
+                   Optional parUsername As String = "Guest",
+                   Optional parSalt As String = "",
+                   Optional parHashedPw As String = "",
                    Optional parSigPath As String = "")
 
         FullName = parFullName

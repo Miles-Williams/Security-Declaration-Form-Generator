@@ -64,8 +64,8 @@ Module M_Excel_Helpers
         parWorkSheet.Range("Consignment_Number").Value = parExcelData.ConNumbers
         parWorkSheet.Range("Issue_Date").Value = parExcelData.IssuedOn
         parWorkSheet.Range("Known_Consignor_Ref").Value = parExcelData.KnownConsignorRef
-        parWorkSheet.Range("Cargo_Dest_Name").Value = parExcelData.CargoDestinationName
-        parWorkSheet.Range("Cargo_Dest_Address").Value = parExcelData.CargoDestinationAddress
+
+        FormatForCargoDestination(parWorkSheet, parExcelData.CargoDestinationObject)
 
         Dim sigImageTopLocation As Single
         sigImageTopLocation = Single.Parse(parWorkSheet.Range("A1:A23").Height.ToString)
@@ -74,6 +74,39 @@ Module M_Excel_Helpers
             parWorkSheet.Shapes.AddPicture(parExcelData.SigPath, Core.MsoTriState.msoFalse, Core.MsoTriState.msoCTrue, 130, sigImageTopLocation, 300, 100)
         End If
 
+    End Sub
+
+    Private Sub FormatForCargoDestination(parWorkSheet As Excel.Worksheet, parCargoDestinationObject As C_Destination)
+        Dim nameTextLines As Integer
+        Dim addressTextLines As Integer
+
+        nameTextLines = parCargoDestinationObject.NameTextLines
+        addressTextLines = parCargoDestinationObject.AddressTextLines
+
+        Select Case nameTextLines
+            Case < 3
+                parWorkSheet.Range("Cargo_Dest_Name").Font.Size = 20
+            Case 3
+                parWorkSheet.Range("Cargo_Dest_Name").Font.Size = 14
+            Case 4
+                parWorkSheet.Range("Cargo_Dest_Name").Font.Size = 10
+            Case 5
+                parWorkSheet.Range("Cargo_Dest_Name").Font.Size = 8
+        End Select
+
+        Select Case addressTextLines
+            Case < 4
+                parWorkSheet.Range("Cargo_Dest_Address").Font.Size = 20
+            Case 4
+                parWorkSheet.Range("Cargo_Dest_Address").Font.Size = 16
+            Case 5
+                parWorkSheet.Range("Cargo_Dest_Address").Font.Size = 12
+            Case 6
+                parWorkSheet.Range("Cargo_Dest_Address").Font.Size = 10
+        End Select
+
+        parWorkSheet.Range("Cargo_Dest_Name").Value = parCargoDestinationObject.Name
+        parWorkSheet.Range("Cargo_Dest_Address").Value = parCargoDestinationObject.Address
     End Sub
 
     Private Sub PrintExcelDocument(parWkSht As Excel.Worksheet, parExcelData As C_ExcelData)

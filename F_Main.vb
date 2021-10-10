@@ -33,7 +33,7 @@ Public Class F_Main
         InitializeIcon()
         Me.AppState = DeserializeState()
         If Me.AppState.VolatileState.CurrentUser Is Nothing Then
-            Me.AppState.VolatileState.CurrentUser = New C_User("", "Guest", "", "")
+            Me.AppState.VolatileState.CurrentUser = New C_User()
         End If
     End Sub
 
@@ -284,9 +284,12 @@ Clear:
             If Me.AppState.VolatileState.CurrentUser.Username = "Guest" Then Me.AppState.VolatileState.CurrentUser.FullName = txtIssuedBy.Text
             Me.AppState.VolatileState.FirstConNumber = CStr(lstConsignments.Items.Item(0))
             Me.AppState.VolatileState.ConNumbers = CreateConNumString(lstConsignments.Items)
-            If AppState.VolatileState.CargoDestination Is Nothing Then AppState.VolatileState.CargoDestination = New C_Destination("", "")
+            If Me.AppState.VolatileState.CargoDestination Is Nothing Then AppState.VolatileState.CargoDestination = New C_Destination()
+
             Me.AppState.VolatileState.CargoDestination.Name = txtCDName.Text
             Me.AppState.VolatileState.CargoDestination.Address = txtCDAddress.Text
+            Me.AppState.VolatileState.CargoDestination.NameTextLines = txtCDName.Lines.Count
+            Me.AppState.VolatileState.CargoDestination.AddressTextLines = txtCDAddress.Lines.Count
             Me.AppState.PaperCopies = CInt(nudPaperCopies.Value)
             Me.AppState.StickerCopies = CInt(nudStickerCopies.Value)
             RunPreExcelInit(Me.AppState)
@@ -453,8 +456,7 @@ Clear:
                                         parState.Configuration.SaveDirectoryRoot,
                                         parState.Configuration.CurrentPaperPrinter,
                                         parState.Configuration.CurrentStickerPrinter,
-                                        parState.VolatileState.CargoDestination.Name,
-                                        parState.VolatileState.CargoDestination.Address,
+                                        parState.VolatileState.CargoDestination,
                                         parState.VolatileState.CurrentUser.FullName,
                                         parState.VolatileState.CurrentUser.SigPath)
 

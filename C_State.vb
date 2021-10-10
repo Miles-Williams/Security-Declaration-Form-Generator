@@ -13,6 +13,7 @@ Public Class C_State
     Public Property Users() As List(Of C_User)
 
     Public Sub New()
+
         Dim p As New PrinterSettings
 
         If Users Is Nothing Then
@@ -37,8 +38,8 @@ Public Class C_State
                 .ConNumbers = "",
                 .FirstConNumber = ""
             }
-            If VolatileState.CurrentUser Is Nothing Then VolatileState.CurrentUser = New C_User("", "Guest", "", "")
-            If VolatileState.CargoDestination Is Nothing Then VolatileState.CargoDestination = New C_Destination("", "")
+            If VolatileState.CurrentUser Is Nothing Then VolatileState.CurrentUser = New C_User()
+            If VolatileState.CargoDestination Is Nothing Then VolatileState.CargoDestination = New C_Destination()
 
         End If
 
@@ -48,6 +49,7 @@ Public Class C_State
         PrintMedium = E_PrintMedium.Both
         AddTollPrefix = False
         CurrentDestination = E_Destination.Domestic
+
     End Sub
 
     <Serializable()>
